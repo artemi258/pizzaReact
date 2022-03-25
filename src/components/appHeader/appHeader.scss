@@ -1,0 +1,120 @@
+@import '../../style/variables.scss';
+
+.appHeader {
+    background-color: #fff;
+    width: 100%;
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 40px;
+        &-item {
+            font-size: 14px;
+            display: flex;
+            span {
+                font-weight: 700;
+                margin-left: 4px;
+            }
+        }
+        &-account {
+            display: flex;
+        }
+        &-icon {
+            width: 20px;
+            height: 20px;
+            margin-left: 40px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &-account {
+            cursor: pointer;
+            span {
+                font-weight: 400;
+                margin-left: 8px;
+            }
+        }
+    }
+    &__divinder {
+        width: 100%;
+        height: 1px;
+        background-color: #F0F0F0;
+    }
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+        &-logo {
+            display: flex;
+            span {
+                font-size: 16px;
+                margin-left: 12px;
+            }
+        }
+        &-icon {
+            width: 32px;
+            height: 32px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &-basket {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 89px;
+            height: 40px;
+            background-color: $main-color;
+            cursor: pointer;
+            span {
+                color: #fff;
+                font-size: 16px;
+                margin-left: 8px;
+            }
+            &-icon {
+                width: 24px;
+                height: 21px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        &-contacts {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%;
+            span {
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+        &-item {
+            display: flex;
+            a {
+                text-decoration: none;
+                color: #000;
+                &:hover {
+                    color: $main-color;
+                }
+            }
+        }
+        &-icon {
+            width: 17px;
+            height: 20px;
+            margin-right: 5px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

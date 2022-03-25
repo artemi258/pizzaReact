@@ -1,0 +1,37 @@
+.navMenu {
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+        margin: 30px 0 0 0;
+        padding: 0;
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+        width: 122px;
+        height: 104px;
+        background-color: #fff;
+        border-radius: 12px;
+        cursor: pointer;
+        span {
+            font-size: 18px;
+            margin-top: 8px;
+        }
+        &:first-child {
+            span {
+                color: #E23535;
+            }
+        }
+    }
+    &__img {
+        width: 32px;
+        height: 32px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

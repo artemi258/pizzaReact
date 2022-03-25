@@ -1,0 +1,25 @@
+.stock {
+    padding: 30px 0 30px 0;
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    &__item {
+        display: flex;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        width: 270px;
+        height: 320px;
+        border-radius: 12px;
+        padding: 20px;
+    }
+    &__description {
+        width: 100%;
+        min-height: 60px;
+        color: #fff;
+        font-weight: 600;
+        font-size: 20px;
+
+    }
+}

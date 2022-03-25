@@ -1,0 +1,10 @@
+.promo {
+    width: 850px;
+    padding: 60px 0 60px 0;
+    margin: 0 auto 0 auto;
+    &__title {
+        font-weight: 600;
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+}

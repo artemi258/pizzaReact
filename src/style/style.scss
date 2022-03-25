@@ -1,0 +1,10 @@
+@import '../../node_modules/bootstrap/scss/bootstrap-reboot.scss';
+@import './variables.scss';
+
+body {
+    background-color: #E5E5E5;
+}
+.container {
+        width: 1140px;
+        margin: 0 auto;
+}

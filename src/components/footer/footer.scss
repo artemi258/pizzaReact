@@ -1,0 +1,28 @@
+.footer {
+    padding: 32px 0 32px 0;
+    background-color: #fff;
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        span {
+            font-weight: 700;
+            margin-left: 15px;
+        }
+    }
+    &__pizza {
+        display: flex;
+    }
+    &__img {
+        width: 40px;
+        height: 40px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
