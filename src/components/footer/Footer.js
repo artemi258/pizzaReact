@@ -20,19 +20,19 @@ const Footer = () => {
                 </div>
                 <ul className="footer__info">
                     <span>Куда пицца</span>
-                    <li>О компании</li>
-                    <li>Пользовательское соглашение</li>
-                    <li>Условия гарантии</li>
+                    <li><a href="#">О компании</a></li>
+                    <li><a href="#">Пользовательское соглашение</a></li>
+                    <li><a href="#">Условия гарантии</a></li>
                 </ul>
                 <ul className="footer__help">
                     <span>Помощь</span>
-                    <li>Ресторан</li>
-                    <li>Контакты</li>
-                    <li>Поддержка</li>
-                    <li>Отследить заказ</li>
+                    <li><a href="#">Ресторан</a></li>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#">Поддержка</a></li>
+                    <li><a href="#">Отследить заказ</a></li>
                 </ul>
                 <div className="footer__contacts">
-                            <span>Контакты:</span>
+                            <span>Контакты</span>
                             <div className="footer__contacts-item">
                                 <div className="footer__contacts-icon"><img src={phone} alt="phone" /></div>
                                 <a href="tel:+79509999999" target="_blank" rel='noreferrer'>+7 (950) 999-99-99</a>

@@ -1,4 +1,4 @@
-import '../stock.scss';
+import '../stocks.scss';
 
 const StockItem = ({img, description}) => {
 

@@ -1,0 +1,44 @@
+{
+    "stocks": [
+        {
+            "id": 1,
+            "img": "https://downloader.disk.yandex.ru/preview/e539f359e49adf8e540b41a3957b741e3737a95a5fec09fa6d1320802eada886/623f4903/bCqzXAXlo5RatGZhGtlCEzmodK5lynzYgN_sREg5zgXbdKzTxof5wPZJa4i1HuI_0QksL-1GKmaXloXh3UaMbg%3D%3D?uid=0&filename=stock1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "description": "3 средние пиццы от 999 рублей"
+        },
+        {
+            "id": 2,
+            "img": "https://downloader.disk.yandex.ru/preview/a3b890ab8805feca054fcfd219d7f3ccb88beb48d7168831902bdb9218ac0dfe/623f49b5/94Sbh3kfpPi-9mwgHObj5h--xOitUQ-PFr8yg-g7-FlQi4yABYaVCvceDxjdvGF7fTNirkWdKKCPSG_QEXZerw%3D%3D?uid=0&filename=stock2.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "description": "Кэшбек 10% на самовывоз (доставка)"
+        },
+        {
+            "id": 3,
+            "img": "https://downloader.disk.yandex.ru/preview/6046d4177327227407e5fc412cbb30a78fcd730b08e18368ac802fd61375f444/623f49a4/bCqzXAXlo5RatGZhGtlCEzmodK5lynzYgN_sREg5zgXbdKzTxof5wPZJa4i1HuI_0QksL-1GKmaXloXh3UaMbg%3D%3D?uid=0&filename=stock1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "description": "3 средние пиццы от 999 рублей"
+        },
+        {
+            "id": 4,
+            "img": "https://downloader.disk.yandex.ru/preview/a3b890ab8805feca054fcfd219d7f3ccb88beb48d7168831902bdb9218ac0dfe/623f49b5/94Sbh3kfpPi-9mwgHObj5h--xOitUQ-PFr8yg-g7-FlQi4yABYaVCvceDxjdvGF7fTNirkWdKKCPSG_QEXZerw%3D%3D?uid=0&filename=stock2.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "description": "Кэшбек 10% на самовывоз (доставка)"
+        },
+        {
+            "id": 5,
+            "img": "https://downloader.disk.yandex.ru/preview/e539f359e49adf8e540b41a3957b741e3737a95a5fec09fa6d1320802eada886/623f4903/bCqzXAXlo5RatGZhGtlCEzmodK5lynzYgN_sREg5zgXbdKzTxof5wPZJa4i1HuI_0QksL-1GKmaXloXh3UaMbg%3D%3D?uid=0&filename=stock1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "description": "3 средние пиццы от 999 рублей"
+        },
+        {
+            "id": 6,
+            "img": "https://downloader.disk.yandex.ru/preview/a3b890ab8805feca054fcfd219d7f3ccb88beb48d7168831902bdb9218ac0dfe/623f49b5/94Sbh3kfpPi-9mwgHObj5h--xOitUQ-PFr8yg-g7-FlQi4yABYaVCvceDxjdvGF7fTNirkWdKKCPSG_QEXZerw%3D%3D?uid=0&filename=stock2.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "description": "Кэшбек 10% на самовывоз (доставка)"
+        },
+        {
+            "id": 7,
+            "img": "https://downloader.disk.yandex.ru/preview/6046d4177327227407e5fc412cbb30a78fcd730b08e18368ac802fd61375f444/623f49a4/bCqzXAXlo5RatGZhGtlCEzmodK5lynzYgN_sREg5zgXbdKzTxof5wPZJa4i1HuI_0QksL-1GKmaXloXh3UaMbg%3D%3D?uid=0&filename=stock1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "description": "3 средние пиццы от 999 рублей"
+        },
+        {
+            "id": 8,
+            "img": "https://downloader.disk.yandex.ru/preview/a3b890ab8805feca054fcfd219d7f3ccb88beb48d7168831902bdb9218ac0dfe/623f49b5/94Sbh3kfpPi-9mwgHObj5h--xOitUQ-PFr8yg-g7-FlQi4yABYaVCvceDxjdvGF7fTNirkWdKKCPSG_QEXZerw%3D%3D?uid=0&filename=stock2.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "description": "Кэшбек 10% на самовывоз (доставка)"
+        }
+    ]
+}

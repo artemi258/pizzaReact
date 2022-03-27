@@ -1,0 +1,25 @@
+.skeleton {
+    display: grid;
+    grid: repeat(1, 320px) / repeat(4, 270px);
+    column-gap: 20px;
+    row-gap: 30px;
+    grid-auto-rows: 320px;
+    padding: 30px 0 30px 0;
+    &__item {
+        width: 270px;
+        height: 320px;
+    }
+    &__header {
+        background-color: #C4C4C4;
+        width: 100%;
+        height: 220px;
+        border-radius: 12px;
+    }
+    &__block {
+        height: 20px;
+        width: 100%;
+        background-color: #C4C4C4;
+        margin-top: 15px;
+        border-radius: 12px;
+    }
+}

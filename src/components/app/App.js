@@ -1,6 +1,6 @@
 import AppHeader from "../appHeader/AppHeader";
 import NavMenu from "../navMenu/NavMenu";
-import Stock from "../stock/Stock";
+import Stocks from "../stocks/Stocks";
 import Promo from "../promo/Promo";
 import Footer from "../footer/Footer";
 
@@ -13,7 +13,7 @@ import './app.scss';
                 <AppHeader/>
                 <main>
                     <NavMenu/>
-                    <Stock/>
+                    <Stocks/>
                 </main>
                 <Promo/>
                 <Footer/>

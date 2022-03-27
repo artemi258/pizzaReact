@@ -1,9 +1,11 @@
 .stock {
     padding: 30px 0 30px 0;
     &__wrapper {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        display: grid;
+        grid: repeat(1, 320px) / repeat(4, 270px);
+        column-gap: 20px;
+        row-gap: 30px;
+        grid-auto-rows: 320px;
     }
     &__item {
         display: flex;
