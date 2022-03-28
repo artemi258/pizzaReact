@@ -11,7 +11,7 @@ export const fetchStocks = createAsyncThunk(
     'stocks/fetchStocks',
     () => {
         const { request } = useHttp();
-        return request('../../JSON/product.json');
+        return request('../JSON/product.json');
     }
 );
 
