@@ -9,7 +9,7 @@ const Skeleton = () => {
 
         for (let index = 0; index < 8; index++) {
             content.push(
-                    <div className="skeleton__item">
+                    <div key={index} className="skeleton__item">
                         <div className="pulse skeleton__header">
                         </div>
                         <div className="pulse skeleton__block"></div>
