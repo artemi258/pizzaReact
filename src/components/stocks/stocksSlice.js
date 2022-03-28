@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import { useHttp } from '../../hooks/http.hook';
+import server from '../../JSON/product.json';
 
 
 const initialState = {
@@ -11,7 +12,7 @@ export const fetchStocks = createAsyncThunk(
     'stocks/fetchStocks',
     () => {
         const { request } = useHttp();
-        return request('./product.json');
+        return request(`${server}`);
     }
 );
 
