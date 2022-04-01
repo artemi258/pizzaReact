@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchStocks } from "./stocksSlice";
 
 import StocksItem from './stocksItem/StocksItem';
-import Skeleton from "../skeleton/Skeleton";
+import Skeleton from "../../skeleton/Skeleton";
 
 import './stocks.scss';
 
@@ -13,7 +13,7 @@ const Stocks = () => {
     const {stocks, stockLoadingState} = useSelector(state => state.stocks);
 
     useEffect(() => {
-        dispatch(fetchStocks()).unwrap()
+        dispatch(fetchStocks()).unwrap();
     }, []);
 
     if (stockLoadingState === 'loading') {

@@ -2,43 +2,157 @@
     "stocks": [
         {
             "id": 1,
-            "img": "https://downloader.disk.yandex.ru/preview/e539f359e49adf8e540b41a3957b741e3737a95a5fec09fa6d1320802eada886/623f4903/bCqzXAXlo5RatGZhGtlCEzmodK5lynzYgN_sREg5zgXbdKzTxof5wPZJa4i1HuI_0QksL-1GKmaXloXh3UaMbg%3D%3D?uid=0&filename=stock1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "img": "https://i.pinimg.com/736x/75/56/ba/7556ba85eea51f5ce0cf6aa05345d10c.jpg",
             "description": "3 средние пиццы от 999 рублей"
         },
         {
             "id": 2,
-            "img": "https://downloader.disk.yandex.ru/preview/a3b890ab8805feca054fcfd219d7f3ccb88beb48d7168831902bdb9218ac0dfe/623f49b5/94Sbh3kfpPi-9mwgHObj5h--xOitUQ-PFr8yg-g7-FlQi4yABYaVCvceDxjdvGF7fTNirkWdKKCPSG_QEXZerw%3D%3D?uid=0&filename=stock2.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "img": "https://i.pinimg.com/736x/97/5e/5c/975e5c53dc44e4a0c1edf675183dce97.jpg",
             "description": "Кэшбек 10% на самовывоз (доставка)"
         },
         {
             "id": 3,
-            "img": "https://downloader.disk.yandex.ru/preview/6046d4177327227407e5fc412cbb30a78fcd730b08e18368ac802fd61375f444/623f49a4/bCqzXAXlo5RatGZhGtlCEzmodK5lynzYgN_sREg5zgXbdKzTxof5wPZJa4i1HuI_0QksL-1GKmaXloXh3UaMbg%3D%3D?uid=0&filename=stock1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "img": "https://i.pinimg.com/736x/75/56/ba/7556ba85eea51f5ce0cf6aa05345d10c.jpg",
             "description": "3 средние пиццы от 999 рублей"
         },
         {
             "id": 4,
-            "img": "https://downloader.disk.yandex.ru/preview/a3b890ab8805feca054fcfd219d7f3ccb88beb48d7168831902bdb9218ac0dfe/623f49b5/94Sbh3kfpPi-9mwgHObj5h--xOitUQ-PFr8yg-g7-FlQi4yABYaVCvceDxjdvGF7fTNirkWdKKCPSG_QEXZerw%3D%3D?uid=0&filename=stock2.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "img": "https://i.pinimg.com/736x/97/5e/5c/975e5c53dc44e4a0c1edf675183dce97.jpg",
             "description": "Кэшбек 10% на самовывоз (доставка)"
         },
         {
             "id": 5,
-            "img": "https://downloader.disk.yandex.ru/preview/e539f359e49adf8e540b41a3957b741e3737a95a5fec09fa6d1320802eada886/623f4903/bCqzXAXlo5RatGZhGtlCEzmodK5lynzYgN_sREg5zgXbdKzTxof5wPZJa4i1HuI_0QksL-1GKmaXloXh3UaMbg%3D%3D?uid=0&filename=stock1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "img": "https://i.pinimg.com/736x/75/56/ba/7556ba85eea51f5ce0cf6aa05345d10c.jpg",
             "description": "3 средние пиццы от 999 рублей"
         },
         {
             "id": 6,
-            "img": "https://downloader.disk.yandex.ru/preview/a3b890ab8805feca054fcfd219d7f3ccb88beb48d7168831902bdb9218ac0dfe/623f49b5/94Sbh3kfpPi-9mwgHObj5h--xOitUQ-PFr8yg-g7-FlQi4yABYaVCvceDxjdvGF7fTNirkWdKKCPSG_QEXZerw%3D%3D?uid=0&filename=stock2.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "img": "https://i.pinimg.com/736x/97/5e/5c/975e5c53dc44e4a0c1edf675183dce97.jpg",
             "description": "Кэшбек 10% на самовывоз (доставка)"
         },
         {
             "id": 7,
-            "img": "https://downloader.disk.yandex.ru/preview/6046d4177327227407e5fc412cbb30a78fcd730b08e18368ac802fd61375f444/623f49a4/bCqzXAXlo5RatGZhGtlCEzmodK5lynzYgN_sREg5zgXbdKzTxof5wPZJa4i1HuI_0QksL-1GKmaXloXh3UaMbg%3D%3D?uid=0&filename=stock1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "img": "https://i.pinimg.com/736x/75/56/ba/7556ba85eea51f5ce0cf6aa05345d10c.jpg",
             "description": "3 средние пиццы от 999 рублей"
         },
         {
             "id": 8,
-            "img": "https://downloader.disk.yandex.ru/preview/a3b890ab8805feca054fcfd219d7f3ccb88beb48d7168831902bdb9218ac0dfe/623f49b5/94Sbh3kfpPi-9mwgHObj5h--xOitUQ-PFr8yg-g7-FlQi4yABYaVCvceDxjdvGF7fTNirkWdKKCPSG_QEXZerw%3D%3D?uid=0&filename=stock2.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+            "img": "https://i.pinimg.com/736x/97/5e/5c/975e5c53dc44e4a0c1edf675183dce97.jpg",
             "description": "Кэшбек 10% на самовывоз (доставка)"
+        }
+    ],
+    "pizza": [
+        {
+            "id": "Мясное Удовольствие",
+            "img": "https://i.pinimg.com/564x/e0/2f/d2/e02fd22686a9faf2023dbc3b0efa93b2.jpg",
+            "title": "Мясное Удовольствие",
+            "ingredients": "Томатный соус, сыр моцарелла, ароматная свинина, пепперони, ветчина, бекон, чоризо, колбасы сырокопченые",
+            "price": 539
+        },
+        {
+            "id": "Маргарита",
+            "img": "https://i.pinimg.com/564x/e8/eb/93/e8eb93b4780b0b0c96b5604a77834646.jpg",
+            "title": "Маргарита",
+            "ingredients": "Традиционный рецепт пиццы с Моцареллой, сочными томатами, фирменным томатным соусом и орегано",
+            "price": 469
+        },
+        {
+            "id": "Маленькая Италия",
+            "title": "Маленькая Италия",
+            "img": "https://i.pinimg.com/736x/6d/15/bd/6d15bd4ea19ca5f9a2279cffa66cf244.jpg",
+            "ingredients": "Сыр моцарелла, пикантная пепперони, ароматная свинина, орегано, шампиньоны, черные оливки с фирменным томатным соусом",
+            "price": 489
+        },
+        {
+            "id": "Любимая папина пицца",
+            "title": "Любимая папина пицца",
+            "img": "https://i.pinimg.com/564x/cc/c2/be/ccc2be94902db8a69c19c6ceef8b0542.jpg",
+            "ingredients": "Любимые ингредиенты: пикантная пепперони, ароматная свинина, Моцарелла, Пармезан, Фонтина, смесь копчёных итальянских сыров и травы. С пикантной остринкой",
+            "price": 519
+        },
+        {
+            "id": "Чеддер Мексикан",
+            "img": "https://i.pinimg.com/564x/71/c6/c2/71c6c2e100a0ff3b835df6090d804f4e.jpg",
+            "title": "Чеддер Мексикан",
+            "ingredients": "Яркий сыр Чеддар, Моцарелла, сочная говядина, зеленый перец и грибы, хрустящий лук, томаты и острый перчик с соусом 1000 островов.",
+            "price": 489
+        },
+        {
+            "id": "Терияки",
+            "img": "https://i.pinimg.com/564x/b2/2b/49/b22b4941aaa82d1bf80351de310e5998.jpg",
+            "title": "Терияки",
+            "ingredients": "Соус терияки, сыр моцарелла, куриная грудка, кунжут, лук",
+            "price": 489
+        },
+        {
+            "id": "Деревенское Барбекю",
+            "img": "https://i.pinimg.com/564x/ca/1b/1c/ca1b1ce3455e7f7862c9821115fa2a1b.jpg",
+            "title": "Деревенское Барбекю",
+            "ingredients": "Сезон барбекю! Ароматная свинина, пикантная пепперони, шампиньоны, лук, зеленый перец с сыром Моцарелла и соусом барбекю",
+            "price": 489
+        },
+        {
+            "id": "Пепперони",
+            "img": "https://i.pinimg.com/564x/61/f9/22/61f9226a86cb05a53f8805015996f28f.jpg",
+            "title": "Пепперони",
+            "ingredients": "Американская классика с пикантной пепперони, Моцареллой и фирменным томатным соусом",
+            "price": 489
+        },
+        {
+            "id": "Вегетарианская",
+            "img": "https://i.pinimg.com/564x/67/27/50/6727507301634248161173d1254fd998.jpg",
+            "title": "Вегетарианская",
+            "ingredients": "Лёгкая пицца с фирменным томатным соусом, Моцареллой, сладким зелёным перцем, шампиньонами, маслинами, луком и сочными томатами",
+            "price": 469
+        },
+        {
+            "id": "Спайси Пепперони Биф",
+            "img": "https://i.pinimg.com/564x/69/0e/19/690e1973374157ff713ba931a624d275.jpg",
+            "title": "Спайси Пепперони Биф",
+            "ingredients": "Сочные куски говядины, пикантная пепперони, сыр Моцарелла и жгучий перец халапеньо с фирменным томатным соусом. С пикантной остринкой",
+            "price": 489
+        },
+        {
+            "id": "Шпинат и Сыр",
+            "img": "https://i.pinimg.com/564x/76/b1/49/76b14974b2763315fc647b87c77ef7ff.jpg",
+            "title": "Шпинат и Сыр",
+            "ingredients": "Ультратонкое тесто с легким шпинатом, мягким молодым сыром и сыром 'кремчиз'",
+            "price": 539
+        },
+        {
+            "id": "Цыплёнок Грин",
+            "img": "https://i.pinimg.com/564x/fe/e3/e3/fee3e3864b58f782f6aed555af5cedee.jpg",
+            "title": "Цыплёнок Грин",
+            "ingredients": "Сочное куриное филе,сыр моцарелла, сладкий зелёный перец, соус «Чесночный рэнч», чеснок и томаты.",
+            "price": 399
+        },
+        {
+            "id": "Гавайский Цыплёнок Барбекю",
+            "img": "https://i.pinimg.com/564x/ec/60/36/ec6036ac4fe650fe37c2bba1b1246525.jpg",
+            "title": "Гавайский Цыплёнок Барбекю",
+            "ingredients": "Сыр моцарелла, нежная куриная грудка, ароматная ветчина, сочные ананасы, лук с соусом 'Барбекю'",
+            "price": 489
+        },
+        {
+            "id": "Мясное барбекю",
+            "img": "https://i.pinimg.com/564x/94/04/65/94046503087375e057270e8123da5dcc.jpg",
+            "title": "Мясное барбекю",
+            "ingredients": "Мясная пицца с пикантной пепперони, альпийскими колбасками, Моцареллой, луком и соусом Барбекю",
+            "price": 489
+        },
+        {
+            "id": "Пепперони с медом и халапеньо",
+            "img": "https://i.pinimg.com/564x/65/48/fe/6548fe53a1bb050a1cf6652d0e4c068a.jpg",
+            "title": "Пепперони с медом и халапеньо",
+            "ingredients": "'The Bee Sting' пицца с пепперони, цветочным медом, острым халапеньо, сыром Моцарелла и фирменным томатным соусом",
+            "price": 489
+        },
+        {
+            "id": "Капричиоза",
+            "img": "https://i.pinimg.com/564x/4b/b3/24/4bb324eb41d85d3813f279194297ffb6.jpg",
+            "title": "Капричиоза",
+            "ingredients": "Итальянская классика! Сыр Моцарелла, шампиньоны, ароматная ветчина, сочные томаты с фирменным томатным соусом",
+            "price": 469
         }
     ]
 }

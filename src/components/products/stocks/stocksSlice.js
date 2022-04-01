@@ -1,8 +1,5 @@
 import { createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import { useHttp } from '../../hooks/http.hook';
-import product from '../../JSON/product.json';
-let admins = require('../../JSON/product.json');
-
+import { useHttp } from '../../../hooks/http.hook';
 
 const initialState = {
     stocks: [],
@@ -13,7 +10,7 @@ export const fetchStocks = createAsyncThunk(
     'stocks/fetchStocks',
     () => {
         const { request } = useHttp();
-        return request(`${admins}`);
+        return request('http://localhost:3001/stocks');
     }
 );
 
@@ -25,7 +22,7 @@ const stocks = createSlice({
         builder
             .addCase(fetchStocks.pending, state => {state.stockLoadingState = 'loading'})
             .addCase(fetchStocks.fulfilled, (state, action) => {
-                state.stocks = state.stocks.concat(action.payload);
+                state.stocks = action.payload;
                 state.stockLoadingState = 'idle';
             })
             .addCase(fetchStocks.rejected, state => {state.stockLoadingState = 'error'})

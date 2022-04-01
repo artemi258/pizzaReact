@@ -1,0 +1,15 @@
+@import './variables.scss';
+
+.button {
+    background-color: $main-color;
+    border: none;
+    min-width: 89px;
+    &__basket {
+        border-radius: 4px;
+    }
+    &__products {
+        border-radius: 6px;
+        padding: 13px 32px;
+        color: #fff;
+    }
+}

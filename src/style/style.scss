@@ -11,6 +11,13 @@ body {
 .pulse {
     animation: pulse 1.5s ease-in-out .5s infinite
 }
+.title {
+    &__products {
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+}
 @keyframes pulse {
     0% {
         opacity: 1
@@ -22,3 +29,22 @@ body {
         opacity: 1
     }
 }
+.fade {
+    transform: scale(0, 0);
+    transition: all 500ms linear;
+  }
+  .fade-enter {
+    transform: scale(0, 0);
+    transition: all 500ms linear;
+  }
+  .fade-enter-active {
+    transform: scale(1, 1);
+    transition: all 500ms linear;
+  }
+  .fade-exit {
+    opacity: 1;
+  }
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+  }

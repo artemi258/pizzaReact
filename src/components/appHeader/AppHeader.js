@@ -1,4 +1,5 @@
 import './appHeader.scss';
+import '../../style/button.scss';
 
 import pizza from '../../icon/pizza.png';
 import account from './icon/account.png';
@@ -54,12 +55,12 @@ import nav from '../../icon/nav.png';
                                 <a href="https://instagram.com/" target="_blank" rel='noreferrer'>Instagram</a>
                             </div>
                         </div>
-                        <div className="appHeader__bottom-basket">
+                        <button className="button button__basket appHeader__bottom-basket">
                             <div className="appHeader__bottom-basket-icon">
                                 <img src={basket} alt="basket" />
                             </div>
                             <span>0 ₽</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 
