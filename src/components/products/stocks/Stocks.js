@@ -1,31 +1,28 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { CSSTransition, TransitionGroup} from "react-transition-group";
 import { fetchStocks } from "./stocksSlice";
 
 import StocksItem from './stocksItem/StocksItem';
 import Skeleton from "../../skeleton/Skeleton";
 
 import './stocks.scss';
+import '../../../style/style.scss';
 
 const Stocks = () => {
 
     const dispatch = useDispatch();
-    const {stocks, stockLoadingState} = useSelector(state => state.stocks);
+    const {stocks} = useSelector(state => state.stocks);
 
     useEffect(() => {
         dispatch(fetchStocks()).unwrap();
     }, []);
 
-    if (stockLoadingState === 'loading') {
-        return <Skeleton/>
-    } else if (stockLoadingState === "error") {
-        return <h5 className="text-center mt-5">Ошибка загрузки</h5>
-    }
-
     const stock = (arr) => {
-            
-               return arr.map(item => {
-                    return <StocksItem key={item.id} img={item.img} description={item.description}/>
+               return arr.map(({id, img, description}) => {
+                    return  <CSSTransition  key={id} timeout={300} classNames="fade">
+                                <StocksItem key={id} img={img} description={description}/>
+                            </CSSTransition>
                 })
     }
     
@@ -34,7 +31,9 @@ const Stocks = () => {
     return (
         <section className="stock container">
             <div className="stock__wrapper">
-                {renderStock}
+                    <TransitionGroup component={null}>
+                        {renderStock}
+                    </TransitionGroup>
             </div>
         </section>
     )
