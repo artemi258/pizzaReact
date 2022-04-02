@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 import { fetchStocks } from "./stocksSlice";
@@ -19,6 +19,7 @@ const Stocks = () => {
     }, []);
 
     const stock = (arr) => {
+        console.log('stocks')
                return arr.map(({id, img, description}) => {
                     return  <CSSTransition  key={id} timeout={300} classNames="fade">
                                 <StocksItem key={id} img={img} description={description}/>
@@ -26,7 +27,9 @@ const Stocks = () => {
                 })
     }
     
-    const renderStock = stock(stocks);
+    const renderStock = useMemo(() => {
+        return stock(stocks);
+    }, [stocks]);
 
     return (
         <section className="stock container">

@@ -9,7 +9,7 @@ import './pizza.scss';
 import '../../../style/style.scss';
 
 const Pizza = () => {
-    const {pizza} = useSelector(state => state.pizza);
+    const {pizza, pizzaLoadingState} = useSelector(state => state.pizza);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,6 +18,8 @@ const Pizza = () => {
     
 
     const item = (arr) => {
+        console.log('render')
+
         return arr.map(({id, img, title, ingredients, price}) => {
              return <CSSTransition key={id} timeout={300} classNames="fade">
                         <PizzaItem key={id} img={img} title={title} ingredients={ingredients} price={price}/>
@@ -26,10 +28,9 @@ const Pizza = () => {
      };
 
     const renderPizza = useMemo(() => {
-        return item(pizza);
-     }, [pizza]);
+       return item(pizza);
+    }, [pizza]);
 
-console.log('pizza')
     return (
         <div className="pizza container">
             <div className="pizza__wrapper">
