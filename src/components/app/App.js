@@ -6,14 +6,14 @@ import NavMenu from "../navMenu/NavMenu";
 import Promo from "../promo/Promo";
 import Footer from "../footer/Footer";
 import Skeleton from "../skeleton/Skeleton";
+import Stocks from "../products/stocks/Stocks";
 
 import './app.scss';
 import '../../style/style.scss';
 
-const Stocks = lazy(() => import("../products/stocks/Stocks"));
 const Pizza = lazy(() => import("../products/pizza/Pizza"));
-
-
+const Drinks = lazy(() => import("../products/drinks/Drinks"));
+const Snacks = lazy(() => import("../products/snacks/Snacks"));
 
     const App = () => {
         return (
@@ -21,12 +21,14 @@ const Pizza = lazy(() => import("../products/pizza/Pizza"));
             <div className="app">
                 <AppHeader/>
                 <main>
+                    <Stocks/>
                     <NavMenu/>
                     <section className="app__products">
                         <Suspense fallback={<Skeleton/>}>
                             <Routes>
-                                <Route path="/" element={<Stocks/>}/>
-                                <Route path="/pizza" element={<Pizza/>}/>
+                                <Route path="/" element={<Pizza/>}/>
+                                <Route path="/drinks" element={<Drinks/>}/>
+                                <Route path="/snacks" element={<Snacks/>}/>
                             </Routes>
                         </Suspense>
                     </section>

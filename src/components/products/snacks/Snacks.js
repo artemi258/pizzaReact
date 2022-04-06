@@ -2,40 +2,39 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useMemo } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-import { fetchPizza } from "./pizzaSlice";
-import PizzaItem from "./pizzaItem/PizzaItem";
+import { fetchSnacks } from "./snacksSlice";
+import SnacksItem from "./snacksItem/SnacksItem";
 
-import './pizza.scss';
+import './snacks.scss';
 import '../../../style/style.scss';
 
-const Pizza = () => {
-    const {pizza} = useSelector(state => state.pizza);
+const Snacks = () => {
+    const {snacks} = useSelector(state => state.snacks);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchPizza()).unwrap();
+        dispatch(fetchSnacks()).unwrap();
     }, []);
     
 
     const item = (arr) => {
-        console.log('render')
 
         return arr.map(({id, img, title, ingredients, price}) => {
              return <CSSTransition key={id} timeout={300} classNames="fade">
-                        <PizzaItem key={id} img={img} title={title} ingredients={ingredients} price={price}/>
+                        <SnacksItem key={id} img={img} title={title} ingredients={ingredients} price={price}/>
                     </CSSTransition>
          });
      };
 
-    const renderPizza = useMemo(() => {
-       return item(pizza);
-    }, [pizza]);
+    const renderSnacks = useMemo(() => {
+       return item(snacks);
+    }, [snacks]);
 
     return (
-        <div className="pizza container">
-            <div className="pizza__wrapper">
+        <div className="snacks container">
+            <div className="snacks__wrapper">
                     <TransitionGroup component={null}>
-                        {renderPizza}
+                        {renderSnacks}
                     </TransitionGroup>
 
             </div>
@@ -43,4 +42,4 @@ const Pizza = () => {
     )
 };
 
-export default Pizza;
+export default Snacks;

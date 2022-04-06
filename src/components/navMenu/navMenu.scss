@@ -12,23 +12,15 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        list-style-type: none;
         width: 122px;
         height: 104px;
         background-color: #fff;
         border-radius: 12px;
-        a {
-            text-decoration: none;
-            font-size: 18px;
-            color: #000;
+        text-decoration: none;
+        font-size: 18px;
+        color: #000;
             &:hover {
                 color: $main-color;
-            }
-        }
-        &:first-child {
-            span {
-                color: red;
-            }
         }
     }
     &__img {
@@ -41,6 +33,8 @@
         }
     }
     &__active {
-        
+        border: $main-color 2px solid;
+        box-shadow: $main-color 5px 5px 4px 1px;
+        color: $main-color;
     }
 }

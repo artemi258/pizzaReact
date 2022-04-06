@@ -3,7 +3,6 @@ import '../../style/style.scss';
 
 const Skeleton = () => {
 
-
     const sceleton = () => {
         const content = [];
 

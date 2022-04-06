@@ -19,26 +19,6 @@
             "id": 4,
             "img": "https://i.pinimg.com/736x/97/5e/5c/975e5c53dc44e4a0c1edf675183dce97.jpg",
             "description": "Кэшбек 10% на самовывоз (доставка)"
-        },
-        {
-            "id": 5,
-            "img": "https://i.pinimg.com/736x/75/56/ba/7556ba85eea51f5ce0cf6aa05345d10c.jpg",
-            "description": "3 средние пиццы от 999 рублей"
-        },
-        {
-            "id": 6,
-            "img": "https://i.pinimg.com/736x/97/5e/5c/975e5c53dc44e4a0c1edf675183dce97.jpg",
-            "description": "Кэшбек 10% на самовывоз (доставка)"
-        },
-        {
-            "id": 7,
-            "img": "https://i.pinimg.com/736x/75/56/ba/7556ba85eea51f5ce0cf6aa05345d10c.jpg",
-            "description": "3 средние пиццы от 999 рублей"
-        },
-        {
-            "id": 8,
-            "img": "https://i.pinimg.com/736x/97/5e/5c/975e5c53dc44e4a0c1edf675183dce97.jpg",
-            "description": "Кэшбек 10% на самовывоз (доставка)"
         }
     ],
     "pizza": [
@@ -153,6 +133,350 @@
             "title": "Капричиоза",
             "ingredients": "Итальянская классика! Сыр Моцарелла, шампиньоны, ароматная ветчина, сочные томаты с фирменным томатным соусом",
             "price": 469
+        }
+    ],
+    "drinks": [
+        {
+            "id": "Шоколадный молочный коктейль",
+            "img": "https://i.pinimg.com/564x/51/53/dc/5153dcf39dc3abbd4d4a9f66a18fc916.jpg",
+            "title": "Шоколадный молочный коктейль",
+            "liters": "300 мл",
+            "price": 150
+
+        },
+        {
+            "id": "Ванильный молочный коктейль",
+            "img": "https://i.pinimg.com/564x/94/19/f6/9419f6e5105c43a9688f9c0a2d5a7101.jpg",
+            "title": "Ванильный молочный коктейль",
+            "liters": "300 мл",
+            "price": 150
+
+        },
+        {
+            "id": "Клубничный молочный коктейль",
+            "img": "https://i.pinimg.com/564x/36/2e/cb/362ecb378852b1e64a04e5bcbedd941f.jpg",
+            "title": "Клубничный молочный коктейль",
+            "liters": "300 мл",
+            "price": 150
+
+        },
+        {
+            "id": "Pepsi",
+            "img": "https://i.pinimg.com/564x/76/87/46/76874627288fb758a38038e66dd09735.jpg",
+            "title": "Pepsi",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "Pepsi Дикая вишня",
+            "img": "https://i.pinimg.com/564x/d0/e0/33/d0e033bf7ef652c25d6e233d21edb8ee.jpg",
+            "title": "Pepsi Дикая вишня",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "Pepsi Light",
+            "img": "https://i.pinimg.com/564x/ca/43/60/ca43606395405833497b0eabc8d3d8df.jpg",
+            "title": "Pepsi Light",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "Mirinda",
+            "img": "https://i.pinimg.com/564x/7c/2b/7a/7c2b7a7b3d8d6e72572ec16a0adcb5e0.jpg",
+            "title": "Mirinda",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "7UP",
+            "img": "https://i.pinimg.com/564x/8e/ed/3c/8eed3cfffaa8c97e1cf6256b102d2788.jpg",
+            "title": "7UP",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "Mountain Dew",
+            "img": "https://i.pinimg.com/564x/2c/ad/3c/2cad3c3cb56ed484a5739cb60192742e.jpg",
+            "title": "Mountain Dew",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "Липтон Айс Ти Лимонный",
+            "img": "https://i.pinimg.com/564x/f8/51/bd/f851bd07c8c021896ac8f7580182f8f9.jpg",
+            "title": "Липтон Айс Ти Лимонный",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "Липтон Айс Ти Персиковый",
+            "img": "https://i.pinimg.com/564x/c8/41/16/c84116e27b83c313335f832e3572edb8.jpg",
+            "title": "Липтон Айс Ти Персиковый",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "Липтон Айс Ти Зеленый чай",
+            "img": "https://i.pinimg.com/564x/fa/81/58/fa8158e5fd57f8a4de3d290c30e4cc2b.jpg",
+            "title": "Липтон Айс Ти Зеленый чай",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "Липтон Айс Ти Зеленый с Лаймом и Мятой",
+            "img": "https://i.pinimg.com/564x/de/81/cb/de81cb566535018d98579a495ada1a70.jpg",
+            "title": "Липтон Айс Ти Зеленый с Лаймом и Мятой",
+            "liters": [
+                {
+                    "liter": "0.5 л",
+                    "price": 70
+                },
+                {
+                    "liter": "1 л",
+                    "price": 90
+                },
+                {
+                    "liter": "1.5 л",
+                    "price": 110
+                }
+            ]
+        },
+        {
+            "id": "Сок 'Я' Апельсиновый",
+            "img": "https://i.pinimg.com/564x/5b/54/31/5b5431035076b9566b0d3ff90b86cf49.jpg",
+            "title": "Сок 'Я' Апельсиновый",
+            "liters": "1 л",
+            "price": 120
+        },
+        {
+            "id": "Сок 'Я' Вишневый",
+            "img": "https://i.pinimg.com/564x/7a/aa/47/7aaa47c344d66091ec2faaac511771e4.jpg",
+            "title": "Сок 'Я' Вишневый",
+            "liters": "1 л",
+            "price": 120
+        },
+        {
+            "id": "Сок 'Я' Грейпфрутовый",
+            "img": "https://i.pinimg.com/564x/26/d2/cd/26d2cd5e43f674d97f65ef199b9f7edf.jpg",
+            "title": "Сок 'Я' Грейпфрутовый",
+            "liters": "1 л",
+            "price": 120
+        },
+        {
+            "id": "Сок 'Я' Яблочный",
+            "img": "https://i.pinimg.com/564x/22/40/d9/2240d960a91109cf2dd9924916ece4f1.jpg",
+            "title": "Сок 'Я' Яблочный",
+            "liters": "1 л",
+            "price": 120
+        },
+        {
+            "id": "Aqua Minerale Негазированная",
+            "img": "https://i.pinimg.com/564x/74/41/6c/74416ce62a6dae8d94011e1a584c66df.jpg",
+            "title": "Aqua Minerale Негазированная",
+            "liters": "1 л",
+            "price": 75
+        },
+        {
+            "id": "Aqua Minerale Газированная",
+            "img": "https://i.pinimg.com/564x/ad/68/57/ad68572b31c46b44d41d5e7311ba7260.jpg",
+            "title": "Aqua Minerale Газированная",
+            "liters": "1 л",
+            "price": 75
+        }
+    ],
+    "snacks": [
+        {
+            "id": "Сырные палочки с блю чиз",
+            "img": "https://i.pinimg.com/564x/af/e5/4b/afe54bab0779ce912d3ae25a2c7fd39f.jpg",
+            "title": "Сырные палочки с блю чиз",
+            "ingredients": "Любимая закуска теперь с сыром блю чиз!",
+            "price": 369
+        },
+        {
+            "id": "Додстер",
+            "img": "https://i.pinimg.com/564x/d0/77/fc/d077fc73ace4183f06b29e5eb3b674ee.jpg",
+            "title": "Додстер",
+            "ingredients": "Легендарная горячая закуска с цыпленком, томатами, моцареллой, соусом ранч в тонкой пшеничной лепешке",
+            "price": 200
+        },
+        {
+            "id": "Острый Додстер",
+            "img": "https://i.pinimg.com/564x/af/aa/ad/afaaad9569f427fc096e9230a4a3cfe3.jpg",
+            "title": "Острый Додстер",
+            "ingredients": "Горячая закуска с цыпленком, перчиком халапеньо, солеными огурчиками, томатами, моцареллой и соусом барбекю в тонкой пшеничной лепешке",
+            "price": 200
+        },
+        {
+            "id": "Ланчбокс с куриными крыльями",
+            "img": "https://i.pinimg.com/564x/67/71/63/6771637d2219c972d459bb41494f238b.jpg",
+            "title": "Ланчбокс с куриными крыльями",
+            "ingredients": "Горячий сытный обед из куриных крылышек со специями и ароматом копчения, картофеля из печи с итальянскими травами и соуса барбекю",
+            "price": 299
+        },
+        {
+            "id": "Ланчбокс с куриными кусочками",
+            "img": "https://i.pinimg.com/564x/67/c8/e8/67c8e81a667c7b06f62e0ca1e56c9556.jpg",
+            "title": "Ланчбокс с куриными кусочками",
+            "ingredients": "Горячий сытный обед из нежных куриных кусочков, картофеля из печи с итальянскими травами и сырного соуса",
+            "price": 299
+        },
+        {
+            "id": "Картофель из печи",
+            "img": "https://i.pinimg.com/564x/a0/67/96/a06796c5820bda31d6a09271e35310ee.jpg",
+            "title": "Картофель из печи",
+            "ingredients": "Ароматный запеченный картофель с итальянскими травами. Большая порция",
+            "price": 199
+        },
+        {
+            "id": "Куриные крылья",
+            "img": "https://i.pinimg.com/564x/24/01/b8/2401b8cbdc059ba6472ddc1d062c61dd.jpg",
+            "title": "Куриные крылья",
+            "ingredients": "Куриные крылышки со специями и ароматом копчения. Большая порция",
+            "price": 369
+        },
+        {
+            "id": "Куриные кусочки",
+            "img": "https://i.pinimg.com/564x/a3/04/18/a30418137bd67ebffc3acc56a1064875.jpg",
+            "title": "Куриные кусочки",
+            "ingredients": "Сочное куриное филе в хрустящей панировке. Большая порция",
+            "price": 369
+        },
+        {
+            "id": "Паста Цыпленок и грибы",
+            "img": "https://i.pinimg.com/564x/82/29/b8/8229b8dd5ef4fb447d7e521e151c6232.jpg",
+            "title": "Паста Цыпленок и грибы",
+            "ingredients": "Паста, цыпленок, шампиньоны, соус ранч, моцарелла, итальянские травы",
+            "price": 289
+        },
+        {
+            "id": "Картофельные оладьи, 8 шт",
+            "img": "https://i.pinimg.com/564x/3a/0c/7e/3a0c7eefe029436cdf3bfbc0a0c6c017.jpg",
+            "title": "Картофельные оладьи, 8 шт",
+            "ingredients": "Хрустящие снаружи и нежные внутри оладьи из картофеля в панировке, запекаются в печи",
+            "price": 209
+        },
+        {
+            "id": "Кальзоне Мясной",
+            "img": "https://i.pinimg.com/564x/0f/85/15/0f85151fedcd3b25774dd8cf165c7bfd.jpg",
+            "title": "Кальзоне Мясной",
+            "ingredients": "Куриная грудка, бекон, лук, сыр моцарелла, соус барбекю",
+            "price": 289
+        },
+        {
+            "id": "Кальзоне Овощной",
+            "img": "https://i.pinimg.com/564x/7b/e2/52/7be252754c13b64fc3e9cbb123a44221.jpg",
+            "title": "Кальзоне Овощной",
+            "ingredients": "Овощи, сыр моцарелла, томатный соус",
+            "price": 249
         }
     ]
 }

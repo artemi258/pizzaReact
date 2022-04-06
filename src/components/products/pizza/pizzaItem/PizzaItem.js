@@ -1,4 +1,3 @@
-import { CSSTransition, TransitionGroup} from "react-transition-group";
 
 import '../pizza.scss';
 import '../../../../style/style.scss';
