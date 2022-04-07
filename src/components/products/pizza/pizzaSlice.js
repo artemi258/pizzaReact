@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const fetchPizza = createAsyncThunk(
-    'stocks/fetchPizza',
+    'pizza/fetchPizza',
     () => {
         const { request } = useHttp();
         return request('http://localhost:3001/pizza');

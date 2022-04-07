@@ -14,6 +14,8 @@ import '../../style/style.scss';
 const Pizza = lazy(() => import("../products/pizza/Pizza"));
 const Drinks = lazy(() => import("../products/drinks/Drinks"));
 const Snacks = lazy(() => import("../products/snacks/Snacks"));
+const Desserts = lazy(() => import("../products/desserts/Desserts"));
+
 
     const App = () => {
         return (
@@ -29,6 +31,7 @@ const Snacks = lazy(() => import("../products/snacks/Snacks"));
                                 <Route path="/" element={<Pizza/>}/>
                                 <Route path="/drinks" element={<Drinks/>}/>
                                 <Route path="/snacks" element={<Snacks/>}/>
+                                <Route path="/desserts" element={<Desserts/>}/>
                             </Routes>
                         </Suspense>
                     </section>
