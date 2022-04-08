@@ -18,7 +18,6 @@ const Pizza = () => {
     
 
     const item = (arr) => {
-        console.log('render')
 
         return arr.map(({id, img, title, ingredients, price}) => {
              return <CSSTransition key={id} timeout={300} classNames="fade">

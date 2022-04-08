@@ -19,7 +19,6 @@ const Stocks = () => {
     }, []);
 
     const stock = (arr) => {
-        console.log('stocks')
                return arr.map(({id, img, description}) => {
                     return  <CSSTransition  key={id} timeout={300} classNames="fade">
                                 <StocksItem key={id} img={img} description={description}/>

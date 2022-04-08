@@ -47,9 +47,9 @@ import '../../style/variables.scss';
                             <span>Десерты</span>
                         </div>
                     </NavLink>
-                    <NavLink className="navMenu__list" to={'/'}>
+                    <NavLink className={active} to={'/sauces'}>
                         <div>
-                            <div className="navMenu__img"><img src={sauce} alt="sauce" /></div>
+                            <div className="navMenu__img"><img src={sauce} alt="sauces" /></div>
                             <span>Соусы</span>
                         </div>
                     </NavLink>

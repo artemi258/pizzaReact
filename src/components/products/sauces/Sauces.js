@@ -2,39 +2,38 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useMemo } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-import { fetchDrinks } from "./drinksSlice";
-import DrinksItem from "./drinksItem/DrinksItem";
+import { fetchSauces } from "./saucesSlice";
+import SaucesItem from "./saucesItem/SaucesItem";
 
-import './drinks.scss';
+import './sauces.scss';
 import '../../../style/style.scss';
 
-const Drinks = () => {
-    const {drinks} = useSelector(state => state.drinks);
+const Sauces = () => {
+    const {sauces} = useSelector(state => state.sauces);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
-        dispatch(fetchDrinks()).unwrap();
+        dispatch(fetchSauces()).unwrap();
     }, []);
-
-
     
     const item = (arr) => {
         return arr.map(({id, img, title, liters, price}) => {
              return <CSSTransition key={id} timeout={300} classNames="fade">
-                        <DrinksItem key={id} img={img} title={title} liters={liters} price={price}/>
+                        <SaucesItem key={id} img={img} title={title} liters={liters} price={price}/>
                     </CSSTransition>
          });
      };
 
-    const renderDrinks = useMemo(() => {
-       return item(drinks);
-    }, [drinks]);
+    const renderSauces = useMemo(() => {
+       return item(sauces);
+    }, [sauces]);
 
     return (
-        <div className="drinks container">
-            <div className="drinks__wrapper">
+        <div className="sauces container">
+            <div className="sauces__wrapper">
                     <TransitionGroup component={null}>
-                        {renderDrinks}
+                        {renderSauces}
                     </TransitionGroup>
 
             </div>
@@ -42,4 +41,4 @@ const Drinks = () => {
     )
 };
 
-export default Drinks;
+export default Sauces;

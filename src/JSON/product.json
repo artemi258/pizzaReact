@@ -543,5 +543,71 @@
             "ingredients": "Сладкие рогалики с сезонными ягодами, сыром 'кремчиз' и сахарной пудрой с соусом на выбор",
             "price": 149
         }
+    ],
+    "sauces": [
+        {
+            "id": "Сгущенка",
+            "img": "https://i.pinimg.com/564x/bb/c3/a4/bbc3a40f2b566720ec2532cc47eadb2b.jpg",
+            "title": "Сгущенка",
+            "liters": "25 мл",
+            "price": 39
+
+        },
+        {
+            "id": "Шоколадный",
+            "img": "https://i.pinimg.com/564x/8c/21/33/8c2133bcbb3bcf356285a7805edf5f8e.jpg",
+            "title": "Шоколадный",
+            "liters": "25 мл",
+            "price": 39
+
+        },
+        {
+            "id": "Джем",
+            "img": "https://i.pinimg.com/564x/68/1a/d0/681ad06f75f47de278d23e5d5275e738.jpg",
+            "title": "Джем",
+            "liters": "25 мл",
+            "price": 39
+
+        },
+        {
+            "id": "Барбекью",
+            "img": "https://i.pinimg.com/564x/e0/73/ab/e073abebd0d84cf9401ddbc2ce3b7e42.jpg",
+            "title": "Барбекью",
+            "liters": "25 мл",
+            "price": 39
+
+        },
+        {
+            "id": "Особый Чесночный",
+            "img": "https://i.pinimg.com/564x/12/78/9d/12789dadbc043df2565f3d30c3bece4a.jpg",
+            "title": "Особый Чесночный",
+            "liters": "25 мл",
+            "price": 39
+
+        },
+        {
+            "id": "Томатный",
+            "img": "https://i.pinimg.com/564x/59/f6/ce/59f6ceeb6e28b4942a6de06ec241c2ec.jpg",
+            "title": "Томатный",
+            "liters": "25 мл",
+            "price": 39
+
+        },
+        {
+            "id": "Тысяча островов",
+            "img": "https://i.pinimg.com/564x/12/bc/c4/12bcc484d9fff7648f64e467adc30820.jpg",
+            "title": "Тысяча островов",
+            "liters": "25 мл",
+            "price": 39
+
+        },
+        {
+            "id": "Чесночный ранч",
+            "img": "https://i.pinimg.com/564x/dc/0d/d5/dc0dd5841b12ccf188a6fb39cc91cf30.jpg",
+            "title": "Чесночный ранч",
+            "liters": "25 мл",
+            "price": 39
+
+        }
     ]
 }
