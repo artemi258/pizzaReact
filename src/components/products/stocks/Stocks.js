@@ -4,7 +4,6 @@ import { CSSTransition, TransitionGroup} from "react-transition-group";
 import { fetchStocks } from "./stocksSlice";
 
 import StocksItem from './stocksItem/StocksItem';
-import Skeleton from "../../skeleton/Skeleton";
 
 import './stocks.scss';
 import '../../../style/style.scss';

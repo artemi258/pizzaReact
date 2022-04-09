@@ -3,7 +3,8 @@ import { useHttp } from '../../../hooks/http.hook';
 
 const initialState = {
     pizza: [],
-    pizzaLoadingState: 'idle'
+    pizzaLoadingState: 'idle',
+    animation: false
 };
 
 export const fetchPizza = createAsyncThunk(
@@ -17,7 +18,11 @@ export const fetchPizza = createAsyncThunk(
 const pizza = createSlice({
     name: 'pizza',
     initialState,
-    reducers: {},
+    reducers: {
+        changeAnimation: state => {
+            state.animation = true;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchPizza.pending, state => {state.pizzaLoadingState = 'loading'})
@@ -29,6 +34,8 @@ const pizza = createSlice({
     }
 });
 
-const { reducer } = pizza;
+const { reducer, actions } = pizza;
+
+export const {changeAnimation} = actions;
 
 export default reducer;

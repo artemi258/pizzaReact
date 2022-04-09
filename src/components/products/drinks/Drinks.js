@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
 import { fetchDrinks } from "./drinksSlice";
@@ -14,7 +14,16 @@ const Drinks = () => {
 
     useEffect(() => {
         dispatch(fetchDrinks()).unwrap();
+        scrollToRef(myRef);
     }, []);
+
+    const scrollToRef = (ref) => {
+        console.log(ref.current.getBoundingClientRect().top)
+
+        window.scrollBy(0, ref.current.getBoundingClientRect().top - 20)
+    }
+
+    const myRef = useRef(null);
 
 
     
@@ -31,7 +40,7 @@ const Drinks = () => {
     }, [drinks]);
 
     return (
-        <div className="drinks container">
+        <div ref={myRef} className="drinks container">
             <div className="drinks__wrapper">
                     <TransitionGroup component={null}>
                         {renderDrinks}
