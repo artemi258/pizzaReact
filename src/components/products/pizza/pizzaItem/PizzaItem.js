@@ -5,7 +5,6 @@ import '../../../../style/style.scss';
 const PizzaItem = ({img, title, ingredients, price}) => {
 
     const ingredientsFinal = ingredients.slice(0, 40)+ '...';
-
     const content = () => {
         
         return <div className="pizza__item">

@@ -5,9 +5,10 @@ import drinks from '../components/products/drinks/drinksSlice';
 import snacks  from '../components/products/snacks/snacksSlice';
 import desserts from '../components/products/desserts/dessertsSlice';
 import sauces from '../components/products/sauces/saucesSlice';
+import search from '../components/search/searchSlice';
 
 const store = configureStore({
-    reducer: {stocks, pizza, drinks, snacks, desserts, sauces},
+    reducer: {stocks, pizza, drinks, snacks, desserts, sauces, search},
     middleware: geetDefaultMiddleware => geetDefaultMiddleware(),
     devTools: process.env.NODE_ENV !== 'production'
 });

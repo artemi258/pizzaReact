@@ -16,6 +16,9 @@
         height: 100%;
         background-color: #fff;
         border-radius: 12px;
+        &:hover {
+            outline: 1px $main-color solid;
+        }
     }
     &__liters {
         display: flex;
