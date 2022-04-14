@@ -1,5 +1,3 @@
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-
 import './appHeader.scss';
 import '../../style/style.scss';
 import '../../style/button.scss';
@@ -15,8 +13,6 @@ import nav from '../../icon/nav.png';
 
     const AppHeader = () => {
         return (
-            <TransitionGroup component={null}>
-            <CSSTransition key={'appHeader'} timeout={300} classNames="fade">
             <section className="appHeader">
                 <div className="appHeader__wrapper container">
                     <div className="appHeader__top">
@@ -69,8 +65,6 @@ import nav from '../../icon/nav.png';
                     </div>
                 </div>
             </section>
-            </CSSTransition>
-            </TransitionGroup>
         )
     }
 

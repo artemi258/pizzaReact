@@ -2,7 +2,6 @@ import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay} from "swiper";
-import { CSSTransition, TransitionGroup} from "react-transition-group";
 import { fetchStocks } from "./stocksSlice";
 
 import StocksItem from './stocksItem/StocksItem';
@@ -28,9 +27,7 @@ const Stocks = () => {
     const stock = (arr) => {
                return arr.map(({id, img, description}) => {
                     return  <SwiperSlide key={id}>
-                                <CSSTransition  key={id} timeout={300} classNames="fade">
                                 <StocksItem key={id} img={img} description={description}/>
-                                </CSSTransition>
                             </SwiperSlide>
                 })
     }
@@ -60,9 +57,7 @@ const Stocks = () => {
                             navigation={true}
                             modules={[Pagination, Navigation, Autoplay]}
                         >
-                            <TransitionGroup component={null}>
                             {renderStock}
-                            </TransitionGroup>
                         </Swiper>
             </div>
         </section>

@@ -24,13 +24,13 @@ const Search = ({data, search}) => {
         }
         dispatch(search(filterContent()));
         }
-    } 
+    }
 
     const onChange = (e) => {
         setValue(e.target.value);
         content(e.target.value);
     }
-
+    
     return (
         <div className="search container">
             <div className="search__wrapper">
