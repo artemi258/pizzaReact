@@ -5,6 +5,8 @@ import { CSSTransition, TransitionGroup} from "react-transition-group";
 import { fetchPizza } from "./pizzaSlice";
 import PizzaItem from "./pizzaItem/PizzaItem";
 import Search from "../../search/Search";
+import Filters from "../../popupFilters/PopupFilters";
+import { fetchFilters } from "../../popupFilters/popupFiltersSlice";
 import { changeAnimation } from "./pizzaSlice";
 import { searchPizza } from "../../search/searchSlice";
 
@@ -14,6 +16,7 @@ import '../../../style/style.scss';
 const Pizza = () => {
     const {pizza} = useSelector(state => state.pizza);
     const {resultPizza} = useSelector(state => state.search)
+    const {filters} = useSelector(state => state.filters)
     const dispatch = useDispatch();
     const animation = useSelector(state => state.pizza.animation)
 
@@ -45,12 +48,12 @@ const Pizza = () => {
             });
         }
      };
-
     const renderPizza = useMemo(() => {
        return item(resultPizza);
     }, [resultPizza]) 
     return (
         <div ref={myRef} className="pizza container">
+            <Filters filters={filters}/>
             <Search data={pizza} search={searchPizza}/>
             <div className="pizza__wrapper">
                     <TransitionGroup component={null}>

@@ -19,7 +19,7 @@ const Sauces = () => {
     useEffect(() => {
         dispatch(fetchSauces()).unwrap();
         scrollToRef(myRef);
-                        // eslint-disable-next-line
+        // eslint-disable-next-line
     }, []);
 
     const scrollToRef = (ref) => {
