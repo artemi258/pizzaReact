@@ -17,7 +17,11 @@ export const fetchFilters = createAsyncThunk(
 const filters = createSlice({
     name: 'filters',
     initialState,
-    reducers: {},
+    reducers: {
+        addFilters: (state, action) => {
+            state.filters = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchFilters.pending, state => {state.filtersLoadingState = 'loading'})
@@ -29,6 +33,10 @@ const filters = createSlice({
     }
 });
 
-const { reducer } = filters;
+const { reducer, actions } = filters;
+
+export const {
+    addFilters
+} = actions;
 
 export default reducer;

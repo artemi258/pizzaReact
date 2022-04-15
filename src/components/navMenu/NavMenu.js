@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import pizza from './icon/Pizza.png';
 import drink from './icon/Drink.png';
 import snacks from './icon/Snacks.png';
-import combo from './icon/Combo.png';
 import dessert from './icon/Dessert.png';
 import sauce from './icon/Sauce.png';
 

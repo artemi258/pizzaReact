@@ -6,7 +6,6 @@ import { fetchPizza } from "./pizzaSlice";
 import PizzaItem from "./pizzaItem/PizzaItem";
 import Search from "../../search/Search";
 import Filters from "../../popupFilters/PopupFilters";
-import { fetchFilters } from "../../popupFilters/popupFiltersSlice";
 import { changeAnimation } from "./pizzaSlice";
 import { searchPizza } from "../../search/searchSlice";
 
@@ -51,9 +50,20 @@ const Pizza = () => {
     const renderPizza = useMemo(() => {
        return item(resultPizza);
     }, [resultPizza]) 
+    
+    const pizzaFilters = () => { 
+        const item = filters.filter(product => Object.keys(product).includes('pizza'));
+        const res = item.map(item => {
+            return item.pizza;
+        })
+        return res[0];
+}
+console.log(pizzaFilters())
+
+
     return (
         <div ref={myRef} className="pizza container">
-            <Filters filters={filters}/>
+            <Filters filters={pizzaFilters()}/>
             <Search data={pizza} search={searchPizza}/>
             <div className="pizza__wrapper">
                     <TransitionGroup component={null}>
