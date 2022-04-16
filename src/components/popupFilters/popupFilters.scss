@@ -1,15 +1,17 @@
 @import '../../style/variables.scss';
 
 .popupFilters {
+    visibility: hidden;
     overflow-x: hidden;
-    position: absolute;
-    right: 0;
+    position: fixed;
+    right: -50%;
     top: 0;
     height: 100vh;
     width: 30vw;
     background-color: #fff;
     z-index: 1000;
     padding: 32px 20px;
+    transform: scale(0, 0);
     &__title {
         font-weight: 600;
         font-size: 32px;

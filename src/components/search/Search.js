@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { changeFiltersVisibility } from '../popupFilters/popupFiltersSlice';
+
 import './search.scss';
 
 const Search = ({data, search}) => {
@@ -30,11 +32,16 @@ const Search = ({data, search}) => {
         setValue(e.target.value);
         content(e.target.value);
     }
+
+    const onFiltersVisibility = () => {
+        dispatch(changeFiltersVisibility(true));
+    }
     
     return (
         <div className="search container">
             <div className="search__wrapper">
                 <input onChange={onChange} value={value ?? ''} type="text" className="search__input" placeholder="Введите название товара" />
+                <button onClick={onFiltersVisibility}>click</button>
             </div>
         </div>
     )

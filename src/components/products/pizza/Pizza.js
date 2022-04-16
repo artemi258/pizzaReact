@@ -16,6 +16,7 @@ const Pizza = () => {
     const {pizza} = useSelector(state => state.pizza);
     const {resultPizza} = useSelector(state => state.search)
     const {filters} = useSelector(state => state.filters)
+    const {resultFilteringProducts} = useSelector(state => state.filters)
     const dispatch = useDispatch();
     const animation = useSelector(state => state.pizza.animation)
 
@@ -48,8 +49,8 @@ const Pizza = () => {
         }
      };
     const renderPizza = useMemo(() => {
-       return item(resultPizza);
-    }, [resultPizza]) 
+       return item(resultFilteringProducts);
+    }, [resultFilteringProducts]) 
     
     const pizzaFilters = () => { 
         const item = filters.filter(product => Object.keys(product).includes('pizza'));
@@ -58,12 +59,10 @@ const Pizza = () => {
         })
         return res[0];
 }
-console.log(pizzaFilters())
-
 
     return (
         <div ref={myRef} className="pizza container">
-            <Filters filters={pizzaFilters()}/>
+            <Filters filters={pizzaFilters()} data={resultPizza}/>
             <Search data={pizza} search={searchPizza}/>
             <div className="pizza__wrapper">
                     <TransitionGroup component={null}>

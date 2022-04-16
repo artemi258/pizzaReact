@@ -3,6 +3,8 @@ import { useHttp } from '../../hooks/http.hook';
 
 const initialState = {
     filters: [],
+    resultFilteringProducts: [],
+    filtersVisibility: false,
     filtersLoadingState: 'idle'
 };
 
@@ -18,8 +20,11 @@ const filters = createSlice({
     name: 'filters',
     initialState,
     reducers: {
-        addFilters: (state, action) => {
-            state.filters = action.payload;
+        filteringProducts: (state, action) => {
+            state.resultFilteringProducts = action.payload;
+        },
+        changeFiltersVisibility: (state, action) => {
+            state.filtersVisibility = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -36,7 +41,8 @@ const filters = createSlice({
 const { reducer, actions } = filters;
 
 export const {
-    addFilters
+    filteringProducts,
+    changeFiltersVisibility
 } = actions;
 
 export default reducer;
