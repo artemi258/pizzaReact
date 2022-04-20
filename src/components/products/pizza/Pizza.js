@@ -8,6 +8,7 @@ import Search from "../../search/Search";
 import Filters from "../../popupFilters/PopupFilters";
 import { changeAnimation } from "./pizzaSlice";
 import { searchPizza } from "../../search/searchSlice";
+import { filteringPizza } from "../../popupFilters/popupFiltersSlice";
 
 import './pizza.scss';
 import '../../../style/style.scss';
@@ -15,8 +16,7 @@ import '../../../style/style.scss';
 const Pizza = () => {
     const {pizza} = useSelector(state => state.pizza);
     const {resultPizza} = useSelector(state => state.search)
-    const {filters} = useSelector(state => state.filters)
-    const {resultFilteringProducts} = useSelector(state => state.filters)
+    const {filters, resultFilteringPizza} = useSelector(state => state.filters)
     const dispatch = useDispatch();
     const animation = useSelector(state => state.pizza.animation)
 
@@ -26,6 +26,7 @@ const Pizza = () => {
             scrollToRef(myRef);
         }
         dispatch(changeAnimation(true));
+
         // eslint-disable-next-line
     }, []);
     
@@ -48,9 +49,10 @@ const Pizza = () => {
             });
         }
      };
+     
     const renderPizza = useMemo(() => {
-       return item(resultFilteringProducts);
-    }, [resultFilteringProducts]) 
+       return item(resultFilteringPizza);
+    }, [resultFilteringPizza]) 
     
     const pizzaFilters = () => { 
         const item = filters.filter(product => Object.keys(product).includes('pizza'));
@@ -62,8 +64,8 @@ const Pizza = () => {
 
     return (
         <div ref={myRef} className="pizza container">
-            <Filters filters={pizzaFilters()} data={resultPizza}/>
-            <Search data={pizza} search={searchPizza}/>
+            <Filters filters={pizzaFilters()} data={resultPizza} action={filteringPizza}/>
+            <Search data={pizza} search={searchPizza} filters={true}/>
             <div className="pizza__wrapper">
                     <TransitionGroup component={null}>
                         {renderPizza}

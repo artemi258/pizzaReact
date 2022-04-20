@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 import { CSSTransition } from "react-transition-group";
 
-import { fetchFilters, filteringProducts, changeFiltersVisibility } from "./popupFiltersSlice";
+import { fetchFilters, changeFiltersVisibility, countFilters } from "./popupFiltersSlice";
 
 import './popupFilters.scss';
 import '../../style/style.scss';
 
-const Filters = ({filters, data}) => {
+const Filters = ({filters, data, action}) => {
     const dispatch = useDispatch();
     const [activeFilters, setActiveFilters] = useState([]);
+    const [triggerFiltersApplied, setTriggerFiltersApplied] = useState(false);
+    const [triggerFiltersReset, setTriggerFiltersReset] = useState(false);
     const { filtersVisibility } = useSelector(state => state.filters);
 
     const onChangeActive = (filter) => {
@@ -24,10 +26,12 @@ const Filters = ({filters, data}) => {
              })
         }
     }
-console.log(filtersVisibility)
     const onReset = () => {
+        dispatch(countFilters(null))
+        dispatch(changeFiltersVisibility(false));
         setActiveFilters([]);
-        dispatch(filteringProducts(data));
+        setTriggerFiltersReset(true);
+        dispatch(action(data));
     }
 
     useEffect(() => {
@@ -40,8 +44,10 @@ console.log(filtersVisibility)
     }, [data]);
 
     const onFilteringData = (active, data) => {
+        dispatch(countFilters(activeFilters.length))
+        dispatch(changeFiltersVisibility(false));
         if (active.length === 0) {
-            dispatch(filteringProducts(data));
+            dispatch(action(data));
         } else {
             const res = data.filter(({filters}) => {
                 const arr = []
@@ -59,7 +65,7 @@ console.log(filtersVisibility)
                 }
             });
      
-             dispatch(filteringProducts(res));
+             dispatch(action(res));
         }
         
     };
@@ -89,17 +95,73 @@ console.log(filtersVisibility)
                         </div>
                     })}
                     <div className="popupFilters__activation">
-                        <button onClick={onReset} className="popupFilters__reset">Сбросить</button>
-                        <button onClick={() => onFilteringData(activeFilters, data)} className="popupFilters__apply">Применить</button>
-                        </div>
+                        <button disabled={activeFilters.length ? false : true} onClick={onReset} className="popupFilters__reset">Сбросить</button>
+                        <button disabled={activeFilters.length ? false : true} onClick={() => {setTriggerFiltersApplied(true); onFilteringData(activeFilters, data)}} className="popupFilters__apply">Применить</button>
+                    </div>
             </div>
         </div>
             </CSSTransition>
         }
     } 
 
+    const filtersApplied = () => {
+        return (
+            <CSSTransition in={triggerFiltersApplied} timeout={500} classNames="filtersChange">
+            <div className="filtersApplied">
+                <span>Фильтры применены</span>
+            </div>
+            </CSSTransition>
+        )
+    }
+    const filtersReset = () => {
+        return (
+            <CSSTransition in={triggerFiltersReset} timeout={500} classNames="filtersChange">
+            <div className="filtersReset">
+                <span>Фильтры сброшены</span>
+            </div>
+            </CSSTransition>
+        )
+    }
+
+    if (triggerFiltersApplied) {
+        setTimeout(() => {
+            setTriggerFiltersApplied(false)
+        }, 5000);
+    };
+    if (triggerFiltersReset) {
+        setTimeout(() => {
+            setTriggerFiltersReset(false)
+        }, 5000);
+    };
+    if (filtersVisibility) {
+        let div = document.createElement('div');
+
+        div.style.width = '50px';
+        div.style.height = '50px';
+        div.style.overflowY = 'scroll';
+        div.style.visibility = 'hidden';
+
+        document.body.appendChild(div);
+
+        document.body.appendChild(div);
+
+        let scrollWidth = div.offsetWidth - div.clientWidth;
+
+        div.remove();
+        document.querySelector('body').style.marginRight = `${scrollWidth}px`;
+        document.querySelector('body').style.overflowY = 'hidden';
+    } else {
+        document.querySelector('body').style.overflowY = '';
+        document.querySelector('body').style.marginRight = ``;
+    }
+
     return (
         <>
+        <CSSTransition in={filtersVisibility} timeout={300} classNames="fade">
+        {filtersVisibility ? <div onClick={onCloseFilters} className="popupFilters__background"></div> : <div/>}
+        </CSSTransition>
+        {filtersReset()}
+        {filtersApplied()}
         {content()}
         </>
     )

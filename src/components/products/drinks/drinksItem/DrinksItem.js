@@ -24,7 +24,7 @@ const DrinksItem = ({ img, title, liters, price }) => {
                                     }} key={liter} className={classes}>{liter}</div>
                                 })}
                             </div>
-                            <div className="drinks__bottom"><button className="button button__products">Выбрать</button><span className="drinks__price fade" key={Math.random()}>{changePrice} &#8381;</span></div>
+                            <div className="drinks__bottom"><button className="button button__products">Выбрать</button><span className="drinks__price" key={Math.random()}>{changePrice} &#8381;</span></div>
                         </div>
                 </div>
                     case false:

@@ -47,7 +47,7 @@ const Snacks = () => {
 
     return (
         <div ref={myRef} className="snacks container">
-            <Search data={snacks} search={searchSnacks}/>
+            <Search data={snacks} search={searchSnacks} filters={false}/>
             <div className="snacks__wrapper">
                     <TransitionGroup component={null}>
                         {renderSnacks}

@@ -48,7 +48,7 @@ const Sauces = () => {
 
     return (
         <div ref={myRef} className="sauces container">
-            <Search data={sauces} search={searchSauces}/>
+            <Search data={sauces} search={searchSauces} filters={false}/>
             <div className="sauces__wrapper">
                     <TransitionGroup component={null}>
                         {renderSauces}

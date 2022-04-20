@@ -12,4 +12,42 @@
         padding: 13px 32px;
         color: #fff;
     }
+    &__filters {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        padding: 13px 32px;
+        border: 1px solid #F0F0F0;
+        border-radius: 6px;
+        &:hover {
+            border-color: $main-color;
+        }
+        span {
+            color: #000;
+        }
+        &-img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &-count {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            right: -10px;
+            bottom: -10px;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            border: 1px solid $main-color;
+            border-radius: 100%;
+        }
+    }
 }

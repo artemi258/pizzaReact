@@ -3,6 +3,7 @@
 .popupFilters {
     visibility: hidden;
     overflow-x: hidden;
+    opacity: 0;
     position: fixed;
     right: -50%;
     top: 0;
@@ -98,6 +99,9 @@
         color: $main-color;
         border: 1px solid $main-color;
         border-radius: 12px;
+        &:disabled {
+            filter: grayscale(90%)	;
+        }
     }
     &__apply {
         width: 230px;
@@ -106,9 +110,55 @@
         color: #fff;
         border: none;
         border-radius: 12px;
+        &:disabled {
+            filter: grayscale(90%)	;
+        }
     }
     &__active {
         background-color: $main-color;
         color: #fff;
     }
+    &__background {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        right: 0;
+        top: 0;
+        z-index: 999;
+        background-color: rgba(255, 112, 16, .3);
+        backdrop-filter: blur(10px);
+    }
+}
+
+.filtersApplied {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(.0, .0);
+    opacity: 0;
+    height: 50px;
+    width: 200px;
+    visibility: hidden;
+    background-color: rgba(159, 233, 22, 0.3);
+    color: #fff;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    font-size: 18px;
+}
+.filtersReset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(.0, .0);
+    opacity: 0;
+    height: 50px;
+    width: 200px;
+    visibility: hidden;
+    background-color: rgba(251, 76, 76, 0.3);
+    color: #fff;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    font-size: 18px;
 }

@@ -13,7 +13,6 @@
     }
     &__input {
         width: 100%;
-        margin-right: 20px;
         border: 1px solid #F0F0F0;
         padding: 13px 16px;
         border-radius: 12px;
@@ -27,6 +26,51 @@
         }
         &::placeholder {
             color: #A5A5A5;
+        }
+        &-wrapper {
+            position: relative;
+            width: 100%;
+            margin-right: 20px;
+        }
+    }
+    &__reset {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        right: 16px;
+        top: 20%;
+        cursor: pointer;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 45%;
+            right: 0;
+            height: 2px;
+            width: 30px;
+            transform: rotate(45deg);
+            background-color: #A5A5A5;
+            transition: all .3s linear;
+            cursor: pointer;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 45%;
+            right: 0;
+            height: 2px;
+            width: 30px;
+            transform: rotate(-45deg);
+            background-color: #A5A5A5;
+            transition: all .3s linear;
+            cursor: pointer;
+        }
+        &:hover {
+            &::before {
+                background-color: $main-color;
+            }
+            &::after {
+                background-color: $main-color;
+            }
         }
     }
 }
