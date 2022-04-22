@@ -1,13 +1,22 @@
+import { useDispatch } from 'react-redux';
+import { addActiveProduct, changePopupActivation } from '../../../popupProduct/popupProductSlice';
 
 import '../pizza.scss';
 import '../../../../style/style.scss';
 
 const PizzaItem = ({img, title, ingredients, price}) => {
 
+    const dispatch = useDispatch();
+
     const ingredientsFinal = ingredients.slice(0, 40)+ '...';
     const content = () => {
+
+        const activationPopup = (active, trigger) => {
+            dispatch(addActiveProduct(active));
+            dispatch(changePopupActivation(trigger));
+        }
         
-        return <div className="pizza__item">
+        return <div onClick={() => activationPopup(title, true)} className="pizza__item">
                         <div className="pizza__img"><img src={img} alt={title} /></div>
                         <div className="pizza__info">
                             <h5 className="title__products">{title}</h5>

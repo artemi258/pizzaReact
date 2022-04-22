@@ -63,6 +63,32 @@ body {
     transition: all 300ms linear;
   }
 
+  .fadeBackgroundFilter-enter {
+    visibility: visible !important;
+    opacity: 0 !important;
+    transition: all 300ms linear;
+  }
+  .fadeBackgroundFilter-enter-active {
+    visibility: visible !important;
+    opacity: .5 !important;
+    transition: all 300ms linear;
+  }
+  .fadeBackgroundFilter-enter-done {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: all 300ms linear;
+  }
+  .fadeBackgroundFilter-exit {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: all 300ms linear;
+  }
+  .fadeBackgroundFilter-exit-active {
+    visibility: visible !important;
+    opacity: .5 !important;
+    transition: all 300ms linear;
+  }
+
   .visibility-enter {
     visibility: visible !important;
     opacity: .5 !important;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
-import { CSSTransition } from "react-transition-group";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { fetchFilters, changeFiltersVisibility, countFilters } from "./popupFiltersSlice";
 
@@ -155,11 +155,15 @@ const Filters = ({filters, data, action}) => {
         document.querySelector('body').style.marginRight = ``;
     }
 
+    const renderBackground = () => {
+            return <CSSTransition in={filtersVisibility} timeout={300} classNames="fadeBackgroundFilter">
+                    <div onClick={onCloseFilters} className="popupFilters__background"></div>
+                    </CSSTransition>
+    }
+
     return (
         <>
-        <CSSTransition in={filtersVisibility} timeout={300} classNames="fade">
-        {filtersVisibility ? <div onClick={onCloseFilters} className="popupFilters__background"></div> : <div/>}
-        </CSSTransition>
+        {renderBackground()}
         {filtersReset()}
         {filtersApplied()}
         {content()}

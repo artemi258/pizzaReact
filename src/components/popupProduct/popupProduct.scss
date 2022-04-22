@@ -1,12 +1,21 @@
 @import '../../style/variables.scss';
 
 .popupProduct {
+    visibility: hidden;
+    opacity: 0;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: 1000;
-        &__wrapper {
+    background-color: rgba(255, 112, 16, .3);
+    backdrop-filter: blur(10px);
+    &__wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
             width: 1070px;
             height: 680px;
@@ -26,7 +35,7 @@
             position: relative;
             width: 50%;
             height: 100%;
-            padding: 32px 20px 32px 20px;
+            padding: 32px 20px 88px 20px;
         }
         &__title {
             font-size: 20px;
@@ -52,6 +61,7 @@
                     padding: 13px 0;
                     width: 50%;
                     z-index: 10;
+                    cursor: pointer;
                 }
                 &-active {
                     position: absolute;
@@ -61,6 +71,7 @@
                     width: 50%;
                     border-radius: 6px;
                     background-color: $main-color;
+                    transition: all .3s linear;
                     z-index: 9;
                 }
             }
@@ -77,6 +88,7 @@
                     padding: 13px 0;
                     width: 33.33%;
                     z-index: 10;
+                    cursor: pointer;
                 }
                 &-active {
                     position: absolute;
@@ -86,8 +98,12 @@
                     width: 33.33%;
                     border-radius: 6px;
                     background-color: $main-color;
+                    transition: all .3s linear;
                     z-index: 9;
                 }
+            }
+            &-activeColor {
+                color: #fff;
             }
         }
         &__ingredients {
@@ -101,6 +117,7 @@
                 text-align: center;
             }
             &-wrapper {
+                position: relative;
                 display: grid;
                 grid: repeat(1, 1fr) / repeat(3, 1fr);
                 column-gap: 8px;
@@ -116,7 +133,11 @@
                 padding: 8px 8px;
                 border: 1px solid #F0F0F0;
                 border-radius: 6px;
-                box-shadow: 3px 3px 7px #000;
+                cursor: pointer;
+                &:hover {
+                    border: 1px solid $main-color;
+                    transition: all .4s linear;
+                }
             }
             &-img {
                 margin: 0 auto;
@@ -133,10 +154,64 @@
                 margin-top: auto;
             }
         }
+        &__close {
+            position: absolute;
+            width: 40px;
+            height: 35px;
+            right: -60px;
+            top: 0;
+            cursor: pointer;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 15px;
+                height: 2px;
+                width: 40px;
+                transform: rotate(45deg);
+                background-color: #fff;
+                cursor: pointer;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 15px;
+                height: 2px;
+                width: 40px;
+                transform: rotate(-45deg);
+                background-color: #fff;
+                cursor: pointer;
+            }
+            &:hover {
+                &::before {
+                    transition: all .4s linear;
+                    background-color: $main-color;
+                }
+                &::after {
+                    transition: all .4s linear;
+                    background-color: $main-color;
+                }
+            }
+        }
+        &__bottom {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: calc(100% - 40px);
+            height: 68px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &-price {
+                font-size: 20px;
+                font-weight: 600;
+                color: $main-color;
+            }
+        }
 }
 
 .rcs-inner-handle {
-    background-color: $main-color !important;
+    background-color: rgba(255, 112, 16, .3) !important;
 }
 .rcs-positioning {
     position: absolute !important;

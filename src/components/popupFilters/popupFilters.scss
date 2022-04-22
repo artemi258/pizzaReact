@@ -119,6 +119,8 @@
         color: #fff;
     }
     &__background {
+        visibility: hidden;
+        opacity: 0;
         position: fixed;
         width: 100vw;
         height: 100vh;
