@@ -23,15 +23,19 @@
             }
         }
         &__content {
+            position: relative;
             width: 50%;
-            padding: 32px 20px;
+            height: 100%;
+            padding: 32px 20px 32px 20px;
         }
         &__title {
             font-size: 20px;
             font-weight: 600;
+            margin-bottom: 16px;
         }
         &__description {
             font-size: 16px;
+            margin-bottom: 16px;
         }
         &__buttons {
             width: 100%;
@@ -40,6 +44,7 @@
                 width: 100%;
                 height: 48px;
                 display: flex;
+                margin-bottom: 16px;
                 border-radius: 6px;
                 border: 1px solid #F0F0F0;
                 div {
@@ -64,6 +69,7 @@
                 width: 100%;
                 height: 48px;
                 display: flex;
+                margin-bottom: 24px;
                 border-radius: 6px;
                 border: 1px solid #F0F0F0;
                 div {
@@ -88,23 +94,32 @@
             &-title {
                 font-weight: 600;
                 font-size: 16px;
+                margin-bottom: 16px;
+            }
+            &-subTitle {
+                font-size: 16px;
+                text-align: center;
             }
             &-wrapper {
                 display: grid;
-                grid: repeat(1, 166px) / repeat(3, 1fr);
+                grid: repeat(1, 1fr) / repeat(3, 1fr);
                 column-gap: 8px;
                 row-gap: 8px;
-                grid-auto-rows: 166px;
-                height: inherit;
-                padding: 8px 8px;
-                overflow-y: scroll;
+                grid-auto-rows: 1fr;
+                height: 100%;
             }
             &-item {
+                display: flex;
+                flex-direction: column;
                 width: 100%;
                 height: 100%;
                 padding: 8px 8px;
+                border: 1px solid #F0F0F0;
+                border-radius: 6px;
+                box-shadow: 3px 3px 7px #000;
             }
             &-img {
+                margin: 0 auto;
                 width: 90px;
                 height: 90px;
                 img {
@@ -112,5 +127,18 @@
                     height: 100%;
                 }
             }
+            &-price {
+                justify-self: flex-end;
+                text-align: center;
+                margin-top: auto;
+            }
         }
+}
+
+.rcs-inner-handle {
+    background-color: $main-color !important;
+}
+.rcs-positioning {
+    position: absolute !important;
+    right: 0;
 }
