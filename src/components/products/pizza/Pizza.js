@@ -6,6 +6,7 @@ import { fetchPizza } from "./pizzaSlice";
 import PizzaItem from "./pizzaItem/PizzaItem";
 import Search from "../../search/Search";
 import Filters from "../../popupFilters/PopupFilters";
+import PopupProduct from "../../popupProduct/PopupProduct";
 import { changeAnimation } from "./pizzaSlice";
 import { searchPizza } from "../../search/searchSlice";
 import { filteringPizza } from "../../popupFilters/popupFiltersSlice";
@@ -64,6 +65,7 @@ const Pizza = () => {
 
     return (
         <div ref={myRef} className="pizza container">
+            <PopupProduct/>
             <Filters filters={pizzaFilters()} data={resultPizza} action={filteringPizza}/>
             <Search data={pizza} search={searchPizza} filters={true}/>
             <div className="pizza__wrapper">

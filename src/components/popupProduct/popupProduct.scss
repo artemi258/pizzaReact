@@ -1,0 +1,116 @@
+@import '../../style/variables.scss';
+
+.popupProduct {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+        &__wrapper {
+            display: flex;
+            width: 1070px;
+            height: 680px;
+            background-color: #fff;
+            border-radius: 24px;
+        }
+        &__img {
+            width: 50%;
+            height: 100%;
+            padding: 115px 60px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &__content {
+            width: 50%;
+            padding: 32px 20px;
+        }
+        &__title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        &__description {
+            font-size: 16px;
+        }
+        &__buttons {
+            width: 100%;
+            &-dough {
+                position: relative;
+                width: 100%;
+                height: 48px;
+                display: flex;
+                border-radius: 6px;
+                border: 1px solid #F0F0F0;
+                div {
+                    text-align: center;
+                    padding: 13px 0;
+                    width: 50%;
+                    z-index: 10;
+                }
+                &-active {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 50%;
+                    border-radius: 6px;
+                    background-color: $main-color;
+                    z-index: 9;
+                }
+            }
+            &-size {
+                position: relative;
+                width: 100%;
+                height: 48px;
+                display: flex;
+                border-radius: 6px;
+                border: 1px solid #F0F0F0;
+                div {
+                    text-align: center;
+                    padding: 13px 0;
+                    width: 33.33%;
+                    z-index: 10;
+                }
+                &-active {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 33.33%;
+                    border-radius: 6px;
+                    background-color: $main-color;
+                    z-index: 9;
+                }
+            }
+        }
+        &__ingredients {
+            &-title {
+                font-weight: 600;
+                font-size: 16px;
+            }
+            &-wrapper {
+                display: grid;
+                grid: repeat(1, 166px) / repeat(3, 1fr);
+                column-gap: 8px;
+                row-gap: 8px;
+                grid-auto-rows: 166px;
+                height: inherit;
+                padding: 8px 8px;
+                overflow-y: scroll;
+            }
+            &-item {
+                width: 100%;
+                height: 100%;
+                padding: 8px 8px;
+            }
+            &-img {
+                width: 90px;
+                height: 90px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+}
