@@ -46,11 +46,41 @@ body {
         opacity: 1
     }
 }
+.fadePopupProduct-enter {
+  visibility: visible !important;
+  opacity: 0 !important;
+  transition: all 300ms linear;
+}
+.fadePopupProduct-enter-active {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: all 300ms linear;
+}
+.fadePopupProduct-enter-done {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: all 300ms linear;
+}
+.fadePopupProduct-exit {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: all 300ms linear;
+}
+.fadePopupProduct-exit-active {
+  visibility: visible !important;
+  opacity: .5 !important;
+  transition: all 300ms linear;
+}
+
   .fade-enter {
     opacity: 0;
     transition: all 300ms linear;
   }
   .fade-enter-active {
+    opacity: 1;
+    transition: all 300ms linear;
+  }
+  .fade-enter-done {
     opacity: 1;
     transition: all 300ms linear;
   }

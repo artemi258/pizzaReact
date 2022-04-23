@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 import { fetchFilters, changeFiltersVisibility, countFilters } from "./popupFiltersSlice";
 
@@ -27,7 +27,8 @@ const Filters = ({filters, data, action}) => {
         }
     }
     const onReset = () => {
-        dispatch(countFilters(null))
+        bodyOverflowVisibility();
+        dispatch(countFilters(null));
         dispatch(changeFiltersVisibility(false));
         setActiveFilters([]);
         setTriggerFiltersReset(true);
@@ -71,6 +72,7 @@ const Filters = ({filters, data, action}) => {
     };
 
     const onCloseFilters = () => {
+        bodyOverflowVisibility();
         dispatch(changeFiltersVisibility(false))
     }
 
@@ -133,7 +135,8 @@ const Filters = ({filters, data, action}) => {
             setTriggerFiltersReset(false)
         }, 5000);
     };
-    if (filtersVisibility) {
+
+    const bodyOverflowHidden = () => {
         let div = document.createElement('div');
 
         div.style.width = '50px';
@@ -150,10 +153,36 @@ const Filters = ({filters, data, action}) => {
         div.remove();
         document.querySelector('body').style.marginRight = `${scrollWidth}px`;
         document.querySelector('body').style.overflowY = 'hidden';
-    } else {
+    }
+    const bodyOverflowVisibility = () => {
         document.querySelector('body').style.overflowY = '';
         document.querySelector('body').style.marginRight = ``;
     }
+
+    if (filtersVisibility) {
+        bodyOverflowHidden();
+    };
+    // if (filtersVisibility) {
+        // let div = document.createElement('div');
+
+        // div.style.width = '50px';
+        // div.style.height = '50px';
+        // div.style.overflowY = 'scroll';
+        // div.style.visibility = 'hidden';
+
+        // document.body.appendChild(div);
+
+        // document.body.appendChild(div);
+
+        // let scrollWidth = div.offsetWidth - div.clientWidth;
+
+        // div.remove();
+        // document.querySelector('body').style.marginRight = `${scrollWidth}px`;
+        // document.querySelector('body').style.overflowY = 'hidden';
+    // } else {
+        // document.querySelector('body').style.overflowY = '';
+        // document.querySelector('body').style.marginRight = ``;
+    // }
 
     const renderBackground = () => {
             return <CSSTransition in={filtersVisibility} timeout={300} classNames="fadeBackgroundFilter">

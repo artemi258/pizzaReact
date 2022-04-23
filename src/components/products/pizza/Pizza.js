@@ -17,6 +17,7 @@ import '../../../style/style.scss';
 const Pizza = () => {
     const {pizza} = useSelector(state => state.pizza);
     const {resultPizza} = useSelector(state => state.search)
+    const {activeProduct} = useSelector(state => state.popupProduct)
     const {filters, resultFilteringPizza} = useSelector(state => state.filters)
     const dispatch = useDispatch();
     const animation = useSelector(state => state.pizza.animation)
@@ -63,9 +64,17 @@ const Pizza = () => {
         return res[0];
 }
 
+    const popupProductInfo = useMemo(() => {
+
+        const item = resultFilteringPizza.filter(item => item.id === activeProduct);
+
+        return item;
+    }, [activeProduct])
+
+    console.log(popupProductInfo)
     return (
         <div ref={myRef} className="pizza container">
-            <PopupProduct/>
+            <PopupProduct product={popupProductInfo}/>
             <Filters filters={pizzaFilters()} data={resultPizza} action={filteringPizza}/>
             <Search data={pizza} search={searchPizza} filters={true}/>
             <div className="pizza__wrapper">

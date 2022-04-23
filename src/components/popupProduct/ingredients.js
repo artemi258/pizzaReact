@@ -18,7 +18,7 @@ import pictures17 from "./img/370dac9ed21e4bffaf9bc2618d258734.png";
 import pictures18 from "./img/b2f3a5d5afe44516a93cfc0d2ee60088.png";
 import pictures19 from "./img/bd896a42a5b44169ae9dfdc2573c34f2.png";
 
-const ingredients = [{
+const addIngredients = [{
     pictures: pictures,
     title: "Сыр блю чиз",
     price: 59
@@ -115,4 +115,4 @@ const ingredients = [{
 }
 ];
 
-export default ingredients;
+export default addIngredients;
