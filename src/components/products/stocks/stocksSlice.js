@@ -10,7 +10,7 @@ export const fetchStocks = createAsyncThunk(
     'stocks/fetchStocks',
     () => {
         const { request } = useHttp();
-        return request('http://localhost:3001/stocks');
+        return request(`${YOUR_HEROKU_URL}/stocks`);
     }
 );
 
