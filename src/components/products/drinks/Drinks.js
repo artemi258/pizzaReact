@@ -5,9 +5,9 @@ import { CSSTransition, TransitionGroup} from "react-transition-group";
 import { fetchDrinks } from "./drinksSlice";
 import DrinksItem from "./drinksItem/DrinksItem";
 import Search from "../../search/Search";
-import Filters from "../../popupFilters/PopupFilters";
+import Filters from "../../popups/popupFilters/PopupFilters";
 import { searchDrinks } from "../../search/searchSlice";
-import { filteringDrinks } from "../../popupFilters/popupFiltersSlice";
+import { filteringDrinks } from "../../popups/popupFilters/popupFiltersSlice";
 
 import './drinks.scss';
 import '../../../style/style.scss';

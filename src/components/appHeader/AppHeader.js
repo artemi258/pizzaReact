@@ -1,6 +1,5 @@
-import './appHeader.scss';
-import '../../style/style.scss';
-import '../../style/button.scss';
+import { changePopupActivation } from '../popups/popupBasket/popupBasketSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 import pizza from '../../icon/pizza.png';
 import account from './icon/account.png';
@@ -10,8 +9,16 @@ import instagram from '../../icon/instagram.png';
 import phone from '../../icon/phone.png';
 import nav from '../../icon/nav.png';
 
+import './appHeader.scss';
+import '../../style/style.scss';
+import '../../style/button.scss';
+
 
     const AppHeader = () => {
+
+        const {totalPrice} = useSelector(state => state.popupBasket)
+        const dispatch = useDispatch();
+
         return (
             <section className="appHeader">
                 <div className="appHeader__wrapper container">
@@ -56,11 +63,11 @@ import nav from '../../icon/nav.png';
                                 <a href="https://instagram.com/" target="_blank" rel='noreferrer'>Instagram</a>
                             </div>
                         </div>
-                        <button className="button button__basket appHeader__bottom-basket">
+                        <button onClick={() => dispatch(changePopupActivation(true))} className="button button__basket appHeader__bottom-basket">
                             <div className="appHeader__bottom-basket-icon">
                                 <img src={basket} alt="basket" />
                             </div>
-                            <span>0 ₽</span>
+                            <span>{totalPrice} ₽</span>
                         </button>
                     </div>
                 </div>

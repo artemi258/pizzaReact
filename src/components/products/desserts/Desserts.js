@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup} from "react-transition-group";
 import { fetchDesserts } from "./dessertsSlice";
 import DessertsItem from "./dessertsItem/DessertsItem";
 import Search from "../../search/Search";
+import PopupProduct from "../../popups/popupProduct/PopupProduct";
 import { searchDesserts } from "../../search/searchSlice";
 
 import './desserts.scss';
@@ -13,6 +14,7 @@ import '../../../style/style.scss';
 const Desserts = () => {
     const {desserts} = useSelector(state => state.desserts);
     const {resultDesserts} = useSelector(state => state.search);
+    const {activeProduct} = useSelector(state => state.popupProduct);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -45,8 +47,14 @@ const Desserts = () => {
        return item(resultDesserts);
     }, [resultDesserts]);
 
+    const popupProductInfo = useMemo(() => {
+        const item = resultDesserts.filter(item => item.id === activeProduct);
+        return item;
+    }, [activeProduct])
+
     return (
         <div ref={myRef} className="desserts container">
+            <PopupProduct product={popupProductInfo}/>
             <Search data={desserts} search={searchDesserts} filters={false}/>
             <div className="desserts__wrapper">
                     <TransitionGroup component={null}>

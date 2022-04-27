@@ -15,7 +15,7 @@ export const fetchDesserts = createAsyncThunk(
 );
 
 const desserts = createSlice({
-    name: 'pizza',
+    name: 'desserts',
     initialState,
     reducers: {},
     extraReducers: (builder) => {

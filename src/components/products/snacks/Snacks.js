@@ -6,6 +6,7 @@ import { fetchSnacks } from "./snacksSlice";
 import Search from "../../search/Search";
 import { searchSnacks } from "../../search/searchSlice";
 import SnacksItem from "./snacksItem/SnacksItem";
+import PopupProduct from "../../popups/popupProduct/PopupProduct";
 
 import './snacks.scss';
 import '../../../style/style.scss';
@@ -13,6 +14,7 @@ import '../../../style/style.scss';
 const Snacks = () => {
     const {snacks} = useSelector(state => state.snacks);
     const {resultSnacks} = useSelector(state => state.search);
+    const {activeProduct} = useSelector(state => state.popupProduct);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -45,8 +47,14 @@ const Snacks = () => {
        return item(resultSnacks);
     }, [resultSnacks]);
 
+    const popupProductInfo = useMemo(() => {
+        const item = resultSnacks.filter(item => item.id === activeProduct);
+        return item;
+    }, [activeProduct])
+
     return (
         <div ref={myRef} className="snacks container">
+            <PopupProduct product={popupProductInfo}/>
             <Search data={snacks} search={searchSnacks} filters={false}/>
             <div className="snacks__wrapper">
                     <TransitionGroup component={null}>

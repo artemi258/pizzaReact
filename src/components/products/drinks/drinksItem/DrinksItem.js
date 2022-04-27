@@ -9,7 +9,6 @@ const DrinksItem = ({ img, title, liters, price }) => {
     const [active, setActive] = useState("0.5 л");
     const [backgroundActive, getBackgroundActive] = useState(0);
     const [changePrice, setChangePrice] = useState(liters[0].price);
-    console.log(backgroundActive)
     const content = () => {
                 switch (Array.isArray(liters)) {
                     case true:

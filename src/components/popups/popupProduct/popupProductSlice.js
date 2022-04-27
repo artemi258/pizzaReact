@@ -5,8 +5,8 @@ const initialState = {
     popupActivation: false
 };
 
-const desserts = createSlice({
-    name: 'pizza',
+const popupProduct = createSlice({
+    name: 'popupProduct',
     initialState,
     reducers: {
         addActiveProduct: (state, action) => {
@@ -18,7 +18,7 @@ const desserts = createSlice({
     }
 });
 
-const { reducer, actions } = desserts;
+const { reducer, actions } = popupProduct;
 
 export const {
     addActiveProduct,

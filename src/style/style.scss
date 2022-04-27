@@ -13,6 +13,8 @@ body {
     animation: pulse 1.5s ease-in-out .5s infinite
 }
 .title {
+  font-size: 32px;
+  font-weight: 600;
     &__products {
         font-weight: 600;
         font-size: 18px;
@@ -68,7 +70,7 @@ body {
 }
 .fadePopupProduct-exit-active {
   visibility: visible !important;
-  opacity: .5 !important;
+  opacity: 0 !important;
   transition: all 300ms linear;
 }
 
@@ -93,37 +95,37 @@ body {
     transition: all 300ms linear;
   }
 
-  .fadeBackgroundFilter-enter {
+  .fadeBackground-enter {
     visibility: visible !important;
     opacity: 0 !important;
     transition: all 300ms linear;
   }
-  .fadeBackgroundFilter-enter-active {
-    visibility: visible !important;
-    opacity: .5 !important;
-    transition: all 300ms linear;
-  }
-  .fadeBackgroundFilter-enter-done {
+  .fadeBackground-enter-active {
     visibility: visible !important;
     opacity: 1 !important;
     transition: all 300ms linear;
   }
-  .fadeBackgroundFilter-exit {
+  .fadeBackground-enter-done {
     visibility: visible !important;
     opacity: 1 !important;
     transition: all 300ms linear;
   }
-  .fadeBackgroundFilter-exit-active {
+  .fadeBackground-exit {
     visibility: visible !important;
-    opacity: .5 !important;
+    opacity: 1 !important;
+    transition: all 300ms linear;
+  }
+  .fadeBackground-exit-active {
+    visibility: visible !important;
+    opacity: 0 !important;
     transition: all 300ms linear;
   }
 
   .visibility-enter {
     visibility: visible !important;
-    opacity: .5 !important;
-    right: -25% !important;
-    transform: scale(.5, .5) !important;
+    opacity: 0 !important;
+    right: 0 !important;
+    transform: scale(1, 1) !important;
     transition: all .5s linear;
   }
   .visibility-enter-active {
@@ -150,7 +152,7 @@ body {
   .visibility-exit-active {
     visibility: visible !important;
     opacity: 0 !important;
-    right: -50% !important;
+    right: -25% !important;
     transform: scale(0, 0) !important;
     transition: all .5s linear;
   }

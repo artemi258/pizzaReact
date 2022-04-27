@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { changeFiltersVisibility } from '../popupFilters/popupFiltersSlice';
+import { changeFiltersVisibility } from '../popups/popupFilters/popupFiltersSlice';
 
 import './search.scss';
 import '../../style/button.scss';

@@ -1,4 +1,4 @@
-@import '../../style/variables.scss';
+@import '../../../style/variables.scss';
 
 .popupProduct {
     position: fixed;
@@ -19,10 +19,10 @@
             width: 50%;
             height: 100%;
             padding: 115px 60px;
-            object-fit: contain;
             img {
                 width: 100%;
                 height: 100%;
+                object-fit: contain;
             }
         }
         &__content {
@@ -115,6 +115,7 @@
                 display: grid;
                 grid: repeat(1, 1fr) / repeat(3, 1fr);
                 column-gap: 8px;
+                padding: 8px 8px;
                 row-gap: 8px;
                 grid-auto-rows: 1fr;
                 height: 100%;
@@ -146,6 +147,11 @@
                 justify-self: flex-end;
                 text-align: center;
                 margin-top: auto;
+            }
+            &-active {
+                border: 1px solid $main-color;
+                box-shadow: 2px 2px 7px $main-color;
+                transition: all .1s linear;
             }
         }
         &__close {

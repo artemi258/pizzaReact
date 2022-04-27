@@ -7,6 +7,7 @@ import NavMenu from "../navMenu/NavMenu";
 import Promo from "../promo/Promo";
 import Footer from "../footer/Footer";
 import Skeleton from "../skeleton/Skeleton";
+import PopupBasket from "../popups/popupBasket/PopupBasket";
 
 import './app.scss';
 import '../../style/style.scss';
@@ -25,6 +26,7 @@ const Stocks = lazy(() => import("../products/stocks/Stocks"));
         <Router>
             <div className="app">
                 <AppHeader/>
+                <PopupBasket/>
                 <main>
                 <Suspense fallback={<Skeleton/>}>
                     <Stocks/>
