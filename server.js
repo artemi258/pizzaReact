@@ -1,6 +1,7 @@
 const jsonServer = require('json-server');
 const server = jsonServer.create();
-const router = jsonServer.router('./JSON/product.json');
+const path = require('path')
+const router = jsonServer.router(path.join(__dirname, './JSON/product.json'))
 const middlewares = jsonServer.defaults({
   static: './build'
 });
