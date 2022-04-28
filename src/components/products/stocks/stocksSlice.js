@@ -10,7 +10,7 @@ export const fetchStocks = createAsyncThunk(
     'stocks/fetchStocks',
     () => {
         const { request } = useHttp();
-        return request('https://where-pizza.herokuapp.com/api/stocks');
+        return request('http://localhost:3001/stocks');
     }
 );
 

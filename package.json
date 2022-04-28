@@ -23,8 +23,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"node server.js\"",
-    "star": "concurrently \"react-scripts start\" \"npx json-server ./src/JSON/product.json --port 3001\"",
+    "start": "concurrently \"react-scripts start\" \"npx json-server ./src/JSON/product.json --port 3001\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

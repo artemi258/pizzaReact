@@ -18,16 +18,16 @@ const popupBasket = createSlice({
             state.popupActivation = action.payload;
         },
         addProduct: (state, action) => {
-            let bool;
+            let bool = [];
             const arr = state.products.map(elem => {
                 if (elem.id === action.payload[0].id) {
-                    bool = true;
+                    bool.push(true);
                     return {...elem, quantity: action.payload[0].quantity}
                 }
-                bool = false
+                bool.push(false);
                 return elem;
             });
-            if (bool) {
+            if (bool.includes(true)) {
                 state.products = arr;
             } else {
                 state.products = arr.concat(action.payload)
