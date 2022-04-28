@@ -24,7 +24,7 @@ const popupBasket = createSlice({
                     bool = true;
                     return {...elem, quantity: action.payload[0].quantity}
                 }
-                bool = false
+                bool = false;
                 return elem;
             });
             if (bool) {

@@ -91,7 +91,7 @@
         width: 92px;
         height: 36px;
         background-color: #FFEEE2;
-        &-number {
+        &-input {
             text-align: center;
             width: 40px;
             height: 20px;
@@ -99,6 +99,7 @@
             border: none;
             color: $main-color;
             background-color: #FFEEE2;
+            overflow: hidden;
         }
         &-minus {
             width: 20px;

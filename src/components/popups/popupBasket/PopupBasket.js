@@ -13,8 +13,7 @@ const PopupBasket = () => {
     (state) => state.popupBasket
   );
   const dispatch = useDispatch();
-  const [priceValue, setPriceValue] = useState(1);
-  const [changeQuantity, setChangeQuantity] = useState(1)
+  const [inputValue, setInputValue] = useState(1);
 
   const bodyOverflowHidden = () => {
     let div = document.createElement("div");
@@ -44,18 +43,26 @@ const PopupBasket = () => {
   };
 
   const onChangeInput = (e, title, arr) => {
-    setPriceValue(e.target.value);
+    e.target.value = e.target.value.replace(/\D/g, '');
+    setInputValue(e.target.value)
     const item = arr.filter(elem => elem.title === title);
-     const resul = item.map(elem => ({...elem, quantity: e.target.value}))  //
+     const resul = item.map(elem => ({...elem, quantity: +e.target.value}))  //
     console.log(resul)
     dispatch(addProduct(resul));
   };
 
-  const onChangeInputPlus = () => {
-    setPriceValue((state) => +state + 1);
+  const onChangeInputPlus = (e, title, arr) => {
+    e.target.value = inputValue;
+    setInputValue(state => state + 1)
+    const item = arr.filter(elem => elem.title === title);
+     const resul = item.map(elem => ({...elem, quantity: elem.quantity + 1}))  //
+    dispatch(addProduct(resul));
   };
-  const onChangeInputMinus = () => {
-    setPriceValue((state) => +state - 1);
+  const onChangeInputMinus = (e, title, arr) => {
+    setInputValue(state => state - 1)
+    const item = arr.filter(elem => elem.title === title);
+     const resul = item.map(elem => ({...elem, quantity: elem.quantity - 1}))  //
+    dispatch(addProduct(resul));
   };
 
   useEffect(() => {
@@ -63,13 +70,13 @@ const PopupBasket = () => {
   }, [products])
 
   const totalAmount = () => {
-    let arr = 0;
+    let num = 0;
     products.forEach(elem => {
-      arr += elem.price * elem.quantity;
+      num += elem.price * elem.quantity;
     })
-    console.log(arr)
+    console.log(num)
     dispatch(
-      addTotalPrice(arr)
+      addTotalPrice(num)
     );
   };
 
@@ -125,27 +132,28 @@ const PopupBasket = () => {
                       <div className="popupBasket__quantity">
                         <div className="popupBasket__count">
                           <div
-                            onClick={onChangeInputMinus}
+                            onClick={(e) => onChangeInputMinus(e, title, arr)}
                             className="popupBasket__count-minus"
                           >
                             <div>&minus;</div>
                           </div>
                           <input
+                          type="text"
                             onChange={(e) => {
                               onChangeInput(e, title, arr);
                             }}
-                            defaultValue={1}
-                            className="popupBasket__count-number"
+                            Value={inputValue}
+                            className="popupBasket__count-input"
                           />
                           <div
-                            onClick={onChangeInputPlus}
+                            onClick={(e) => onChangeInputPlus(e, title, arr)}
                             className="popupBasket__count-plus"
                           >
                             <div>&#43;</div>
                           </div>
                         </div>
                         <div className="popupBasket__price">
-                          {price * priceValue} &#8381;
+                          {price * quantity} &#8381;
                         </div>
                       </div>
                     </div>
