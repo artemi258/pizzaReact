@@ -22,7 +22,7 @@ const popupBasket = createSlice({
             const arr = state.products.map(elem => {
                 if (elem.id === action.payload[0].id) {
                     bool.push(true);
-                    return {...elem, quantity: action.payload[0].quantity}
+                    return {...elem, quantity: action.payload[0].quantity === 0 ? '' : action.payload[0].quantity}
                 }
                 bool.push(false);
                 return elem;

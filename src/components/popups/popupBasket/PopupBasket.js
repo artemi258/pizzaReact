@@ -41,31 +41,20 @@ const PopupBasket = () => {
     dispatch(changePopupActivation(false));
   };
 
-  const onChangeInput = (e, title, arr) => {
+  const onChangeInput = (e, id, arr) => {
     const target = e.target;
-    function check(match, p1, p2) {
-      console.log(p1)
-      if (p1) {
-        return '';
-      }
-      if (match.slice(1) == 0) {
-        return ' ';
-      }
-    }
-    target.value = target.value.replace(/([1-9])(0)/ , check);
-    const item = arr.filter(elem => elem.title === title);
-     const resul = item.map(elem => ({...elem, quantity: +e.target.value}))  //
-    console.log(resul)
+    target.value = target.value.replace(/\D/ , '');
+    const item = arr.filter(elem => elem.id === id);
+     const resul = item.map(elem => ({...elem, quantity: +target.value}))  //
     dispatch(addProduct(resul));
   };
 
   const onChangeInputPlus = (e, title, arr) => {
-    arr.forEach(elem => {
-      if (elem.quantity <= 1) {
-        return;
-      }
-    })
     const item = arr.filter(elem => elem.title === title);
+    const check = item.some(elem => elem.quantity >= 9);
+    if (check) {
+      return;
+    }
      const resul = item.map(elem => ({...elem, quantity: elem.quantity + 1}))  //
     dispatch(addProduct(resul));
   };
@@ -87,9 +76,8 @@ const PopupBasket = () => {
   const totalAmount = () => {
     let num = 0;
     products.forEach(elem => {
-      num += elem.price * elem.quantity;
+      num += elem.price * (elem.quantity === '' ? 1 : elem.quantity);
     })
-    console.log(num)
     dispatch(
       addTotalPrice(num)
     );
@@ -135,7 +123,7 @@ const PopupBasket = () => {
             <h2 className="title">Ваш заказ</h2>
             <div onClick={onCloseFilters} className="popupBasket__close"></div>
             <div className="popupBasket__products">
-              {products.map(({ img, title, price, dough, size, quantity }, i, arr) => {
+              {products.map(({id, img, title, price, dough, size, quantity }, i, arr) => {
                 return (
                   <div key={title} className="popupBasket__item">
                     <div className="popupBasket__img">
@@ -149,28 +137,29 @@ const PopupBasket = () => {
                       <div className="popupBasket__quantity">
                         <div className="popupBasket__count">
                           <div
-                            onClick={(e) => onChangeInputMinus(e, title, arr)}
+                            onClick={(e) => onChangeInputMinus(e, id, arr)}
                             className="popupBasket__count-minus"
                           >
                             <div>&minus;</div>
                           </div>
                           <input
                           type="text"
+                          maxLength={1}
                             onChange={(e) => {
-                              onChangeInput(e, title, arr);
+                              onChangeInput(e, id, arr);
                             }}
                             value={quantity}
                             className="popupBasket__count-input"
                           />
                           <div
-                            onClick={(e) => onChangeInputPlus(e, title, arr)}
+                            onClick={(e) => onChangeInputPlus(e, id, arr)}
                             className="popupBasket__count-plus"
                           >
                             <div>&#43;</div>
                           </div>
                         </div>
                         <div className="popupBasket__price">
-                          {price * quantity} &#8381;
+                          {quantity === '' ? price : price * quantity} &#8381;
                         </div>
                       </div>
                     </div>
