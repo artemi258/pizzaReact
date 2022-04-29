@@ -43,10 +43,16 @@ const PopupBasket = () => {
 
   const onChangeInput = (e, title, arr) => {
     const target = e.target;
-    target.value = target.value.replace(/\D/g, '');
-    if (target.value < 1) {
-      target.value.replace('');
+    function check(match, p1, p2) {
+      console.log(p1)
+      if (p1) {
+        return '';
+      }
+      if (match.slice(1) == 0) {
+        return ' ';
+      }
     }
+    target.value = target.value.replace(/([1-9])(0)/ , check);
     const item = arr.filter(elem => elem.title === title);
      const resul = item.map(elem => ({...elem, quantity: +e.target.value}))  //
     console.log(resul)
