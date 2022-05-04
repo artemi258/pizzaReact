@@ -32,6 +32,9 @@ const popupBasket = createSlice({
             } else {
                 state.products = arr.concat(action.payload)
             }
+        },
+        deleteProduct: (state, action) => {
+            state.products = state.products.filter(prod => prod.id !== action.payload);
         }
     }
 });
@@ -41,7 +44,8 @@ const { reducer, actions } = popupBasket;
 export const {
     addTotalPrice,
     changePopupActivation,
-    addProduct
+    addProduct,
+    deleteProduct
 } = actions;
 
 export default reducer;

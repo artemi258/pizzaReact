@@ -1,14 +1,18 @@
 import classNames from 'classnames';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addProduct } from "../../../popups/popupBasket/popupBasketSlice";
 
 import '../drinks.scss';
 import '../../../../style/style.scss';
 
-const DrinksItem = ({ img, title, liters, price }) => {
+const DrinksItem = ({ img, title, liters, price, product }) => {
 
     const [active, setActive] = useState("0.5 л");
+    const dispatch = useDispatch();
     const [backgroundActive, getBackgroundActive] = useState(0);
     const [changePrice, setChangePrice] = useState(liters[0].price);
+    const [totalLiters, setTotalLiters] = useState(liters[0].liter)
     const content = () => {
                 switch (Array.isArray(liters)) {
                     case true:
@@ -21,13 +25,16 @@ const DrinksItem = ({ img, title, liters, price }) => {
                                 {liters.map(({liter, price}) => {
                                         const classes = classNames("drinks__liters-item", {"drinks__liters-active": active === liter});
                                     return <div onClick={e => {
+                                        setTotalLiters(liter)
                                         setChangePrice(price);
                                         setActive(liter);
                                         getBackgroundActive(e.target.offsetLeft)
                                     }} key={liter} className={classes}>{liter}</div>
                                 })}
                             </div>
-                            <div className="drinks__bottom"><button className="button button__products">Выбрать</button><span className="drinks__price" key={Math.random()}>{changePrice} &#8381;</span></div>
+                            <div className="drinks__bottom"><button onClick={() => dispatch(addProduct(
+                                [{...product, liters: totalLiters, quantity: 1, price: changePrice}]
+                            ))} className="button button__products">Выбрать</button><span className="drinks__price" key={Math.random()}>{changePrice} &#8381;</span></div>
                         </div>
                 </div>
                     case false:
@@ -36,7 +43,9 @@ const DrinksItem = ({ img, title, liters, price }) => {
                         <div className="drinks__info">
                             <h5 className="title__products">{title}</h5>
                             <div className="drinks__liters drinks__liters-noChange">{liters}</div>
-                            <div className="drinks__bottom"><button className="button button__products">Выбрать</button><span className="drinks__price">{price} &#8381;</span></div>
+                            <div className="drinks__bottom"><button onClick={() => dispatch(addProduct(
+                                [{...product, quantity: 1}]
+                            ))} className="button button__products">Выбрать</button><span className="drinks__price">{price} &#8381;</span></div>
                         </div>
                 </div>
                     default:

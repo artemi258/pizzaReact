@@ -39,9 +39,9 @@ const Drinks = () => {
                         <h5 className="notFound">К сожалению, товар не найден</h5>
                     </CSSTransition>
         } else {
-            return arr.map(({id, img, title, liters, price}) => {
+            return arr.map(({id, img, title, liters, price}, i , arr) => {
                 return <CSSTransition key={id} timeout={300} classNames="fade">
-                           <DrinksItem key={id} img={img} title={title} liters={liters} price={price}/>
+                           <DrinksItem key={id} img={img} title={title} liters={liters} price={price} product={arr[i]}/>
                        </CSSTransition>
             });
         }

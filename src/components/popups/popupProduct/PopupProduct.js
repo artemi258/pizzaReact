@@ -2,17 +2,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { changePopupActivation } from "./popupProductSlice";
-import { addTotalPrice, addProduct } from "../popupBasket/popupBasketSlice";
+import { addProduct } from "../popupBasket/popupBasketSlice";
 
 import addIngredients from "./ingredients";
 
-import CustomScroll from "react-custom-scroll";
+import SimpleBar from 'simplebar-react';
 import classNames from "classnames";
 
 import "./popupProduct.scss";
 import "../../../style/button.scss";
 import "../../../style/style.scss";
-import "../../../../node_modules/react-custom-scroll/dist/customScroll.css";
 
 const PopupProduct = ({ product, triggerPizza }) => {
   const dispatch = useDispatch();
@@ -107,7 +106,20 @@ const PopupProduct = ({ product, triggerPizza }) => {
                     <div className="popupProduct__bottom-price">
                       Итого: {price} &#8381;
                     </div>
-                    <button className="button button__products">
+                    <button className="button button__products"
+                    onClick={() => {
+                      dispatch(
+                        addProduct(
+                          product.map((prod) => {
+                          const obj = Object.assign({}, prod);
+                           return Object.assign(obj, {
+                            quantity: 1
+                          });
+                        })
+                        )
+                      );
+                      closePopup();
+                    }}>
                       Добавить
                     </button>
                   </div>
@@ -132,7 +144,7 @@ const PopupProduct = ({ product, triggerPizza }) => {
                   <img src={img} alt={title} />
                 </div>
                 <div className="popupProduct__content">
-                  <CustomScroll heightRelativeToParent="100%">
+                <SimpleBar style={{ maxHeight: '100%' }} autoHide={false}>
                     <h2 className="popupProduct__title">{title}</h2>
                     <div className="popupProduct__description">
                       {ingredients}
@@ -248,14 +260,13 @@ const PopupProduct = ({ product, triggerPizza }) => {
                         })}
                       </div>
                     </div>
-                  </CustomScroll>
+                  </SimpleBar>
                   <div className="popupProduct__bottom">
                     <div className="popupProduct__bottom-price">
                       Итого: {price + amountPrice()} &#8381;
                     </div>
                     <button
                       onClick={() => {
-                        // dispatch(addTotalPrice(amountPrice() + price));
                         dispatch(
                           addProduct(
                             product.map((prod) => {

@@ -187,3 +187,12 @@ body {
     transform: scale(0, 0) !important;
     transition: all .5s linear;
   }
+
+  .simplebar-scrollbar {
+    &::before {
+      background-color: rgba(255, 112, 16, .3) !important;
+    }
+  }
+.simplebar-track {
+  right: -11px !important;
+}

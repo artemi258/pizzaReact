@@ -61,13 +61,6 @@ const Stocks = () => {
                         </Swiper>
             </div>
         </section>
-        // <section className="stock container">
-        //     <div className="stock__wrapper">
-        //             <TransitionGroup component={null}>
-        //                 {renderStock}
-        //             </TransitionGroup>
-        //     </div>
-        // </section>
     )
 }
 

@@ -1,11 +1,14 @@
-import { CSSTransition } from "react-transition-group";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-import { changePopupActivation, addTotalPrice, addProduct } from "./popupBasketSlice";
+import SimpleBar from 'simplebar-react';
+
+import { changePopupActivation, addTotalPrice, addProduct, deleteProduct } from "./popupBasketSlice";
 
 import "../../../style/style.scss";
 import "./popupBasket.scss";
+import 'simplebar/dist/simplebar.min.css';
 import "../../../style/button.scss";
 
 const PopupBasket = () => {
@@ -70,7 +73,8 @@ const PopupBasket = () => {
   };
 
   useEffect(() => {
-    totalAmount()
+    totalAmount();
+    popupRender();
   }, [products])
 
   const totalAmount = () => {
@@ -81,6 +85,10 @@ const PopupBasket = () => {
     dispatch(
       addTotalPrice(num)
     );
+  };
+
+  const onDeleteProduct = (id) => {
+    dispatch(deleteProduct(id));
   };
 
   if (popupActivation) {
@@ -123,17 +131,23 @@ const PopupBasket = () => {
             <h2 className="title">Ваш заказ</h2>
             <div onClick={onCloseFilters} className="popupBasket__close"></div>
             <div className="popupBasket__products">
-              {products.map(({id, img, title, price, dough, size, quantity }, i, arr) => {
+            <SimpleBar style={{ maxHeight: '100%' }} autoHide={false}>
+            <TransitionGroup component={null}>
+              {products.map(({id, img, title, price, liters, dough, size, quantity }, i, arr) => {
                 return (
+                  <CSSTransition key={id} timeout={300} classNames="fadePopupProduct">
                   <div key={title} className="popupBasket__item">
+                    <div onClick={() => onDeleteProduct(id)} className="popupBasket__item-delete">&#128465;</div>
                     <div className="popupBasket__img">
                       <img src={img} alt={title} />
                     </div>
                     <div className="popupBasket__info">
                       <h3 className="popupBasket__title">{title}</h3>
-                      <div className="popupBasket__dough">
+                      {dough ? <div className="popupBasket__dough">
                         {dough} тесто, {size}
-                      </div>
+                      </div> : liters ? <div className="popupBasket__dough">
+                        {liters}
+                      </div> : null}
                       <div className="popupBasket__quantity">
                         <div className="popupBasket__count">
                           <div
@@ -164,8 +178,11 @@ const PopupBasket = () => {
                       </div>
                     </div>
                   </div>
+                  </CSSTransition>
                 );
               })}
+                  </TransitionGroup>
+                  </SimpleBar>
             </div>
             <div className="popupBasket__bottom">
               <div className="popupBasket__bottom-amount">

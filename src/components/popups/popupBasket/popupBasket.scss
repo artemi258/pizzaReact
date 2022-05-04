@@ -12,6 +12,13 @@
     padding: 32px 20px;
     transform: scale(0, 0);
     z-index: 999;
+    &__wrapper {
+        height: 100%;
+    }
+    &__products {
+        height: 100%;
+        padding-bottom: 96px;
+    }
     &__close {
         position: absolute;
         width: 35px;
@@ -60,16 +67,28 @@
         }
     }
     &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 70%;
     }
     &__item {
+        position: relative;
         display: flex;
+        align-items: center;
         margin-top: 20px;
         border: 1px solid #F0F0F0;
         border-radius: 12px;
         padding: 16px 16px;
+        &-delete {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            cursor: pointer;
+        }
     }
     &__title {
+        width: 90%;
         font-size: 16px;
         font-weight: 600;
     }
@@ -91,6 +110,7 @@
         width: 92px;
         height: 36px;
         background-color: #FFEEE2;
+        border-radius: 6px;
         &-input {
             text-align: center;
             width: 40px;
