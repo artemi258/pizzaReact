@@ -8,7 +8,7 @@ const Order = () => {
 
     const {products} = useSelector(state => state.popupBasket);
     return (
-        <div className="order container">
+        <div className="order">
             <div className="order__products">
                 <h2 className="order__products-heading">Ваш заказ</h2>
                 <div className="order__products-wrapper">
@@ -79,9 +79,23 @@ const Order = () => {
                     <h2 className="order__addProducts-heading">Добавить к заказу?</h2>
                     <div className="order__addProducts-elem">
                         <div className="order__addProducts-img"><img src="https://i.pinimg.com/564x/af/e5/4b/afe54bab0779ce912d3ae25a2c7fd39f.jpg" alt="" /></div>
-                            <h3 className="order__addProducts-title">Картофель из печи</h3>
-                            <div className="order__addProducts-portion">Порция 95 г</div>
-                            <button className="button button__products order__addProducts-button">179 ₽</button>
+                        <div className="order__addProducts-wrapper">
+                          <h3 className="order__addProducts-title">Картофель из печи</h3>
+                              <div className="order__addProducts-portion">Порция 95 г</div>
+                              <button className="button button__products order__addProducts-button">179 ₽</button>
+                        </div>
+                            
+                    </div>
+                </div>
+                <div className="order__addProducts-item">
+                    <h2 className="order__addProducts-heading">Соусы</h2>
+                    <div className="order__addProducts-elem">
+                        <div className="order__addProducts-img"><img src="https://i.pinimg.com/564x/af/e5/4b/afe54bab0779ce912d3ae25a2c7fd39f.jpg" alt="" /></div>
+                        <div className="order__addProducts-wrapper">
+                          <h3 className="order__addProducts-title">Картофель из печи</h3>
+                              <button className="button button__products order__addProducts-button">179 ₽</button>
+                        </div>
+                            
                     </div>
                 </div>
             </div>
