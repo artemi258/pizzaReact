@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 
 import './order.scss';
@@ -7,6 +8,9 @@ import '../../style/button.scss';
 const Order = () => {
 
     const {products} = useSelector(state => state.popupBasket);
+    const [backgroundActive, getBackgroundActive] = useState(0);
+    const [checkedChange, setCheckedChange] = useState(true);
+
     return (
         <div className="order">
             <div className="order__products">
@@ -99,6 +103,112 @@ const Order = () => {
                     </div>
                 </div>
             </div>
+            <form action="" className="order__form">
+              <div className="order__form-item">
+              <h2 className="order__form-title">О вас</h2>
+              <div className="order__form-wrapper">
+              <div className="order__form-input">
+                  <label htmlFor="userName">Имя</label>
+                  <input type="text" id="userName" placeholder='Алексей'/>
+                </div>
+                <div className="order__form-input">
+                  <label htmlFor="userName">Номер телефона</label>
+                  <input type="text" id="userName" placeholder='+7'/>
+                </div>
+                <div className="order__form-input">
+                  <label htmlFor="userName">Почта</label>
+                  <input type="text" id="userName" placeholder='mail@gmail.com'/>
+                </div>
+              </div>
+              </div>
+              <div className="order__form-item">
+              <h2 className="order__form-title">Доставка</h2>
+              {/* <div className="order__form-delivery">
+              <div className="drinks__active" style={{left: `${backgroundActive}px`}}></div>
+                <div className="order__form-elem">Доставка</div>
+                <div className="order__form-elem">Самовывоз</div>
+              </div> */}
+                <div className="order__form-input">
+                  <label htmlFor="userName">Улица</label>
+                  <input type="text" id="userName" placeholder='Пушкина'/>
+                </div>
+                <div className="order__form-home">
+                  <div className="order__form-input">
+                    <label htmlFor="userName">Дом</label>
+                    <input type="text" id="userName" placeholder='1а'/>
+                  </div>
+                  <div className="order__form-input">
+                  <label htmlFor="userName">Подъезд</label>
+                  <input type="text" id="userName" placeholder='1'/>
+                </div>
+                <div className="order__form-input">
+                  <label htmlFor="userName">Этаж</label>
+                  <input type="text" id="userName" placeholder='2'/>
+                </div>
+                <div className="order__form-input">
+                  <label htmlFor="userName">Квартира</label>
+                  <input type="text" id="userName" placeholder='3'/>
+                </div>
+                <div className="order__form-input">
+                  <label htmlFor="userName">Домофон</label>
+                  <input type="text" id="userName" placeholder='0000'/>
+                </div>
+                </div>
+                <div className="order__form-orderSpeed">
+                  <h6>Когда выполнить заказ?</h6>
+                  <div className="order__form-wrapper radio">
+                <div className="order__form-radio">
+                  <input type="radio" id="quickly" name='order'/>
+                  <label htmlFor="quickly">Как можно скорее</label>
+                </div>
+                <div className="order__form-radio">
+                  <input type="radio" id="noQuickly" name='order'/>
+                  <label htmlFor="noQuickly">По времени</label>
+                </div>
+                </div>
+                </div>
+              </div>
+              <div className="order__form-item">
+              <h2 className="order__form-title">Оплата</h2>
+              <div className="order__form-wrapper radio">
+              <div className="order__form-radio">
+                  <input type="radio" id="cash" name='payment'/>
+                  <label htmlFor="cash">Наличными</label>
+                </div>
+                <div className="order__form-radio">
+                  <input type="radio" id="card" name='payment'/>
+                  <label htmlFor="card">Картой</label>
+                </div>
+                <div className="order__form-radio">
+                  <input type="radio" id="pay" name='payment'/>
+                  <label htmlFor="pay">Apple Pay</label>
+                </div>
+                </div>
+              </div>
+              <div className="order__form-item">
+              <h2 className="order__form-title">Сдача</h2>
+              <div className="order__form-wrapper radio">
+              <div className="order__form-radio">
+                  <input type="radio" id="withoutChange" name='change'/>
+                  <label htmlFor="withoutChange">Без сдачи</label>
+                </div>
+                <div className="order__form-radio">
+                  <input onChange={(e) => {console.log('check'); setCheckedChange(e.target.checked ? false : true)}} type="radio" id="change" name='change'/>
+                  <label htmlFor="change">Сдача с</label>
+                  <input disabled={checkedChange} type="text" placeholder='0'/>
+                  <span></span>
+                </div>
+             </div>
+              </div>
+              <div className="order__form-item">
+              <h2 className="order__form-title">Комментарий</h2>
+              <textarea name="comment" placeholder='Есть уточнения?' id="" cols="30" rows="10"></textarea>
+              </div>
+              <div className="order__form-bottom">
+                <div className="order__form-totalPrice">Итого: 2 379 ₽</div>
+                <button className="button button__products order__form-button">Оформить заказ</button>
+              </div>
+            </form>
         </div>
     )
 }

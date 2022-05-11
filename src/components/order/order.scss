@@ -1,4 +1,5 @@
 @import '../../style/style.scss';
+@import '../../style/variables.scss';
 
 .order {
     padding: 40px 0 60px 0;
@@ -205,6 +206,175 @@
             width: 100%;
             padding: 10px 0;
             margin-top: 12px;
+        }
+    }
+    &__form {
+        &-item {
+            margin-top: 30px;
+            textarea {
+                width: 100%;
+                resize: none;
+                border: 1px solid #F0F0F0;
+                border-radius: 6px;
+                outline: none;
+                padding: 13px 16px;
+                height: 200px;
+                font-size: 16px;
+                transition: all .3s linear;
+                &:focus-visible {
+                    border: 1px solid $main-color;
+                }
+                &::placeholder {
+                    color: #A5A5A5;
+                }
+            }
+        }
+        &-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        &-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        &-wrapper.radio {
+            justify-content: flex-start;
+        }
+        &-input {
+            display: flex;
+            flex-direction: column;
+            input {
+                border: 1px solid #F0F0F0;
+                border-radius: 6px;
+                height: 48px;
+                width: 270px;
+                padding: 13px 16px;
+                outline: none;
+                transition: all .3s linear;
+                &::placeholder {
+                    color: #A5A5A5;
+                }
+                &:focus-visible {
+                    border: 1px solid $main-color;
+                }
+            }
+            label {
+                display: inline;
+                font-size: 14px;
+                color: #A5A5A5;
+                margin-bottom: 8px;
+                &::after {
+                    content: "*";
+                    margin-left: 2px;
+                    color: red;
+
+                }
+            }
+        }
+        &-home {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            input {
+                width: 154px;
+            }
+        }
+        &-orderSpeed {
+            font-size: 16px;
+            margin-top: 16px;
+            h6 {
+                color: #A5A5A5;
+            }
+        }
+        &-radio{
+            display: flex;
+            align-items: center;
+            &:not(:first-child) {
+                margin-left: 24px;
+            }
+            input[type="radio"] {
+                display: none;
+            }
+            input[type="text"] {
+                width: 160px;
+                height: 48px;
+                border: 1px solid #F0F0F0;
+                border-radius: 6px;
+                margin-left: 16px;
+                outline: none;
+                padding: 13px 16px;
+                transition: all .3s linear;
+                &::placeholder {
+                    color: #A5A5A5;
+                }
+                &:focus-visible {
+                    border: 1px solid $main-color;
+                }
+            }
+            input[type="text"] + span {
+                position: relative;
+                &::after {
+                    content: '₽';
+                    position: absolute;
+                    right: 9px;
+                    top: 0;
+                    transform: translateY(-75%);
+                    width: 16px;
+                    height: 16px;
+                    color: #A5A5A5;
+                }
+            }
+            input[type="radio"] + label {
+                display: flex;
+                align-items: center;
+                position: relative;
+                height: 24px;
+                &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    border: 1px solid #A5A5A5;
+                    border-radius: 47px;
+                    margin-right: 8px;
+                    transition: all .3s linear;
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    background-color: $main-color;
+                    left: 4px;
+                    top: 4px;
+                    transform: translateY(50%);
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 47px;
+                    margin-right: 8px;
+                    transition: all .3s linear;
+                    opacity: 0;
+                }
+            }
+            input[type="radio"]:checked + label {
+                &::before {
+                    color: $main-color;
+                    border: 1px solid $main-color;
+                }
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+        &-bottom {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &-totalPrice {
+            font-weight: 600;
+            font-size: 20px;
+            color: $main-color;
         }
     }
 }
