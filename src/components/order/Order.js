@@ -1,26 +1,94 @@
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import classNames from 'classnames';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay} from "swiper";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+import { addTotalPrice, addProduct, deleteProduct } from "../popups/popupBasket/popupBasketSlice";
+import { fetchDesserts } from "../products/desserts/dessertsSlice";
+import { fetchSnacks } from "../products/snacks/snacksSlice";
 
 
 import './order.scss';
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 import '../../style/button.scss';
 
 const Order = () => {
 
     const {products} = useSelector(state => state.popupBasket);
+    const {desserts} = useSelector(state => state.desserts);
+    const {drinks} = useSelector(state => state.drinks);
+    const {snacks} = useSelector(state => state.snacks);
     const [backgroundActive, getBackgroundActive] = useState(0);
     const [checkedChange, setCheckedChange] = useState(true);
+    const [activeDelivery, setActiveDelivery] = useState();
+    let supplement = useMemo(() => {
+      if (snacks === [] || desserts === []) {
+        console.log('ren')
+        return [];
+      }
+     return [].concat(desserts, snacks);
+    }, [desserts, snacks]);
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(fetchDesserts()).unwrap();
+      dispatch(fetchSnacks()).unwrap();
+    }, []);
+
+    console.log(supplement)
+    console.log(snacks)
+    console.log(desserts)
+
+    const onChangeInput = (e, id, arr) => {
+      const target = e.target;
+      target.value = target.value.replace(/\D/ , '');
+      const item = arr.filter(elem => elem.id === id);
+       const resul = item.map(elem => ({...elem, quantity: +target.value}))  //
+      dispatch(addProduct(resul));
+    };
+  
+    const onChangeInputPlus = (e, title, arr) => {
+      const item = arr.filter(elem => elem.title === title);
+      const check = item.some(elem => elem.quantity >= 9);
+      if (check) {
+        return;
+      }
+       const resul = item.map(elem => ({...elem, quantity: elem.quantity + 1}))  //
+      dispatch(addProduct(resul));
+    };
+    const onChangeInputMinus = (e, title, arr) => {
+      const item = arr.filter(elem => elem.title === title);
+      const check = item.some(elem => elem.quantity <= 1);
+      if (check) {
+        return;
+      }
+  
+       const resul = item.map(elem => ({...elem, quantity: elem.quantity - 1}))  //
+      dispatch(addProduct(resul));
+    };
+
+    const onDeleteProduct = (id) => {
+      dispatch(deleteProduct(id));
+    };
+
+console.log('render')
     return (
         <div className="order">
             <div className="order__products">
                 <h2 className="order__products-heading">Ваш заказ</h2>
                 <div className="order__products-wrapper">
+                <TransitionGroup component={null}>
                 {products.map(({id, img, title, price, liters, dough, size, quantity }, i, arr) => {
                 return (
-                //   <CSSTransition key={id} timeout={300} classNames="fadePopupProduct">
+                  <CSSTransition key={id} timeout={300} classNames="fadePopupProduct">
                   <div key={title} className="order__products-item">
-                    <div className="popupBasket__item-delete">&#128465;</div>
+                    <div onClick={() => onDeleteProduct(id)} className="popupBasket__item-delete">&#128465;</div>
                     <div className="order__products-img">
                       <img src={img} alt={title} />
                     </div>
@@ -36,7 +104,7 @@ const Order = () => {
                       <div className="order__products-quantity">
                         <div className="order__products-count">
                           <div
-                            // onClick={(e) => onChangeInputMinus(e, id, arr)}
+                            onClick={(e) => onChangeInputMinus(e, id, arr)}
                             className="order__products-count-minus"
                           >
                             <div>&minus;</div>
@@ -45,13 +113,13 @@ const Order = () => {
                           type="text"
                           maxLength={1}
                             onChange={(e) => {
-                            //   onChangeInput(e, id, arr);
+                              onChangeInput(e, id, arr);
                             }}
                             value={quantity}
                             className="order__products-count-input"
                           />
                           <div
-                            // onClick={(e) => onChangeInputPlus(e, id, arr)}
+                            onClick={(e) => onChangeInputPlus(e, id, arr)}
                             className="order__products-count-plus"
                           >
                             <div>&#43;</div>
@@ -63,9 +131,10 @@ const Order = () => {
                       </div>
                     </div>
                   </div>
-                //   </CSSTransition>
+                   </CSSTransition>
                 );
               })}
+              </TransitionGroup>
                 </div>
               <div className="order__products-promocode">
                   <div className="order__products-elem">
@@ -81,15 +150,36 @@ const Order = () => {
             <div className="order__addProducts">
                 <div className="order__addProducts-item">
                     <h2 className="order__addProducts-heading">Добавить к заказу?</h2>
-                    <div className="order__addProducts-elem">
-                        <div className="order__addProducts-img"><img src="https://i.pinimg.com/564x/af/e5/4b/afe54bab0779ce912d3ae25a2c7fd39f.jpg" alt="" /></div>
+                    <Swiper
+                            speed={1000}
+                            autoplay={{
+                                delay: 5000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true
+                              }}
+                            slidesPerView={4}
+                            spaceBetween={30}
+                            slidesPerGroup={4}
+                            loop={true}
+                            loopFillGroupWithBlank={true}
+                            pagination={{
+                            clickable: true,
+                            }}
+                            navigation={true}
+                            modules={[Pagination, Navigation, Autoplay]}
+                        >
+                    {supplement.map(({id, img, title, price}) => {
+                     return <SwiperSlide key={id}>
+                      <div className="order__addProducts-elem">
+                        <div className="order__addProducts-img"><img src={img} alt={title} /></div>
                         <div className="order__addProducts-wrapper">
-                          <h3 className="order__addProducts-title">Картофель из печи</h3>
-                              <div className="order__addProducts-portion">Порция 95 г</div>
-                              <button className="button button__products order__addProducts-button">179 ₽</button>
-                        </div>
-                            
+                          <h3 className="order__addProducts-title">{title}</h3>
+                              <button className="button button__products order__addProducts-button">{price} ₽</button>
+                        </div>    
                     </div>
+                    </SwiperSlide>
+                    })}
+                    </Swiper>
                 </div>
                 <div className="order__addProducts-item">
                     <h2 className="order__addProducts-heading">Соусы</h2>
@@ -123,11 +213,11 @@ const Order = () => {
               </div>
               <div className="order__form-item">
               <h2 className="order__form-title">Доставка</h2>
-              {/* <div className="order__form-delivery">
-              <div className="drinks__active" style={{left: `${backgroundActive}px`}}></div>
-                <div className="order__form-elem">Доставка</div>
-                <div className="order__form-elem">Самовывоз</div>
-              </div> */}
+              <div className="order__form-delivery">
+              <div className="order__form-delivery-active" style={{left: `${backgroundActive}px`}}></div>
+                <div onClick={e => {setActiveDelivery(e.target.textContent); getBackgroundActive(e.target.offsetLeft)}} className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Доставка'})}>Доставка</div>
+                <div onClick={e => {setActiveDelivery(e.target.textContent);  getBackgroundActive(e.target.offsetLeft)}}className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Самовывоз'})}>Самовывоз</div>
+              </div>
                 <div className="order__form-input">
                   <label htmlFor="userName">Улица</label>
                   <input type="text" id="userName" placeholder='Пушкина'/>
@@ -189,11 +279,11 @@ const Order = () => {
               <h2 className="order__form-title">Сдача</h2>
               <div className="order__form-wrapper radio">
               <div className="order__form-radio">
-                  <input type="radio" id="withoutChange" name='change'/>
+                  <input onClick={() => setCheckedChange(true)} type="radio" id="withoutChange" name='change'/>
                   <label htmlFor="withoutChange">Без сдачи</label>
                 </div>
                 <div className="order__form-radio">
-                  <input onChange={(e) => {console.log('check'); setCheckedChange(e.target.checked ? false : true)}} type="radio" id="change" name='change'/>
+                  <input onClick={() => setCheckedChange(false)} type="radio" id="change" name='change'/>
                   <label htmlFor="change">Сдача с</label>
                   <input disabled={checkedChange} type="text" placeholder='0'/>
                   <span></span>

@@ -9,7 +9,6 @@ import Footer from "../footer/Footer";
 import Skeleton from "../skeleton/Skeleton";
 import SkeletonStocks from "../skeleton/skeletonStocks";
 import PopupBasket from "../popups/popupBasket/PopupBasket";
-import Order from "../order/Order";
 
 import './app.scss';
 import '../../style/style.scss';
@@ -20,6 +19,7 @@ const Snacks = lazy(() => import("../products/snacks/Snacks"));
 const Desserts = lazy(() => import("../products/desserts/Desserts"));
 const Sauces = lazy(() => import("../products/sauces/Sauces"));
 const Stocks = lazy(() => import("../products/stocks/Stocks"));
+const Order = lazy(() => import("../order/Order"));
 
 
 
@@ -29,7 +29,9 @@ const Stocks = lazy(() => import("../products/stocks/Stocks"));
             <div className="app">
                 <AppHeader/>
                 <PopupBasket/>
+                <Suspense fallback={<SkeletonStocks/>}>
                 <Order/>
+                </Suspense>
                 <main>
                 <Suspense fallback={<SkeletonStocks/>}>
                     <Stocks/>
