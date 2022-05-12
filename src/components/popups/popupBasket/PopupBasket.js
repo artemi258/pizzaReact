@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import SimpleBar from 'simplebar-react';
 
-import { changePopupActivation, addTotalPrice, addProduct, deleteProduct } from "./popupBasketSlice";
+import { changePopupBasketActivation, addTotalPrice, addProduct, deleteProduct } from "./popupBasketSlice";
 
 import "../../../style/style.scss";
 import "./popupBasket.scss";
@@ -41,7 +41,7 @@ const PopupBasket = () => {
 
   const onCloseFilters = () => {
     bodyOverflowVisibility();
-    dispatch(changePopupActivation(false));
+    dispatch(changePopupBasketActivation(false));
   };
 
   const onChangeInput = (e, id, arr) => {

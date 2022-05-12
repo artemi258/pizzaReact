@@ -167,6 +167,7 @@
     &__addProducts {
         margin: 0 auto;
         &-item {
+            position: relative;
             margin-top: 30px;
         }
         &-heading {
@@ -183,6 +184,7 @@
         }
         &-img {
             height: 190px;
+            border-radius: 12px;
             img {
                 height: 100%;
                 width: 100%;
@@ -417,5 +419,35 @@
     }
 }
 .swiper-pagination {
-    bottom: 0 !important;
+    bottom: -21px !important;
+}
+.swiper-pagination-bullet-active {
+    background-color: $main-color !important;
+}
+.swiper-button-next {
+    top: calc(50% + 18px) !important;
+    right: -70px !important;
+    width: 40px !important;
+    height: 40px !important;
+    background-color: $main-color !important;
+    border-radius: 100% !important;
+    color: #fff !important;
+    &::after {
+        font-size: 10px !important;
+    }
+}
+.swiper-button-prev {
+    top: calc(50% + 18px) !important;
+    left: -70px !important;
+    width: 40px !important;
+    height: 40px !important;
+    background-color: $main-color !important;
+    border-radius: 100% !important;
+    color: #fff !important;
+    &::after {
+        font-size: 10px !important;
+    }
+}
+.swiper {
+    position: static !important;
 }

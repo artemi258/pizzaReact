@@ -4,6 +4,7 @@
     background-color: $main-color;
     border: none;
     min-width: 89px;
+    cursor: pointer;
     &__basket {
         border-radius: 4px;
     }
@@ -52,6 +53,33 @@
             background-color: #fff;
             border: 1px solid $main-color;
             border-radius: 100%;
+        }
+    }
+    &__addedBasket {
+        background-color: #fff;
+        color: $main-color;
+        border: 1px solid $main-color;
+        &:hover {
+            position: relative;
+            background-color: $main-color;
+            color: #fff;
+            transition: all .3s linear;
+            &::before {
+                content: 'Перейти в корзину';
+                position: absolute;
+                padding: 5px 5px;
+                width: 160px;
+                height: 40px;
+                background-color: $main-color;
+                border-radius: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+                top: -50px;
+                left: 0;
+                animation: fade .3s;
+            }
         }
     }
 }

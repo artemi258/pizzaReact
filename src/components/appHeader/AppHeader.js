@@ -1,4 +1,4 @@
-import { changePopupActivation } from '../popups/popupBasket/popupBasketSlice';
+import { changePopupBasketActivation } from '../popups/popupBasket/popupBasketSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import pizza from '../../icon/pizza.png';
@@ -63,7 +63,7 @@ import '../../style/button.scss';
                                 <a href="https://instagram.com/" target="_blank" rel='noreferrer'>Instagram</a>
                             </div>
                         </div>
-                        <button onClick={() => dispatch(changePopupActivation(true))} className="button button__basket appHeader__bottom-basket">
+                        <button onClick={() => dispatch(changePopupBasketActivation(true))} className="button button__basket appHeader__bottom-basket">
                             <div className="appHeader__bottom-basket-icon">
                                 <img src={basket} alt="basket" />
                             </div>

@@ -1,27 +1,25 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Pagination, Navigation, Autoplay} from "swiper";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { addTotalPrice, addProduct, deleteProduct } from "../popups/popupBasket/popupBasketSlice";
 import { fetchDesserts } from "../products/desserts/dessertsSlice";
 import { fetchSnacks } from "../products/snacks/snacksSlice";
-
+import { fetchSauces } from "../products/sauces/saucesSlice";
 
 import './order.scss';
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
 import '../../style/button.scss';
 
 const Order = () => {
 
-    const {products} = useSelector(state => state.popupBasket);
+    const {products, totalPrice} = useSelector(state => state.popupBasket);
     const {desserts} = useSelector(state => state.desserts);
-    const {drinks} = useSelector(state => state.drinks);
+    const {sauces} = useSelector(state => state.sauces);
     const {snacks} = useSelector(state => state.snacks);
     const [backgroundActive, getBackgroundActive] = useState(0);
     const [checkedChange, setCheckedChange] = useState(true);
@@ -35,10 +33,10 @@ const Order = () => {
     }, [desserts, snacks]);
 
     const dispatch = useDispatch();
-
     useEffect(() => {
       dispatch(fetchDesserts()).unwrap();
       dispatch(fetchSnacks()).unwrap();
+      dispatch(fetchSauces()).unwrap();
     }, []);
 
     console.log(supplement)
@@ -144,7 +142,7 @@ console.log('render')
 </svg>
 </button>
                   </div>
-                  <div className="order__products-totalPrice">Итого: 2 379 ₽</div>
+                  <div className="order__products-totalPrice">Итого: {totalPrice} ₽</div>
               </div>
             </div>
             <div className="order__addProducts">
@@ -152,6 +150,7 @@ console.log('render')
                     <h2 className="order__addProducts-heading">Добавить к заказу?</h2>
                     <Swiper
                             speed={1000}
+                            initialSlide={1}
                             autoplay={{
                                 delay: 5000,
                                 disableOnInteraction: false,
@@ -161,20 +160,20 @@ console.log('render')
                             spaceBetween={30}
                             slidesPerGroup={4}
                             loop={true}
-                            loopFillGroupWithBlank={true}
                             pagination={{
                             clickable: true,
                             }}
                             navigation={true}
                             modules={[Pagination, Navigation, Autoplay]}
                         >
-                    {supplement.map(({id, img, title, price}) => {
+                    {supplement.map(({id, img, title, price}, i , arr) => {
                      return <SwiperSlide key={id}>
                       <div className="order__addProducts-elem">
                         <div className="order__addProducts-img"><img src={img} alt={title} /></div>
                         <div className="order__addProducts-wrapper">
                           <h3 className="order__addProducts-title">{title}</h3>
-                              <button className="button button__products order__addProducts-button">{price} ₽</button>
+                              <button onClick={() => dispatch(addProduct(
+                                [{...arr[i], quantity: 1}]))} className="button button__products order__addProducts-button">{price} ₽</button>
                         </div>    
                     </div>
                     </SwiperSlide>
@@ -183,15 +182,39 @@ console.log('render')
                 </div>
                 <div className="order__addProducts-item">
                     <h2 className="order__addProducts-heading">Соусы</h2>
+                <Swiper
+                            speed={1000}
+                            initialSlide={1}
+                            autoplay={{
+                                delay: 5000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true
+                              }}
+                            slidesPerView={4}
+                            spaceBetween={30}
+                            slidesPerGroup={4}
+                            loop={true}
+                            pagination={{
+                            clickable: true,
+                            }}
+                            navigation={true}
+                            modules={[Pagination, Navigation, Autoplay]}
+                        >
+                    {sauces.map(({id, img, title, price}, i , arr) => {
+                     return <SwiperSlide key={id}>
+                      
                     <div className="order__addProducts-elem">
-                        <div className="order__addProducts-img"><img src="https://i.pinimg.com/564x/af/e5/4b/afe54bab0779ce912d3ae25a2c7fd39f.jpg" alt="" /></div>
+                        <div className="order__addProducts-img"><img src={img} alt={title} /></div>
                         <div className="order__addProducts-wrapper">
-                          <h3 className="order__addProducts-title">Картофель из печи</h3>
-                              <button className="button button__products order__addProducts-button">179 ₽</button>
+                          <h3 className="order__addProducts-title">{title}</h3>
+                              <button onClick={() => dispatch(addProduct(
+                                [{...arr[i], quantity: 1}]))} className="button button__products order__addProducts-button">{price} ₽</button>
                         </div>
-                            
                     </div>
-                </div>
+                    </SwiperSlide>
+                    })}
+                    </Swiper>
+                    </div>
             </div>
             <form action="" className="order__form">
               <div className="order__form-item">
@@ -295,7 +318,7 @@ console.log('render')
               <textarea name="comment" placeholder='Есть уточнения?' id="" cols="30" rows="10"></textarea>
               </div>
               <div className="order__form-bottom">
-                <div className="order__form-totalPrice">Итого: 2 379 ₽</div>
+                <div className="order__form-totalPrice">Итого: {totalPrice} ₽</div>
                 <button className="button button__products order__form-button">Оформить заказ</button>
               </div>
             </form>

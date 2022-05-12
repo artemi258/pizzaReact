@@ -14,7 +14,7 @@ const popupBasket = createSlice({
         addTotalPrice: (state, action) => {
             state.totalPrice = action.payload;
         },
-        changePopupActivation: (state, action) => {
+        changePopupBasketActivation: (state, action) => {
             state.popupActivation = action.payload;
         },
         addProduct: (state, action) => {
@@ -43,7 +43,7 @@ const { reducer, actions } = popupBasket;
 
 export const {
     addTotalPrice,
-    changePopupActivation,
+    changePopupBasketActivation,
     addProduct,
     deleteProduct
 } = actions;
