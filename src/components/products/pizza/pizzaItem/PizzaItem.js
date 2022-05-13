@@ -12,7 +12,6 @@ const PizzaItem = ({ img, title, ingredients, price }) => {
   const dispatch = useDispatch();
   const {products} = useSelector(state => state.popupBasket);
 
-
   const ingredientsFinal = ingredients.slice(0, 40) + "...";
   const content = () => {
     const activationPopup = (active, trigger) => {
