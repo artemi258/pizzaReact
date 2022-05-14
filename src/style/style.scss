@@ -79,19 +79,19 @@ body {
     transition: all 300ms linear;
   }
   .fade-enter-active {
-    opacity: 1;
+    opacity: 1 !important;
     transition: all 300ms linear;
   }
   .fade-enter-done {
-    opacity: 1;
+    opacity: 1 !important;
     transition: all 300ms linear;
   }
   .fade-exit {
-    opacity: 1;
+    opacity: 1 !important;
     transition: all 300ms linear;
   }
   .fade-exit-active {
-    opacity: .5;
+    opacity: 0;
     transition: all 300ms linear;
   }
 

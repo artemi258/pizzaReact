@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay} from "swiper";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-import { addTotalPrice, addProduct, deleteProduct } from "../popups/popupBasket/popupBasketSlice";
+import { addProduct, deleteProduct, changePopupBasketActivation } from "../popups/popupBasket/popupBasketSlice";
 import { fetchDesserts } from "../products/desserts/dessertsSlice";
 import { fetchSnacks } from "../products/snacks/snacksSlice";
 import { fetchSauces } from "../products/sauces/saucesSlice";
@@ -23,7 +23,7 @@ const Order = () => {
     const {snacks} = useSelector(state => state.snacks);
     const [backgroundActive, getBackgroundActive] = useState(0);
     const [checkedChange, setCheckedChange] = useState(true);
-    const [activeDelivery, setActiveDelivery] = useState();
+    const [activeDelivery, setActiveDelivery] = useState('Доставка');
     let supplement = useMemo(() => {
       if (snacks === [] || desserts === []) {
         console.log('ren')
@@ -172,8 +172,8 @@ console.log('render')
                         <div className="order__addProducts-img"><img src={img} alt={title} /></div>
                         <div className="order__addProducts-wrapper">
                           <h3 className="order__addProducts-title">{title}</h3>
-                              <button onClick={() => dispatch(addProduct(
-                                [{...arr[i], quantity: 1}]))} className="button button__products order__addProducts-button">{price} ₽</button>
+                                {products.find(item => item.id === title) ? <button disabled onClick={() => dispatch(changePopupBasketActivation(true))} className="button button__products  order__addProducts-button">Добавлено</button> : <button onClick={() => dispatch(addProduct(
+                                [{...arr[i], quantity: 1}]))} className="button button__products order__addProducts-button">{price} ₽</button>}
                         </div>    
                     </div>
                     </SwiperSlide>
@@ -202,13 +202,12 @@ console.log('render')
                         >
                     {sauces.map(({id, img, title, price}, i , arr) => {
                      return <SwiperSlide key={id}>
-                      
                     <div className="order__addProducts-elem">
                         <div className="order__addProducts-img"><img src={img} alt={title} /></div>
                         <div className="order__addProducts-wrapper">
                           <h3 className="order__addProducts-title">{title}</h3>
-                              <button onClick={() => dispatch(addProduct(
-                                [{...arr[i], quantity: 1}]))} className="button button__products order__addProducts-button">{price} ₽</button>
+                          {products.find(item => item.id === title) ? <button disabled onClick={() => dispatch(changePopupBasketActivation(true))} className="button button__products  order__addProducts-button">Добавлено</button> : <button onClick={() => dispatch(addProduct(
+                                [{...arr[i], quantity: 1}]))} className="button button__products order__addProducts-button">{price} ₽</button>}
                         </div>
                     </div>
                     </SwiperSlide>
