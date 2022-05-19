@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay} from "swiper";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useForm } from "react-hook-form";
 
 import { addProduct, deleteProduct, changePopupBasketActivation } from "../popups/popupBasket/popupBasketSlice";
 import { fetchDesserts } from "../products/desserts/dessertsSlice";
@@ -24,6 +25,7 @@ const Order = () => {
     const [backgroundActive, getBackgroundActive] = useState(0);
     const [checkedChange, setCheckedChange] = useState(true);
     const [activeDelivery, setActiveDelivery] = useState('Доставка');
+    const [phone, setPhone] = useState("");
     let supplement = useMemo(() => {
       if (snacks === [] || desserts === []) {
         console.log('ren')
@@ -33,15 +35,45 @@ const Order = () => {
     }, [desserts, snacks]);
 
     const dispatch = useDispatch();
+    const {
+      register,
+      handleSubmit,
+      watch,
+      formState: { errors }
+    } = useForm({mode: 'onChange'});
+
+    const onSubmit = (data) => {
+      console.log(data);
+    };
+
     useEffect(() => {
       dispatch(fetchDesserts()).unwrap();
       dispatch(fetchSnacks()).unwrap();
       dispatch(fetchSauces()).unwrap();
     }, []);
 
-    console.log(supplement)
-    console.log(snacks)
-    console.log(desserts)
+    const onChange = (e, trigger) => {
+      console.log(e.target.value.length);
+      if (e.target.value.length > 16) {
+        return;
+      }
+
+      if (e.code === 'Backspace' && trigger === 'key') {
+        console.log(e.target.value.substr(0, e.target.value.length - 1));
+        if (e.target.value.endsWith(' ') && e.target.value.length > 3) {
+          e.target.value = e.target.value.substr(0, e.target.value.length - 1)
+        }
+      } else if (e.target.value.length === 1 && trigger === 'change') {
+        e.target.value = '+7 ' + e.target.value;
+        console.log('change')
+        } else if (trigger === 'change' && (e.target.value.length === 6 || e.target.value.length === 9 || e.target.value.length === 12))  {
+            e.target.value = e.target.value + " ";
+        }
+        if (e.target.value[0] !== '+' || e.target.value[1] !== '7' || e.target.value[2] !== " ") {
+          e.target.value.selectionStart = e.target.value.length
+        }
+        setPhone(e.target.value);
+    }
 
     const onChangeInput = (e, id, arr) => {
       const target = e.target;
@@ -75,7 +107,6 @@ const Order = () => {
       dispatch(deleteProduct(id));
     };
 
-console.log('render')
     return (
         <div className="order">
             <div className="order__products">
@@ -215,21 +246,28 @@ console.log('render')
                     </Swiper>
                     </div>
             </div>
-            <form action="" className="order__form">
+            <form onSubmit={handleSubmit(onSubmit)} action="" className="order__form">
               <div className="order__form-item">
               <h2 className="order__form-title">О вас</h2>
               <div className="order__form-wrapper">
               <div className="order__form-input">
                   <label htmlFor="userName">Имя</label>
-                  <input type="text" id="userName" placeholder='Алексей'/>
+                  <input {...register("userName", {required: true, pattern: /^[\W]+$/i})} type="text" id="userName" placeholder='Алексей'/>
+                  {errors.userName && (
+        <p>только буквы</p>
+      )}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userName">Номер телефона</label>
-                  <input type="text" id="userName" placeholder='+7'/>
+                  <input onFocus={(e) => !phone ? e.target.value = '+7 ' : e.target.value = phone} onKeyDown={(e) => onChange(e, 'key')} onChange={(e) => onChange(e, 'change')} value={phone}  type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
+                  {errors.userPhone && (
+        <p>только цыфры</p>
+      )}
+      {/* {...register("userPhone", {required: true, pattern: /^[\d]+$/i})} */}
                 </div>
                 <div className="order__form-input">
-                  <label htmlFor="userName">Почта</label>
-                  <input type="text" id="userName" placeholder='mail@gmail.com'/>
+                  <label htmlFor="userEmail">Почта</label>
+                  <input {...register("userEmail", {required: true})} type="text" id="userEmail" placeholder='mail@gmail.com'/>
                 </div>
               </div>
               </div>
@@ -241,40 +279,40 @@ console.log('render')
                 <div onClick={e => {setActiveDelivery(e.target.textContent);  getBackgroundActive(e.target.offsetLeft)}}className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Самовывоз'})}>Самовывоз</div>
               </div>
                 <div className="order__form-input">
-                  <label htmlFor="userName">Улица</label>
-                  <input type="text" id="userName" placeholder='Пушкина'/>
+                  <label htmlFor="userStreet">Улица</label>
+                  <input {...register("userStreet", {required: true})} type="text" id="userStreet" placeholder='Пушкина'/>
                 </div>
                 <div className="order__form-home">
                   <div className="order__form-input">
-                    <label htmlFor="userName">Дом</label>
-                    <input type="text" id="userName" placeholder='1а'/>
+                    <label htmlFor="userHome">Дом</label>
+                    <input {...register("userHome", {required: true})} type="text" id="userHome" placeholder='1а'/>
                   </div>
                   <div className="order__form-input">
-                  <label htmlFor="userName">Подъезд</label>
-                  <input type="text" id="userName" placeholder='1'/>
+                  <label htmlFor="userEntrance">Подъезд</label>
+                  <input {...register("userEntrance", {required: true})} type="text" id="userEntrance" placeholder='1'/>
                 </div>
                 <div className="order__form-input">
-                  <label htmlFor="userName">Этаж</label>
-                  <input type="text" id="userName" placeholder='2'/>
+                  <label htmlFor="userFloor">Этаж</label>
+                  <input {...register("userFloor", {required: true})} type="text" id="userFloor" placeholder='2'/>
                 </div>
                 <div className="order__form-input">
-                  <label htmlFor="userName">Квартира</label>
-                  <input type="text" id="userName" placeholder='3'/>
+                  <label htmlFor="userFlat">Квартира</label>
+                  <input {...register("userFlat", {required: true})} type="text" id="userFlat" placeholder='3'/>
                 </div>
                 <div className="order__form-input">
-                  <label htmlFor="userName">Домофон</label>
-                  <input type="text" id="userName" placeholder='0000'/>
+                  <label htmlFor="userIntercom">Домофон</label>
+                  <input {...register("userIntercom", {required: true})} type="text" id="userIntercom" placeholder='0000'/>
                 </div>
                 </div>
                 <div className="order__form-orderSpeed">
                   <h6>Когда выполнить заказ?</h6>
                   <div className="order__form-wrapper radio">
                 <div className="order__form-radio">
-                  <input type="radio" id="quickly" name='order'/>
+                  <input {...register("order", {required: true})} type="radio" id="quickly" name='order'/>
                   <label htmlFor="quickly">Как можно скорее</label>
                 </div>
                 <div className="order__form-radio">
-                  <input type="radio" id="noQuickly" name='order'/>
+                  <input {...register("order", {required: true})} type="radio" id="noQuickly" name='order'/>
                   <label htmlFor="noQuickly">По времени</label>
                 </div>
                 </div>
@@ -284,15 +322,15 @@ console.log('render')
               <h2 className="order__form-title">Оплата</h2>
               <div className="order__form-wrapper radio">
               <div className="order__form-radio">
-                  <input type="radio" id="cash" name='payment'/>
+                  <input {...register("payment", {required: true})} value="Наличными" type="radio" id="cash" name='payment'/>
                   <label htmlFor="cash">Наличными</label>
                 </div>
                 <div className="order__form-radio">
-                  <input type="radio" id="card" name='payment'/>
+                  <input {...register("payment", {required: true})} type="radio" id="card" name='payment'/>
                   <label htmlFor="card">Картой</label>
                 </div>
                 <div className="order__form-radio">
-                  <input type="radio" id="pay" name='payment'/>
+                  <input {...register("payment", {required: true})} type="radio" id="pay" name='payment'/>
                   <label htmlFor="pay">Apple Pay</label>
                 </div>
                 </div>
@@ -301,24 +339,24 @@ console.log('render')
               <h2 className="order__form-title">Сдача</h2>
               <div className="order__form-wrapper radio">
               <div className="order__form-radio">
-                  <input onClick={() => setCheckedChange(true)} type="radio" id="withoutChange" name='change'/>
+                  <input {...register("change", {required: true})} onClick={() => setCheckedChange(true)} type="radio" id="withoutChange" name='change'/>
                   <label htmlFor="withoutChange">Без сдачи</label>
                 </div>
                 <div className="order__form-radio">
-                  <input onClick={() => setCheckedChange(false)} type="radio" id="change" name='change'/>
+                  <input {...register("change", {required: true})} onClick={() => setCheckedChange(false)} type="radio" id="change" name='change'/>
                   <label htmlFor="change">Сдача с</label>
-                  <input disabled={checkedChange} type="text" placeholder='0'/>
+                  <input {...register("change", {required: true})} disabled={checkedChange} type="text" placeholder='0' name='change'/>
                   <span></span>
                 </div>
              </div>
               </div>
               <div className="order__form-item">
               <h2 className="order__form-title">Комментарий</h2>
-              <textarea name="comment" placeholder='Есть уточнения?' id="" cols="30" rows="10"></textarea>
+              <textarea {...register("comment")} name="comment" placeholder='Есть уточнения?' id="" cols="30" rows="10"></textarea>
               </div>
               <div className="order__form-bottom">
                 <div className="order__form-totalPrice">Итого: {totalPrice} ₽</div>
-                <button className="button button__products order__form-button">Оформить заказ</button>
+                <button type="submit" className="button button__products order__form-button">Оформить заказ</button>
               </div>
             </form>
         </div>

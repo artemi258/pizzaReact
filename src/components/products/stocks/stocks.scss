@@ -1,19 +1,13 @@
 .stock {
     margin-top: 30px;
     &__wrapper {
+        position: relative;
         height: 300px;
-        // display: grid;
-        // grid: repeat(1, 300px) / repeat(4, 270px);
-        // column-gap: 20px;
-        // row-gap: 30px;
-        // grid-auto-rows: 300px;
     }
     &__item {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        // align-items: flex-end;
-        // flex-wrap: wrap;
         width: 270px;
         height: 300px;
         border-radius: 12px;
