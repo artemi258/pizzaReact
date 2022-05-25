@@ -253,6 +253,13 @@
             border: 1px solid #F0F0F0;
             border-radius: 6px;
             display: flex;
+            &::after {
+                content: "*";
+                position: absolute;
+                right: -10px;
+                top: -10px;
+                color: red;
+            }
             &-active {
                 position: absolute;
                 border-radius: 12px;
@@ -310,7 +317,6 @@
                     content: "*";
                     margin-left: 2px;
                     color: red;
-
                 }
             }
         }
@@ -418,8 +424,15 @@
             font-size: 20px;
             color: $main-color;
         }
+        &-error {
+            font-size: 14px;
+            color: red;
+            margin: 0;
+        }
     }
 }
+
+
 .swiper-pagination {
     bottom: -21px !important;
 }

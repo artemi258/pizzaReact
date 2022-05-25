@@ -51,28 +51,47 @@ const Order = () => {
       dispatch(fetchSnacks()).unwrap();
       dispatch(fetchSauces()).unwrap();
     }, []);
+console.log('render')
+    const onChange = (e) => {
+      let i = 0;
 
-    const onChange = (e, trigger) => {
-      console.log(e.target.value.length);
-      if (e.target.value.length > 16) {
-        return;
+      if (e.target.value[0] !== '+') {
+        e.target.setSelectionRange(e.target.value.length, e.target.value.length);
+        e.target.value = e.target.value.slice(1) + e.target.value[0];
+      }if (e.target.value[1] !== '7') {
+        e.target.setSelectionRange(e.target.value.length, e.target.value.length);
+        e.target.value = e.target.value.slice(0, 0) + e.target.value.slice(2) + e.target.value[1];
       }
-
-      if (e.code === 'Backspace' && trigger === 'key') {
-        console.log(e.target.value.substr(0, e.target.value.length - 1));
-        if (e.target.value.endsWith(' ') && e.target.value.length > 3) {
-          e.target.value = e.target.value.substr(0, e.target.value.length - 1)
-        }
-      } else if (e.target.value.length === 1 && trigger === 'change') {
-        e.target.value = '+7 ' + e.target.value;
-        console.log('change')
-        } else if (trigger === 'change' && (e.target.value.length === 6 || e.target.value.length === 9 || e.target.value.length === 12))  {
-            e.target.value = e.target.value + " ";
-        }
-        if (e.target.value[0] !== '+' || e.target.value[1] !== '7' || e.target.value[2] !== " ") {
-          e.target.value.selectionStart = e.target.value.length
-        }
+      const val = e.target.value.length <= 1 ? e.target.value.replace(/\D/g, '') : e.target.value.replace(/\D/g, '').slice(1);
+      const matrix = '+7 (___) __-__-___';
+      if (val.length === 0) {
+        e.target.value = '+7';
         setPhone(e.target.value);
+        return;
+      };
+
+      e.target.value = matrix.replace(/./g, function(a) {
+        return /[_]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a;
+      })
+
+      setPhone(e.target.value);
+      // if (e.target.value.length > 16) {
+      //   return;
+      // }
+      // if (e.code === 'Backspace' && trigger === 'key') {
+      //   if (e.target.value.endsWith(' ') && e.target.value.length > 3) {
+      //     e.target.value = e.target.value.substr(0, e.target.value.length - 1)
+      //   }
+      // } else if (e.target.value.length === 1 && trigger === 'change') {
+      //   e.target.value = '+7 ' + e.target.value;
+      //   console.log('change')
+      //   } else if (trigger === 'change' && (e.target.value.length === 6 || e.target.value.length === 9 || e.target.value.length === 12))  {
+      //       e.target.value = e.target.value + " ";
+      //   }
+      //   if (e.target.value[0] !== '+' || e.target.value[1] !== '7' || e.target.value[2] !== " ") {
+      //     e.target.value.setSelectionRange(2, 2);
+      //   }
+        // setPhone(e.target.value);
     }
 
     const onChangeInput = (e, id, arr) => {
@@ -246,29 +265,33 @@ const Order = () => {
                     </Swiper>
                     </div>
             </div>
+
             <form onSubmit={handleSubmit(onSubmit)} action="" className="order__form">
               <div className="order__form-item">
               <h2 className="order__form-title">О вас</h2>
               <div className="order__form-wrapper">
               <div className="order__form-input">
                   <label htmlFor="userName">Имя</label>
-                  <input {...register("userName", {required: true, pattern: /^[\W]+$/i})} type="text" id="userName" placeholder='Алексей'/>
+                  <input style={{borderColor: errors.userName ? 'red' : ''}} {...register("userName", {required: true, pattern: /^[\W]+$/i})} type="text" id="userName" placeholder='Алексей'/>
                   {errors.userName && (
-        <p>только буквы</p>
+        <p className="order__form-error">Только русские буквы</p>
       )}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userName">Номер телефона</label>
-                  <input onFocus={(e) => !phone ? e.target.value = '+7 ' : e.target.value = phone} onKeyDown={(e) => onChange(e, 'key')} onChange={(e) => onChange(e, 'change')} value={phone}  type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
+                  <input style={{borderColor: errors.userPhone ? 'red' : ''}} {...register("userPhone", {required: true, pattern: /^[\d]+$/i})} onFocus={(e) => !phone ? e.target.value = '+7 ' : e.target.value = phone} onChange={onChange} value={phone}  type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
                   {errors.userPhone && (
-        <p>только цыфры</p>
+        <p className="order__form-error">Только цыфры</p>
       )}
-      {/* {...register("userPhone", {required: true, pattern: /^[\d]+$/i})} */}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userEmail">Почта</label>
-                  <input {...register("userEmail", {required: true})} type="text" id="userEmail" placeholder='mail@gmail.com'/>
+                  <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userEmail", {required: true, pattern: /^.+?@(.+?\.)?(.+?)\..{2,}$/ig})} type="text" id="userEmail" placeholder='mail@gmail.com'/>
+                  {errors.userEmail && (
+        <p className="order__form-error">Не правильный адрес емайл</p>)}
                 </div>
+
+                {/* pattern: /^[.]+?@([.])?+?\.[.]{2,}$/i */}
               </div>
               </div>
               <div className="order__form-item">
