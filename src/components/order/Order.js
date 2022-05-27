@@ -279,14 +279,14 @@ console.log('render')
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userName">Номер телефона</label>
-                  <input style={{borderColor: errors.userPhone ? 'red' : ''}} {...register("userPhone", {required: true, pattern: /^[\d]+$/i})} onFocus={(e) => !phone ? e.target.value = '+7 ' : e.target.value = phone} onChange={onChange} value={phone}  type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
+                  <input style={{borderColor: errors.userPhone ? 'red' : ''}} {...register("userPhone", {required: true})} onFocus={(e) => !phone ? e.target.value = '+7 ' : e.target.value = phone} onChange={onChange} value={phone}  type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
                   {errors.userPhone && (
         <p className="order__form-error">Только цыфры</p>
       )}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userEmail">Почта</label>
-                  <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userEmail", {required: true, pattern: /^.+?@(.+?\.)?(.+?)\..{2,}$/ig})} type="text" id="userEmail" placeholder='mail@gmail.com'/>
+                  <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userEmail", {required: true, pattern: /^.+@(.+?\.)?(.+)\..{2,}$/ig})} type="text" id="userEmail" placeholder='mail@gmail.com'/>
                   {errors.userEmail && (
         <p className="order__form-error">Не правильный адрес емайл</p>)}
                 </div>
