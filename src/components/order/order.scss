@@ -282,6 +282,9 @@
                 padding: 13px 0;
                 cursor: pointer;
             }
+            input {
+                display: none;
+            }
         }
         &-wrapper {
             display: flex;

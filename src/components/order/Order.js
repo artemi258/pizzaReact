@@ -279,27 +279,31 @@ console.log('render')
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userName">Номер телефона</label>
-                  <input style={{borderColor: errors.userPhone ? 'red' : ''}} {...register("userPhone", {required: true})} onFocus={(e) => !phone ? e.target.value = '+7 ' : e.target.value = phone} onChange={onChange} value={phone}  type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
+                  <input style={{borderColor: errors.userPhone ? 'red' : ''}} {...register("userPhone", {required: true, pattern: /^[\d]+$/i})} onFocus={(e) => !phone ? e.target.value = '+7 ' : e.target.value = phone} onChange={onChange} value={phone}  type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
                   {errors.userPhone && (
         <p className="order__form-error">Только цыфры</p>
       )}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userEmail">Почта</label>
-                  <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userEmail", {required: true, pattern: /^.+@(.+?\.)?(.+)\..{2,}$/ig})} type="text" id="userEmail" placeholder='mail@gmail.com'/>
+                  <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userEmail", {required: true, pattern: /^.+@(.+\.)?(.+)\..{2,}$/ig})} type="text" id="userEmail" placeholder='mail@gmail.com'/>
                   {errors.userEmail && (
         <p className="order__form-error">Не правильный адрес емайл</p>)}
                 </div>
-
-                {/* pattern: /^[.]+?@([.])?+?\.[.]{2,}$/i */}
               </div>
               </div>
               <div className="order__form-item">
               <h2 className="order__form-title">Доставка</h2>
               <div className="order__form-delivery">
+              {/* <div className="order__form-radio">
+                  <input {...register("payment", {required: true})} type="radio" id="card" name='payment'/>
+                  <label htmlFor="card">Картой</label>
+                </div> */}
               <div className="order__form-delivery-active" style={{left: `${backgroundActive}px`}}></div>
-                <div onClick={e => {setActiveDelivery(e.target.textContent); getBackgroundActive(e.target.offsetLeft)}} className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Доставка'})}>Доставка</div>
-                <div onClick={e => {setActiveDelivery(e.target.textContent);  getBackgroundActive(e.target.offsetLeft)}}className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Самовывоз'})}>Самовывоз</div>
+                <input {...register("delivery", {required: true})} type="radio" id="delivery" name='delivery'/>
+                <label value="Доставка" htmlFor="delivery" onClick={e => {setActiveDelivery(e.target.textContent); getBackgroundActive(e.target.offsetLeft)}} className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Доставка'})}>Доставка</label>
+                <input value="Самовывоз" {...register("delivery", {required: true})} type="radio" id="pickup" name='delivery'/>
+                <label htmlFor="pickup" onClick={e => {setActiveDelivery(e.target.textContent);  getBackgroundActive(e.target.offsetLeft)}}className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Самовывоз'})}>Самовывоз</label>
               </div>
                 <div className="order__form-input">
                   <label htmlFor="userStreet">Улица</label>
