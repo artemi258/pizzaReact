@@ -38,7 +38,7 @@ const Order = () => {
     const {
       register,
       handleSubmit,
-      watch,
+      setError,
       formState: { errors }
     } = useForm({mode: 'onChange'});
 
@@ -125,6 +125,8 @@ console.log('render')
     const onDeleteProduct = (id) => {
       dispatch(deleteProduct(id));
     };
+
+    console.log(errors)
 
     return (
         <div className="order">
@@ -276,12 +278,14 @@ console.log('render')
                   {errors.userName && (
         <p className="order__form-error">Только русские буквы</p>
       )}
+      {errors.userName && errors.userName.type === 'required' && (
+        <p className="order__form-error">обязательное поле</p>)}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userName">Номер телефона</label>
-                  <input style={{borderColor: errors.userPhone ? 'red' : ''}} {...register("userPhone", {required: true, pattern: /^[\d]+$/i})} onFocus={(e) => !phone ? e.target.value = '+7 ' : e.target.value = phone} onChange={onChange} value={phone}  type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
-                  {errors.userPhone && (
-        <p className="order__form-error">Только цыфры</p>
+                  <input style={{borderColor: errors.userPhone && !phone ? 'red' : ''}} {...register("userPhone", {required: true})} onFocus={(e) => !phone ? setPhone('+7 ') : e.target.value = phone} onChange={onChange} value={phone} type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
+                  {errors.userPhone && !phone && (
+        <p className="order__form-error">Обязательное поле</p>
       )}
                 </div>
                 <div className="order__form-input">
@@ -289,25 +293,28 @@ console.log('render')
                   <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userEmail", {required: true, pattern: /^.+@(.+\.)?(.+)\..{2,}$/ig})} type="text" id="userEmail" placeholder='mail@gmail.com'/>
                   {errors.userEmail && (
         <p className="order__form-error">Не правильный адрес емайл</p>)}
+        {errors.userEmail && errors.userEmail.type === 'required' && (
+        <p className="order__form-error">Обязательное поле</p>)}
                 </div>
               </div>
               </div>
               <div className="order__form-item">
               <h2 className="order__form-title">Доставка</h2>
               <div className="order__form-delivery">
-              {/* <div className="order__form-radio">
-                  <input {...register("payment", {required: true})} type="radio" id="card" name='payment'/>
-                  <label htmlFor="card">Картой</label>
-                </div> */}
-              <div className="order__form-delivery-active" style={{left: `${backgroundActive}px`}}></div>
-                <input {...register("delivery", {required: true})} type="radio" id="delivery" name='delivery'/>
-                <label value="Доставка" htmlFor="delivery" onClick={e => {setActiveDelivery(e.target.textContent); getBackgroundActive(e.target.offsetLeft)}} className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Доставка'})}>Доставка</label>
-                <input value="Самовывоз" {...register("delivery", {required: true})} type="radio" id="pickup" name='delivery'/>
-                <label htmlFor="pickup" onClick={e => {setActiveDelivery(e.target.textContent);  getBackgroundActive(e.target.offsetLeft)}}className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Самовывоз'})}>Самовывоз</label>
+                  <div className="order__form-delivery-active" style={{left: `${backgroundActive}px`}}></div>
+                  <input {...register("delivery")} type="radio" id="delivery" name='delivery'/>
+                  <label value="Доставка" htmlFor="delivery" onClick={e => {setActiveDelivery(e.target.textContent); getBackgroundActive(e.target.offsetLeft)}} className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Доставка'})}>Доставка</label>
+                  <input value="Самовывоз" {...register("delivery")} type="radio" id="pickup" name='delivery'/>
+                  <label htmlFor="pickup" onClick={e => {setActiveDelivery(e.target.textContent);  getBackgroundActive(e.target.offsetLeft)}}className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Самовывоз'})}>Самовывоз</label>
               </div>
                 <div className="order__form-input">
                   <label htmlFor="userStreet">Улица</label>
-                  <input {...register("userStreet", {required: true})} type="text" id="userStreet" placeholder='Пушкина'/>
+                  <input {...register("userStreet", {required: true, pattern: /^.{1,3}$/i})} 
+           type="text" id="userStreet" placeholder='Пушкина'/>
+                  {errors.userStreet && errors.userStreet.type === 'pattern' && (
+        <p className="order__form-error">максимум 3 символа</p>)}
+        {errors.userStreet && errors.userStreet.type === 'required' && (
+        <p className="order__form-error">Обязательное поле</p>)}
                 </div>
                 <div className="order__form-home">
                   <div className="order__form-input">
