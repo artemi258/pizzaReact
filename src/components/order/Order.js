@@ -275,23 +275,26 @@ console.log('render')
               <div className="order__form-input">
                   <label htmlFor="userName">Имя</label>
                   <input style={{borderColor: errors.userName ? 'red' : ''}} {...register("userName", {required: true, pattern: /^[\W]+$/i})} type="text" id="userName" placeholder='Алексей'/>
-                  {errors.userName && (
+                  {errors.userName && errors.userName.type === 'pattern' && (
         <p className="order__form-error">Только русские буквы</p>
       )}
       {errors.userName && errors.userName.type === 'required' && (
-        <p className="order__form-error">обязательное поле</p>)}
+        <p className="order__form-error">Обязательное поле</p>)}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userName">Номер телефона</label>
-                  <input style={{borderColor: errors.userPhone && !phone ? 'red' : ''}} {...register("userPhone", {required: true})} onFocus={(e) => !phone ? setPhone('+7 ') : e.target.value = phone} onChange={onChange} value={phone} type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
-                  {errors.userPhone && !phone && (
+                  <input style={{borderColor: errors.userPhone && !phone ? 'red' : ''}} {...register("userPhone", {required: true, minLength: 18})} onFocus={(e) => !phone ? setPhone('+7 ') : e.target.value = phone} onChange={onChange} value={phone} type="text" id="userPhone" placeholder='+7 000 00 00 000'/>
+                  {errors.userPhone && errors.userPhone.type === 'required' && !phone && (
         <p className="order__form-error">Обязательное поле</p>
       )}
+        { errors.userPhone && errors.userPhone.type === 'minLength' && phone.length < 18 && (
+                <p className="order__form-error">Недостаточное количество цифр</p>
+              )}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userEmail">Почта</label>
                   <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userEmail", {required: true, pattern: /^.+@(.+\.)?(.+)\..{2,}$/ig})} type="text" id="userEmail" placeholder='mail@gmail.com'/>
-                  {errors.userEmail && (
+                  {errors.userEmail && errors.userEmail.type === 'pattern' && (
         <p className="order__form-error">Не правильный адрес емайл</p>)}
         {errors.userEmail && errors.userEmail.type === 'required' && (
         <p className="order__form-error">Обязательное поле</p>)}
@@ -302,54 +305,68 @@ console.log('render')
               <h2 className="order__form-title">Доставка</h2>
               <div className="order__form-delivery">
                   <div className="order__form-delivery-active" style={{left: `${backgroundActive}px`}}></div>
-                  <input {...register("delivery")} type="radio" id="delivery" name='delivery'/>
-                  <label value="Доставка" htmlFor="delivery" onClick={e => {setActiveDelivery(e.target.textContent); getBackgroundActive(e.target.offsetLeft)}} className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Доставка'})}>Доставка</label>
+                  <input checked={true}  value="Доставка" {...register("delivery")} type="radio" id="delivery" name='delivery'/>
+                  <label htmlFor="delivery" onClick={e => {setActiveDelivery(e.target.textContent); getBackgroundActive(e.target.offsetLeft)}} className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Доставка'})}>Доставка</label>
                   <input value="Самовывоз" {...register("delivery")} type="radio" id="pickup" name='delivery'/>
                   <label htmlFor="pickup" onClick={e => {setActiveDelivery(e.target.textContent);  getBackgroundActive(e.target.offsetLeft)}}className={classNames("order__form-delivery-button", {'order__form-delivery-color': activeDelivery === 'Самовывоз'})}>Самовывоз</label>
               </div>
                 <div className="order__form-input">
                   <label htmlFor="userStreet">Улица</label>
-                  <input {...register("userStreet", {required: true, pattern: /^.{1,3}$/i})} 
+                  <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userStreet", {required: true, pattern: /\W+/i})} 
            type="text" id="userStreet" placeholder='Пушкина'/>
                   {errors.userStreet && errors.userStreet.type === 'pattern' && (
-        <p className="order__form-error">максимум 3 символа</p>)}
+        <p className="order__form-error">Только русские буквы</p>)}
         {errors.userStreet && errors.userStreet.type === 'required' && (
         <p className="order__form-error">Обязательное поле</p>)}
                 </div>
                 <div className="order__form-home">
                   <div className="order__form-input">
                     <label htmlFor="userHome">Дом</label>
-                    <input {...register("userHome", {required: true})} type="text" id="userHome" placeholder='1а'/>
+                    <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userHome", {required: true})} type="text" id="userHome" placeholder='1а'/>
+                    {errors.userHome && (
+        <p className="order__form-error">Обязательное поле</p>)}
                   </div>
                   <div className="order__form-input">
                   <label htmlFor="userEntrance">Подъезд</label>
-                  <input {...register("userEntrance", {required: true})} type="text" id="userEntrance" placeholder='1'/>
+                  <input style={{borderColor: errors.userEntrance ? 'red' : ''}} {...register("userEntrance", {required: true})} type="text" id="userEntrance" placeholder='1'/>
+                  {errors.userEntrance && (
+        <p className="order__form-error">Обязательное поле</p>)}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userFloor">Этаж</label>
-                  <input {...register("userFloor", {required: true})} type="text" id="userFloor" placeholder='2'/>
+                  <input style={{borderColor: errors.userFloor ? 'red' : ''}} {...register("userFloor", {required: true})} type="text" id="userFloor" placeholder='2'/>
+                  {errors.userFloor && (
+        <p className="order__form-error">Обязательное поле</p>)}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userFlat">Квартира</label>
-                  <input {...register("userFlat", {required: true})} type="text" id="userFlat" placeholder='3'/>
+                  <input style={{borderColor: errors.userFlat ? 'red' : ''}} {...register("userFlat", {required: true})} type="text" id="userFlat" placeholder='3'/>
+                  {errors.userFlat && (
+        <p className="order__form-error">Обязательное поле</p>)}
                 </div>
                 <div className="order__form-input">
                   <label htmlFor="userIntercom">Домофон</label>
-                  <input {...register("userIntercom", {required: true})} type="text" id="userIntercom" placeholder='0000'/>
+                  <input style={{borderColor: errors.userIntercom ? 'red' : ''}} {...register("userIntercom", {required: true, pattern: /\d+/})} type="text" id="userIntercom" placeholder='0000'/>
+                  {errors.userIntercom && errors.userIntercom.type === 'required' && (
+        <p className="order__form-error">Обязательное поле</p>)}
+        {errors.userIntercom && errors.userIntercom.type === 'pattern' && (
+        <p className="order__form-error">Только цифры</p>)}
                 </div>
                 </div>
                 <div className="order__form-orderSpeed">
                   <h6>Когда выполнить заказ?</h6>
                   <div className="order__form-wrapper radio">
                 <div className="order__form-radio">
-                  <input {...register("order", {required: true})} type="radio" id="quickly" name='order'/>
+                  <input {...register("order", {required: true})} value="Как можно скорее" type="radio" id="quickly" name='order'/>
                   <label htmlFor="quickly">Как можно скорее</label>
                 </div>
                 <div className="order__form-radio">
-                  <input {...register("order", {required: true})} type="radio" id="noQuickly" name='order'/>
+                  <input {...register("order", {required: true})} value="По времени" type="radio" id="noQuickly" name='order'/>
                   <label htmlFor="noQuickly">По времени</label>
                 </div>
                 </div>
+                {errors.order && (
+        <p className="order__form-error">Обязательное поле</p>)}
                 </div>
               </div>
               <div className="order__form-item">
@@ -360,29 +377,33 @@ console.log('render')
                   <label htmlFor="cash">Наличными</label>
                 </div>
                 <div className="order__form-radio">
-                  <input {...register("payment", {required: true})} type="radio" id="card" name='payment'/>
+                  <input {...register("payment", {required: true})} value="Картой" type="radio" id="card" name='payment'/>
                   <label htmlFor="card">Картой</label>
                 </div>
                 <div className="order__form-radio">
-                  <input {...register("payment", {required: true})} type="radio" id="pay" name='payment'/>
+                  <input {...register("payment", {required: true})} value="Apple Pay" type="radio" id="pay" name='payment'/>
                   <label htmlFor="pay">Apple Pay</label>
                 </div>
                 </div>
+                {errors.payment && (
+        <p className="order__form-error">Обязательное поле</p>)}
               </div>
               <div className="order__form-item">
               <h2 className="order__form-title">Сдача</h2>
               <div className="order__form-wrapper radio">
               <div className="order__form-radio">
-                  <input {...register("change", {required: true})} onClick={() => setCheckedChange(true)} type="radio" id="withoutChange" name='change'/>
+                  <input {...register("change", {required: true})} value="Без сдачи" onClick={() => setCheckedChange(true)} type="radio" id="withoutChange" name='change'/>
                   <label htmlFor="withoutChange">Без сдачи</label>
                 </div>
                 <div className="order__form-radio">
                   <input {...register("change", {required: true})} onClick={() => setCheckedChange(false)} type="radio" id="change" name='change'/>
                   <label htmlFor="change">Сдача с</label>
-                  <input {...register("change", {required: true})} disabled={checkedChange} type="text" placeholder='0' name='change'/>
+                  <input  {...register("change", {required: !checkedChange ? true : false})} disabled={checkedChange} type="text" placeholder='0' name='change'/>
                   <span></span>
                 </div>
              </div>
+             {errors.change && (
+        <p className="order__form-error">Обязательное поле</p>)}
               </div>
               <div className="order__form-item">
               <h2 className="order__form-title">Комментарий</h2>

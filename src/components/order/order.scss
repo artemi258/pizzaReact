@@ -221,6 +221,28 @@
         &-item {
             position: relative;
             margin-top: 30px;
+            &:nth-child(3) {
+                h2 {
+                    &::after {
+                        content: "*";
+                        margin-left: 2px;
+                        color: red;
+                        font-size: 16px;
+                        vertical-align: top;
+                    }
+                }
+            }
+            &:nth-child(4) {
+                h2 {
+                    &::after {
+                        content: "*";
+                        margin-left: 2px;
+                        color: red;
+                        font-size: 16px;
+                        vertical-align: top;
+                    }
+                }
+            }
             textarea {
                 width: 100%;
                 resize: none;
@@ -336,6 +358,11 @@
             margin-top: 16px;
             h6 {
                 color: #A5A5A5;
+                &::after {
+                    content: "*";
+                    margin-left: 2px;
+                    color: red;
+                }
             }
         }
         &-radio{
