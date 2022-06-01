@@ -38,11 +38,13 @@ const Order = () => {
     const {
       register,
       handleSubmit,
-      setError,
+      reset,
       formState: { errors }
     } = useForm({mode: 'onChange'});
 
     const onSubmit = (data) => {
+      setCheckedChange(true)
+      reset({change: '', userName: ''});
       console.log(data);
     };
 
@@ -398,7 +400,7 @@ console.log('render')
                 <div className="order__form-radio">
                   <input {...register("change", {required: true})} onClick={() => setCheckedChange(false)} type="radio" id="change" name='change'/>
                   <label htmlFor="change">Сдача с</label>
-                  <input  {...register("change", {required: !checkedChange ? true : false})} disabled={checkedChange} type="text" placeholder='0' name='change'/>
+                  {checkedChange ? <div type="text"  name='change'>0</div> : <input {...register("change", {required: true})} type="text" placeholder='0' name='change'/>}
                   <span></span>
                 </div>
              </div>
