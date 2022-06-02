@@ -365,7 +365,7 @@
                 }
             }
         }
-        &-radio{
+        &-radio {
             display: flex;
             align-items: center;
             &:not(:first-child) {
@@ -441,6 +441,28 @@
                 &::after {
                     opacity: 1;
                 }
+            }
+        }
+        &-fakeInput {
+                width: 160px;
+                height: 48px;
+                border: 1px solid #F0F0F0;
+                border-radius: 6px;
+                margin-left: 16px;
+                padding: 13px 16px;
+                color: #A5A5A5;
+        }
+        &-fakeInput + span {
+            position: relative;
+            &::after {
+                content: '₽';
+                position: absolute;
+                right: 9px;
+                top: 0;
+                transform: translateY(-75%);
+                width: 16px;
+                height: 16px;
+                color: #A5A5A5;
             }
         }
         &-bottom {

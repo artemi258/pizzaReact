@@ -43,9 +43,17 @@ const Order = () => {
     } = useForm({mode: 'onChange'});
 
     const onSubmit = (data) => {
-      setCheckedChange(true)
-      reset({change: '', userName: ''});
-      console.log(data);
+      let newData;
+      if (!checkedChange) {
+        newData = {...data, change: `${data.change} ${data.changeInput}р`};
+        delete newData.changeInput;
+      } else {
+        newData = data;
+      }
+      setPhone('');
+      setCheckedChange(true);
+      reset();
+      console.log(newData);
     };
 
     useEffect(() => {
@@ -314,7 +322,7 @@ console.log('render')
               </div>
                 <div className="order__form-input">
                   <label htmlFor="userStreet">Улица</label>
-                  <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userStreet", {required: true, pattern: /\W+/i})} 
+                  <input style={{borderColor: errors.userStreet ? 'red' : ''}} {...register("userStreet", {required: true, pattern: /\W+/i})} 
            type="text" id="userStreet" placeholder='Пушкина'/>
                   {errors.userStreet && errors.userStreet.type === 'pattern' && (
         <p className="order__form-error">Только русские буквы</p>)}
@@ -324,7 +332,7 @@ console.log('render')
                 <div className="order__form-home">
                   <div className="order__form-input">
                     <label htmlFor="userHome">Дом</label>
-                    <input style={{borderColor: errors.userEmail ? 'red' : ''}} {...register("userHome", {required: true})} type="text" id="userHome" placeholder='1а'/>
+                    <input style={{borderColor: errors.userHome ? 'red' : ''}} {...register("userHome", {required: true})} type="text" id="userHome" placeholder='1а'/>
                     {errors.userHome && (
         <p className="order__form-error">Обязательное поле</p>)}
                   </div>
@@ -394,13 +402,13 @@ console.log('render')
               <h2 className="order__form-title">Сдача</h2>
               <div className="order__form-wrapper radio">
               <div className="order__form-radio">
-                  <input {...register("change", {required: true})} value="Без сдачи" onClick={() => setCheckedChange(true)} type="radio" id="withoutChange" name='change'/>
+                  <input {...register("change", {required: true})} value="Без сдачи" onClick={() => setCheckedChange(true)} type="radio" id="withoutChange"/>
                   <label htmlFor="withoutChange">Без сдачи</label>
                 </div>
                 <div className="order__form-radio">
-                  <input {...register("change", {required: true})} onClick={() => setCheckedChange(false)} type="radio" id="change" name='change'/>
+                  <input checked={!checkedChange} {...register("change", {required: true})} onClick={() => setCheckedChange(false)} type="radio" id="change" value={'Сдача с'}/>
                   <label htmlFor="change">Сдача с</label>
-                  {checkedChange ? <div type="text"  name='change'>0</div> : <input {...register("change", {required: true})} type="text" placeholder='0' name='change'/>}
+                  {checkedChange ? <div className="order__form-fakeInput">0</div> : <input {...register("changeInput")} type="text" placeholder='0'/>}
                   <span></span>
                 </div>
              </div>
