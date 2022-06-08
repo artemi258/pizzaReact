@@ -28,7 +28,6 @@ const Order = () => {
     const [phone, setPhone] = useState("");
     let supplement = useMemo(() => {
       if (snacks === [] || desserts === []) {
-        console.log('ren')
         return [];
       }
      return [].concat(desserts, snacks);
@@ -45,10 +44,10 @@ const Order = () => {
     const onSubmit = (data) => {
       let newData;
       if (!checkedChange) {
-        newData = {...data, change: `${data.change} ${data.changeInput}р`};
+        newData = {...data, change: `${data.change} ${data.changeInput}р`, products, totalPrice};
         delete newData.changeInput;
       } else {
-        newData = data;
+        newData = {...data, products, totalPrice};
       }
       setPhone('');
       setCheckedChange(true);
@@ -60,6 +59,7 @@ const Order = () => {
       dispatch(fetchDesserts()).unwrap();
       dispatch(fetchSnacks()).unwrap();
       dispatch(fetchSauces()).unwrap();
+      window.scrollBy(0, 101)
     }, []);
 console.log('render')
     const onChange = (e) => {
@@ -135,9 +135,6 @@ console.log('render')
     const onDeleteProduct = (id) => {
       dispatch(deleteProduct(id));
     };
-
-    console.log(errors)
-
     return (
         <div className="order">
             <div className="order__products">
@@ -146,7 +143,7 @@ console.log('render')
                 <TransitionGroup component={null}>
                 {products.map(({id, img, title, price, liters, dough, size, quantity }, i, arr) => {
                 return (
-                  <CSSTransition key={id} timeout={300} classNames="fadePopupProduct">
+                  <CSSTransition key={id} timeout={300} classNames="fade">
                   <div key={title} className="order__products-item">
                     <div onClick={() => onDeleteProduct(id)} className="popupBasket__item-delete">&#128465;</div>
                     <div className="order__products-img">

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { Route, Routes, useLocation} from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
@@ -9,6 +9,8 @@ import Footer from "../footer/Footer";
 import Skeleton from "../skeleton/Skeleton";
 import SkeletonStocks from "../skeleton/skeletonStocks";
 import PopupBasket from "../popups/popupBasket/PopupBasket";
+import AppProducts from "./AppProducts";
+import AppOrder from "./AppOrder";
 
 import './app.scss';
 import '../../style/style.scss';
@@ -21,38 +23,34 @@ const Sauces = lazy(() => import("../products/sauces/Sauces"));
 const Stocks = lazy(() => import("../products/stocks/Stocks"));
 const Order = lazy(() => import("../order/Order"));
 
-
-
     const App = () => {
+
+        const {pathname} = useLocation();
         return (
-        <Router>
-            <div className="app">
+             <div className="app">
                 <AppHeader/>
                 <PopupBasket/>
-                <Suspense fallback={<SkeletonStocks/>}>
-                <Order/>
-                </Suspense>
                 <main>
-                <Suspense fallback={<SkeletonStocks/>}>
-                    <Stocks/>
-                </Suspense>
-                    <NavMenu/>
-                    <section className="app__products">
+                {pathname === '/order' ? null : <Suspense fallback={<SkeletonStocks/>}><Stocks/></Suspense>}
+                {pathname === '/order' ? null : <NavMenu/>}
                         <Suspense fallback={<Skeleton/>}>
                             <Routes>
-                                <Route path="/" element={<Pizza/>}/>
-                                <Route path="/drinks" element={<Drinks/>}/>
-                                <Route path="/snacks" element={<Snacks/>}/>
-                                <Route path="/desserts" element={<Desserts/>}/>
-                                <Route path="/sauces" element={<Sauces/>}/>
+                                <Route path="/" element={<AppProducts/>}>
+                                    <Route index element={<Pizza/>}/>
+                                    <Route path="drinks" element={<Drinks/>}/>
+                                    <Route path="snacks" element={<Snacks/>}/>
+                                    <Route path="desserts" element={<Desserts/>}/>
+                                    <Route path="sauces" element={<Sauces/>}/>
+                                </Route>
+                                <Route path="/order" element={<AppOrder/>}>
+                                    <Route index element={<Order/>}/>
+                                </Route>
                             </Routes>
                         </Suspense>
-                    </section>
                 </main>
                 <Promo/>
                 <Footer/>
             </div>
-        </Router>
         )
     }
 

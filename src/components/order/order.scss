@@ -18,6 +18,7 @@
     &-item {
         position: relative;
         opacity: 0;
+        animation: fade .8s linear forwards;
         width: 100%;
         display: flex;
         margin-top: 20px;
@@ -492,6 +493,7 @@
     background-color: $main-color !important;
 }
 .swiper-button-next {
+    position: absolute;
     top: calc(50% + 18px) !important;
     right: -70px !important;
     width: 40px !important;
@@ -504,6 +506,7 @@
     }
 }
 .swiper-button-prev {
+    position: absolute;
     top: calc(50% + 18px) !important;
     left: -70px !important;
     width: 40px !important;

@@ -1,6 +1,7 @@
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import SimpleBar from 'simplebar-react';
 
@@ -39,7 +40,7 @@ const PopupBasket = () => {
     document.querySelector("body").style.marginRight = ``;
   };
 
-  const onCloseFilters = () => {
+  const onCloseBasket = () => {
     bodyOverflowVisibility();
     dispatch(changePopupBasketActivation(false));
   };
@@ -107,9 +108,10 @@ const PopupBasket = () => {
             <div className="popupBasket__wrapper">
               <h2 className="title">Ваш заказ</h2>
               <div
-                onClick={onCloseFilters}
+                onClick={onCloseBasket}
                 className="popupBasket__close"
               ></div>
+              <div>Вы не выбрали ни одного товара</div>
               <div className="popupBasket__bottom">
                 <div className="popupBasket__bottom-amount">
                   Итого: {totalPrice} &#8381;
@@ -129,7 +131,7 @@ const PopupBasket = () => {
         <div className="popupBasket">
           <div className="popupBasket__wrapper">
             <h2 className="title">Ваш заказ</h2>
-            <div onClick={onCloseFilters} className="popupBasket__close"></div>
+            <div onClick={onCloseBasket} className="popupBasket__close"></div>
             <div className="popupBasket__products">
             <SimpleBar style={{ maxHeight: '100%' }} autoHide={false}>
             <TransitionGroup component={null}>
@@ -188,9 +190,9 @@ const PopupBasket = () => {
               <div className="popupBasket__bottom-amount">
                 Итого: {totalPrice} &#8381;
               </div>
-              <button className="button button__products">
+              <NavLink onClick={onCloseBasket} to={'order'} className="button button__products">
                 Оформить заказ
-              </button>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -205,7 +207,7 @@ const PopupBasket = () => {
         timeout={300}
         classNames="fadeBackground"
       >
-        <div onClick={onCloseFilters} className="popupBasket__background"></div>
+        <div onClick={onCloseBasket} className="popupBasket__background"></div>
       </CSSTransition>
     );
   };

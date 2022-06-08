@@ -55,7 +55,7 @@ body {
 }
 .fadePopupProduct-enter-active {
   visibility: visible !important;
-  opacity: 1 !important;
+  opacity: 0 !important;
   transition: all 300ms linear;
 }
 .fadePopupProduct-enter-done {
@@ -75,11 +75,11 @@ body {
 }
 
   .fade-enter {
-    opacity: 0;
+    opacity: 0 !important;
     transition: all 300ms linear;
   }
   .fade-enter-active {
-    opacity: 1 !important;
+    opacity: 0 !important;
     transition: all 300ms linear;
   }
   .fade-enter-done {
@@ -91,7 +91,7 @@ body {
     transition: all 300ms linear;
   }
   .fade-exit-active {
-    opacity: 0;
+    opacity: 0 !important;
     transition: all 300ms linear;
   }
 

@@ -178,6 +178,12 @@
             left: -20px;
             border-top: 1px solid #F0F0F0;
         }
+        a {
+            text-decoration: none;
+            &:hover {
+                color: #fff;
+            }
+        }
     }
     &__background {
         visibility: hidden;
@@ -191,4 +197,11 @@
         background-color: rgba(255, 112, 16, .3);
         backdrop-filter: blur(10px);
     }
+}
+
+.simplebar-content-wrapper {
+    overflow: visible !important;
+}
+.simplebar-mask {
+    overflow: visible !important;
 }
