@@ -1,5 +1,6 @@
 import { changePopupBasketActivation } from '../popups/popupBasket/popupBasketSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import pizza from '../../icon/pizza.png';
 import account from './icon/account.png';
@@ -38,12 +39,12 @@ import '../../style/button.scss';
                     </div>
                     <div className="appHeader__divinder"></div>
                     <div className="appHeader__bottom">
-                        <div className="appHeader__bottom-logo">
+                        <NavLink to={'/'} className="appHeader__bottom-logo">
                             <div className="appHeader__bottom-img">
                                 <img src={pizza} alt="pizza" />
                             </div>
                             <span>Куда пицца</span>
-                        </div>
+                        </NavLink>
                         <div className="appHeader__bottom-contacts">
                             <span>Контакты:</span>
                             <div className="appHeader__bottom-item">

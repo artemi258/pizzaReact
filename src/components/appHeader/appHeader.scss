@@ -52,6 +52,9 @@
         height: 60px;
         &-logo {
             display: flex;
+            text-decoration: none;
+            color: #000 !important;
+            cursor: pointer;
             span {
                 font-size: 16px;
                 margin-left: 12px;

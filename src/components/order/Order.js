@@ -5,11 +5,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay} from "swiper";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useForm } from "react-hook-form";
+import { nanoid } from "@reduxjs/toolkit";
 
 import { addProduct, deleteProduct, changePopupBasketActivation } from "../popups/popupBasket/popupBasketSlice";
 import { fetchDesserts } from "../products/desserts/dessertsSlice";
 import { fetchSnacks } from "../products/snacks/snacksSlice";
 import { fetchSauces } from "../products/sauces/saucesSlice";
+import { useHttp } from "../../hooks/http.hook";
 
 import './order.scss';
 import "swiper/css";
@@ -26,6 +28,7 @@ const Order = () => {
     const [checkedChange, setCheckedChange] = useState(true);
     const [activeDelivery, setActiveDelivery] = useState('Доставка');
     const [phone, setPhone] = useState("");
+    const {request} = useHttp();
     let supplement = useMemo(() => {
       if (snacks === [] || desserts === []) {
         return [];
@@ -41,25 +44,28 @@ const Order = () => {
       formState: { errors }
     } = useForm({mode: 'onChange'});
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
       let newData;
       if (!checkedChange) {
-        newData = {...data, change: `${data.change} ${data.changeInput}р`, products, totalPrice};
+        newData = await {id: nanoid(), ...data, change: `${data.change} ${data.changeInput}р`, products, totalPrice};
         delete newData.changeInput;
       } else {
-        newData = {...data, products, totalPrice};
+        newData = await {id: nanoid(), ...data, products, totalPrice};
       }
       setPhone('');
       setCheckedChange(true);
-      reset();
-      console.log(newData);
+      // reset();
+      const postData = await JSON.stringify(newData);
+     
+      request('http://localhost:3001/stocks', 'POST', postData)
+      .then(data =>  console.log(data))
     };
 
     useEffect(() => {
       dispatch(fetchDesserts()).unwrap();
       dispatch(fetchSnacks()).unwrap();
       dispatch(fetchSauces()).unwrap();
-      window.scrollBy(0, 101)
+      window.scrollTo(0, 101)
     }, []);
 console.log('render')
     const onChange = (e) => {
