@@ -11,6 +11,7 @@ import SkeletonStocks from "../skeleton/skeletonStocks";
 import PopupBasket from "../popups/popupBasket/PopupBasket";
 import AppProducts from "./AppProducts";
 import AppOrder from "./AppOrder";
+// import Success from "../order/success/Success";
 
 import './app.scss';
 import '../../style/style.scss';
@@ -22,6 +23,7 @@ const Desserts = lazy(() => import("../products/desserts/Desserts"));
 const Sauces = lazy(() => import("../products/sauces/Sauces"));
 const Stocks = lazy(() => import("../products/stocks/Stocks"));
 const Order = lazy(() => import("../order/Order"));
+const Success = lazy(() => import("../order/success/Success"));
 
     const App = () => {
 
@@ -30,6 +32,7 @@ const Order = lazy(() => import("../order/Order"));
              <div className="app">
                 <AppHeader/>
                 <PopupBasket/>
+                {/* <Success/> */}
                 <main>
                 {pathname === '/order' ? null : <Suspense fallback={<SkeletonStocks/>}><Stocks/></Suspense>}
                 {pathname === '/order' ? null : <NavMenu/>}
@@ -44,6 +47,7 @@ const Order = lazy(() => import("../order/Order"));
                                 </Route>
                                 <Route path="/order" element={<AppOrder/>}>
                                     <Route index element={<Order/>}/>
+                                    <Route path="success" element={<Success/>}/>
                                 </Route>
                             </Routes>
                         </Suspense>

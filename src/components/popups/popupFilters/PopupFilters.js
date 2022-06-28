@@ -103,7 +103,15 @@ const Filters = ({ filters, data, action }) => {
 
   const content = () => {
     if (!filters || filters.length === 0) {
-      return <h5>фильтров еще нет</h5>;
+     return <CSSTransition
+              in={filtersVisibility}
+              timeout={500}
+              classNames="visibility"
+            >
+              <div className="popupFilters">
+                  <h4 className="popupFilters__subTitle popupFilters__noFilters">фильтров еще нет</h4>
+                        </div>
+            </CSSTransition>
     } else {
       return (
         <CSSTransition

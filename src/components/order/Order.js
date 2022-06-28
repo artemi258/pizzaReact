@@ -6,6 +6,7 @@ import { Pagination, Navigation, Autoplay} from "swiper";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useForm } from "react-hook-form";
 import { nanoid } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 import { addProduct, deleteProduct, changePopupBasketActivation } from "../popups/popupBasket/popupBasketSlice";
 import { fetchDesserts } from "../products/desserts/dessertsSlice";
@@ -28,6 +29,7 @@ const Order = () => {
     const [checkedChange, setCheckedChange] = useState(true);
     const [activeDelivery, setActiveDelivery] = useState('Доставка');
     const [phone, setPhone] = useState("");
+    const navigate = useNavigate();
     const {request} = useHttp();
     let supplement = useMemo(() => {
       if (snacks === [] || desserts === []) {
@@ -58,7 +60,7 @@ const Order = () => {
       const postData = await JSON.stringify(newData);
      
       request('http://localhost:3001/stocks', 'POST', postData)
-      .then(data =>  console.log(data))
+      .then(data => navigate('../success'))
     };
 
     useEffect(() => {
@@ -91,23 +93,6 @@ console.log('render')
       })
 
       setPhone(e.target.value);
-      // if (e.target.value.length > 16) {
-      //   return;
-      // }
-      // if (e.code === 'Backspace' && trigger === 'key') {
-      //   if (e.target.value.endsWith(' ') && e.target.value.length > 3) {
-      //     e.target.value = e.target.value.substr(0, e.target.value.length - 1)
-      //   }
-      // } else if (e.target.value.length === 1 && trigger === 'change') {
-      //   e.target.value = '+7 ' + e.target.value;
-      //   console.log('change')
-      //   } else if (trigger === 'change' && (e.target.value.length === 6 || e.target.value.length === 9 || e.target.value.length === 12))  {
-      //       e.target.value = e.target.value + " ";
-      //   }
-      //   if (e.target.value[0] !== '+' || e.target.value[1] !== '7' || e.target.value[2] !== " ") {
-      //     e.target.value.setSelectionRange(2, 2);
-      //   }
-        // setPhone(e.target.value);
     }
 
     const onChangeInput = (e, id, arr) => {
