@@ -35,6 +35,9 @@ const popupBasket = createSlice({
         },
         deleteProduct: (state, action) => {
             state.products = state.products.filter(prod => prod.id !== action.payload);
+        },
+        cleaningBasket: (state) => {
+            state.products = [];
         }
     }
 });
@@ -45,7 +48,8 @@ export const {
     addTotalPrice,
     changePopupBasketActivation,
     addProduct,
-    deleteProduct
+    deleteProduct,
+    cleaningBasket
 } = actions;
 
 export default reducer;

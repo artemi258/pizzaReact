@@ -1,13 +1,20 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { cleaningBasket, addTotalPrice } from "../../popups/popupBasket/popupBasketSlice";
+
 
 import img from './success.png';
 
 import './success.scss';
 
 const Success = () => {
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        window.scrollTo(0, 565);
+        dispatch(cleaningBasket());
+        dispatch(addTotalPrice(0));
+        window.scrollTo(0, 101);
+        // eslint-disable-next-line
     }, []);
     return <div className="success container">
         <div className="success__wrapper">

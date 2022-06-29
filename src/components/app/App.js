@@ -34,8 +34,8 @@ const Success = lazy(() => import("../order/success/Success"));
                 <PopupBasket/>
                 {/* <Success/> */}
                 <main>
-                {pathname === '/order' ? null : <Suspense fallback={<SkeletonStocks/>}><Stocks/></Suspense>}
-                {pathname === '/order' ? null : <NavMenu/>}
+                {/\/order/gi.test(pathname) ? null : <Suspense fallback={<SkeletonStocks/>}><Stocks/></Suspense>}
+                {/\/order/gi.test(pathname) ? null : <NavMenu/>}
                         <Suspense fallback={<Skeleton/>}>
                             <Routes>
                                 <Route path="/" element={<AppProducts/>}>

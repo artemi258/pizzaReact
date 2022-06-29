@@ -59,7 +59,7 @@ const Order = () => {
       // reset();
       const postData = await JSON.stringify(newData);
      
-      request('http://localhost:3001/stocks', 'POST', postData)
+      request('http://localhost:3001/orders', 'POST', postData)
       .then(data => navigate('../success'))
     };
 

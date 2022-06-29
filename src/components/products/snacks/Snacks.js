@@ -50,6 +50,7 @@ const Snacks = () => {
     const popupProductInfo = useMemo(() => {
         const item = resultSnacks.filter(item => item.id === activeProduct);
         return item;
+        // eslint-disable-next-line
     }, [activeProduct])
 
     return (
