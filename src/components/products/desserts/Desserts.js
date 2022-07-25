@@ -1,24 +1,25 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, memo, useRef, useState } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-import { fetchDesserts } from "./dessertsSlice";
+// import { fetchDesserts } from "./dessertsSlice";
 import DessertsItem from "./dessertsItem/DessertsItem";
 import Search from "../../search/Search";
 import PopupProduct from "../../popups/popupProduct/PopupProduct";
 import { searchDesserts } from "../../search/searchSlice";
+import dessert from '../../../JSON/product.json';
 
 import './desserts.scss';
 import '../../../style/style.scss';
 
-const Desserts = () => {
-    const {desserts} = useSelector(state => state.desserts);
+const Desserts = memo(() => {
+    // const {desserts} = useSelector(state => state.desserts);
     const {resultDesserts} = useSelector(state => state.search);
     const {activeProduct} = useSelector(state => state.popupProduct);
-    const dispatch = useDispatch();
-
+    // const dispatch = useDispatch();
+    const [desserts] = useState(dessert.desserts);
     useEffect(() => {
-        dispatch(fetchDesserts()).unwrap();
+        // dispatch(fetchDesserts()).unwrap();
         scrollToRef(myRef);
         // eslint-disable-next-line
     }, []);
@@ -30,6 +31,7 @@ const Desserts = () => {
     const myRef = useRef();
 
     const item = (arr) => {
+        console.log(arr)
         if (arr.length === 0) {
             return <CSSTransition key={'notFound'} timeout={300} classNames="fade">
                         <h5 className="notFound">К сожалению, товар не найден</h5>
@@ -63,6 +65,6 @@ const Desserts = () => {
             </div>
         </div>
     )
-};
+});
 
 export default Desserts;

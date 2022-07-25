@@ -1,24 +1,26 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, memo, useRef, useState } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-import { fetchSnacks } from "./snacksSlice";
+// import { fetchSnacks } from "./snacksSlice";
 import Search from "../../search/Search";
 import { searchSnacks } from "../../search/searchSlice";
 import SnacksItem from "./snacksItem/SnacksItem";
 import PopupProduct from "../../popups/popupProduct/PopupProduct";
+import products from '../../../JSON/product.json';
 
 import './snacks.scss';
 import '../../../style/style.scss';
 
-const Snacks = () => {
-    const {snacks} = useSelector(state => state.snacks);
+const Snacks = memo(() => {
+    // const {snacks} = useSelector(state => state.snacks);
     const {resultSnacks} = useSelector(state => state.search);
     const {activeProduct} = useSelector(state => state.popupProduct);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
+    const [snacks] = useState(products.snacks);
 
     useEffect(() => {
-        dispatch(fetchSnacks()).unwrap();
+        // dispatch(fetchSnacks()).unwrap();
         scrollToRef(myRef);
         // eslint-disable-next-line
     }, []);
@@ -64,6 +66,6 @@ const Snacks = () => {
             </div>
         </div>
     )
-};
+});
 
 export default Snacks;

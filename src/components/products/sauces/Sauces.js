@@ -1,23 +1,24 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, memo, useRef, useState } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-import { fetchSauces } from "./saucesSlice";
+// import { fetchSauces } from "./saucesSlice";
 import SaucesItem from "./saucesItem/SaucesItem";
 import Search from "../../search/Search";
 import { searchSauces } from "../../search/searchSlice";
+import products from '../../../JSON/product.json';
 
 import './sauces.scss';
 import '../../../style/style.scss';
 
-const Sauces = () => {
-    const {sauces} = useSelector(state => state.sauces);
+const Sauces = memo(() => {
+    // const {sauces} = useSelector(state => state.sauces);
     const {resultSauces} = useSelector(state => state.search);
-    const dispatch = useDispatch();
-
+    // const dispatch = useDispatch();
+    const [sauces] = useState(products.sauces);
 
     useEffect(() => {
-        dispatch(fetchSauces()).unwrap();
+        // dispatch(fetchSauces()).unwrap();
         scrollToRef(myRef);
         // eslint-disable-next-line
     }, []);
@@ -29,6 +30,7 @@ const Sauces = () => {
     const myRef = useRef();
     
     const item = (arr) => {
+
         if (arr.length === 0) {
             return <CSSTransition key={'notFound'} timeout={300} classNames="fade">
                         <h5 className="notFound">К сожалению, товар не найден</h5>
@@ -45,7 +47,6 @@ const Sauces = () => {
     const renderSauces = useMemo(() => {
        return item(resultSauces);
     }, [resultSauces]);
-
     return (
         <div ref={myRef} className="sauces container">
             <Search data={sauces} search={searchSauces} filters={false}/>
@@ -57,6 +58,6 @@ const Sauces = () => {
             </div>
         </div>
     )
-};
+});
 
 export default Sauces;

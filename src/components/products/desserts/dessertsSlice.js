@@ -10,7 +10,7 @@ export const fetchDesserts = createAsyncThunk(
     'desserts/fetchDesserts',
     () => {
         const { request } = useHttp();
-        return request('http://localhost:3001/desserts');
+         request('http://localhost:3001/desserts')
     }
 );
 
@@ -22,7 +22,7 @@ const desserts = createSlice({
         builder
             .addCase(fetchDesserts.pending, state => {state.dessertsLoadingState = 'loading'})
             .addCase(fetchDesserts.fulfilled, (state, action) => {
-                state.desserts = action.payload;
+                state.desserts = action.payload
                 state.dessertsLoadingState = 'idle';
             })
             .addCase(fetchDesserts.rejected, state => {state.dessertsLoadingState = 'error'})
