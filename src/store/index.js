@@ -3,7 +3,7 @@ import stocks from "../components/products/stocks/stocksSlice";
 import pizza from "../components/products/pizza/pizzaSlice";
 import drinks from "../components/products/drinks/drinksSlice";
 import snacks from "../components/products/snacks/snacksSlice";
-// import desserts from "../components/products/desserts/dessertsSlice";
+import desserts from "../components/products/desserts/dessertsSlice";
 import sauces from "../components/products/sauces/saucesSlice";
 import search from "../components/search/searchSlice";
 import filters from "../components/popups/popupFilters/popupFiltersSlice";
@@ -16,7 +16,7 @@ const store = configureStore({
     pizza,
     drinks,
     snacks,
-    // desserts,
+    desserts,
     sauces,
     search,
     filters,

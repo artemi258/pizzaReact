@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, memo, useRef, useState } from "react";
+import { useEffect, useMemo, memo, useRef } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 // import { fetchPizza } from "./pizzaSlice";
@@ -10,14 +10,14 @@ import PopupProduct from "../../popups/popupProduct/PopupProduct";
 import { changeAnimation } from "./pizzaSlice";
 import { searchPizza } from "../../search/searchSlice";
 import { filteringPizza } from "../../popups/popupFilters/popupFiltersSlice";
+import { addPizza } from "./pizzaSlice";
 import products from '../../../JSON/product.json';
-
 
 import "./pizza.scss";
 import "../../../style/style.scss";
 
 const Pizza = memo(() => {
-  // const { pizza } = useSelector((state) => state.pizza);
+  const { pizza } = useSelector((state) => state.pizza);
   const { resultPizza } = useSelector((state) => state.search);
   const { activeProduct } = useSelector((state) => state.popupProduct);
   const { filters, resultFilteringPizza } = useSelector(
@@ -25,10 +25,10 @@ const Pizza = memo(() => {
   );
   const dispatch = useDispatch();
   const animation = useSelector((state) => state.pizza.animation);
-  const [pizza] = useState(products.pizza);
 
   useEffect(() => {
     // dispatch(fetchPizza()).unwrap();
+    dispatch(addPizza(products.pizza));
     if (animation) {
       scrollToRef(myRef);
     }

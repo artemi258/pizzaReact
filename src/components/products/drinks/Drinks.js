@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, memo, useRef, useState } from "react";
+import { useEffect, useMemo, memo, useRef } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
 // import { fetchDrinks } from "./drinksSlice";
@@ -8,20 +8,21 @@ import Search from "../../search/Search";
 import Filters from "../../popups/popupFilters/PopupFilters";
 import { searchDrinks } from "../../search/searchSlice";
 import { filteringDrinks } from "../../popups/popupFilters/popupFiltersSlice";
+import { addDrinks } from "./drinksSlice";
 import products from '../../../JSON/product.json';
 
 import './drinks.scss';
 import '../../../style/style.scss';
 
 const Drinks = memo(() => {
-    // const {drinks} = useSelector(state => state.drinks);
+    const {drinks} = useSelector(state => state.drinks);
     const {resultDrinks} = useSelector(state => state.search)
     const {filters, resultFilteringDrinks} = useSelector(state => state.filters)
-    // const dispatch = useDispatch();
-    const [drinks] = useState(products.drinks);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         // dispatch(fetchDrinks()).unwrap();
+        dispatch(addDrinks(products.drinks));
         scrollToRef(myRef);
         // eslint-disable-next-line
     }, []);

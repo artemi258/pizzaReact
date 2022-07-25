@@ -9,10 +9,14 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 
 import { addProduct, deleteProduct, changePopupBasketActivation } from "../popups/popupBasket/popupBasketSlice";
-import { fetchDesserts } from "../products/desserts/dessertsSlice";
-import { fetchSnacks } from "../products/snacks/snacksSlice";
-import { fetchSauces } from "../products/sauces/saucesSlice";
+// import { fetchDesserts } from "../products/desserts/dessertsSlice";
+// import { fetchSnacks } from "../products/snacks/snacksSlice";
+// import { fetchSauces } from "../products/sauces/saucesSlice";
+import { addDesserts } from "../products/desserts/dessertsSlice";
+import { addSauces } from "../products/sauces/saucesSlice";
+import { addSnacks } from "../products/snacks/snacksSlice";
 import { useHttp } from "../../hooks/http.hook";
+import product from '../../JSON/product.json';
 
 import './order.scss';
 import "swiper/css";
@@ -64,9 +68,12 @@ const Order = () => {
     };
 
     useEffect(() => {
-      dispatch(fetchDesserts()).unwrap();
-      dispatch(fetchSnacks()).unwrap();
-      dispatch(fetchSauces()).unwrap();
+      // dispatch(fetchDesserts()).unwrap();
+      // dispatch(fetchSnacks()).unwrap();
+      // dispatch(fetchSauces()).unwrap();
+      dispatch(addDesserts(product.desserts));
+      dispatch(addSnacks(product.snacks));
+      dispatch(addSauces(product.sauces));
       window.scrollTo(0, 101)
     }, []);
 console.log('render')

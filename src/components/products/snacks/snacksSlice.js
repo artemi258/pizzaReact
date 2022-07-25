@@ -17,7 +17,11 @@ export const fetchSnacks = createAsyncThunk(
 const snacks = createSlice({
     name: 'snacks',
     initialState,
-    reducers: {},
+    reducers: {
+        addSnacks: (state, action) => {
+            state.snacks = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchSnacks.pending, state => {state.snacksLoadingState = 'loading'})
@@ -29,6 +33,8 @@ const snacks = createSlice({
     }
 });
 
-const { reducer } = snacks;
+const { reducer, actions } = snacks;
+
+export const {addSnacks} = actions;
 
 export default reducer;

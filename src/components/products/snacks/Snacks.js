@@ -7,20 +7,22 @@ import Search from "../../search/Search";
 import { searchSnacks } from "../../search/searchSlice";
 import SnacksItem from "./snacksItem/SnacksItem";
 import PopupProduct from "../../popups/popupProduct/PopupProduct";
+import { addSnacks } from "./snacksSlice";
 import products from '../../../JSON/product.json';
 
 import './snacks.scss';
 import '../../../style/style.scss';
 
 const Snacks = memo(() => {
-    // const {snacks} = useSelector(state => state.snacks);
+    const {snacks} = useSelector(state => state.snacks);
     const {resultSnacks} = useSelector(state => state.search);
     const {activeProduct} = useSelector(state => state.popupProduct);
-    // const dispatch = useDispatch();
-    const [snacks] = useState(products.snacks);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         // dispatch(fetchSnacks()).unwrap();
+        dispatch(addSnacks(products.snacks));
+
         scrollToRef(myRef);
         // eslint-disable-next-line
     }, []);

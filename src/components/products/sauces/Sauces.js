@@ -6,19 +6,21 @@ import { CSSTransition, TransitionGroup} from "react-transition-group";
 import SaucesItem from "./saucesItem/SaucesItem";
 import Search from "../../search/Search";
 import { searchSauces } from "../../search/searchSlice";
+import { addSauces } from "./saucesSlice";
 import products from '../../../JSON/product.json';
+
 
 import './sauces.scss';
 import '../../../style/style.scss';
 
 const Sauces = memo(() => {
-    // const {sauces} = useSelector(state => state.sauces);
+    const {sauces} = useSelector(state => state.sauces);
     const {resultSauces} = useSelector(state => state.search);
-    // const dispatch = useDispatch();
-    const [sauces] = useState(products.sauces);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         // dispatch(fetchSauces()).unwrap();
+        dispatch(addSauces(products.sauces));
         scrollToRef(myRef);
         // eslint-disable-next-line
     }, []);

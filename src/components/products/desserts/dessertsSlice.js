@@ -10,25 +10,31 @@ export const fetchDesserts = createAsyncThunk(
     'desserts/fetchDesserts',
     () => {
         const { request } = useHttp();
-         request('http://localhost:3001/desserts')
+         request('../../../JSON/product.json')
     }
 );
 
 const desserts = createSlice({
     name: 'desserts',
     initialState,
-    reducers: {},
+    reducers: {
+        addDesserts: (state, action) => {
+            state.desserts = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchDesserts.pending, state => {state.dessertsLoadingState = 'loading'})
             .addCase(fetchDesserts.fulfilled, (state, action) => {
-                state.desserts = action.payload
+                state.desserts = action.payload.desserts;
                 state.dessertsLoadingState = 'idle';
             })
             .addCase(fetchDesserts.rejected, state => {state.dessertsLoadingState = 'error'})
     }
 });
 
-const { reducer } = desserts;
+const { reducer, actions } = desserts;
+
+export const {addDesserts} = actions;
 
 export default reducer;

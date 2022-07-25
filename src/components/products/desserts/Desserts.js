@@ -7,19 +7,20 @@ import DessertsItem from "./dessertsItem/DessertsItem";
 import Search from "../../search/Search";
 import PopupProduct from "../../popups/popupProduct/PopupProduct";
 import { searchDesserts } from "../../search/searchSlice";
-import dessert from '../../../JSON/product.json';
+import { addDesserts } from "./dessertsSlice";
+import products from '../../../JSON/product.json';
 
 import './desserts.scss';
 import '../../../style/style.scss';
 
 const Desserts = memo(() => {
-    // const {desserts} = useSelector(state => state.desserts);
+    const {desserts} = useSelector(state => state.desserts);
     const {resultDesserts} = useSelector(state => state.search);
     const {activeProduct} = useSelector(state => state.popupProduct);
-    // const dispatch = useDispatch();
-    const [desserts] = useState(dessert.desserts);
+    const dispatch = useDispatch();
     useEffect(() => {
         // dispatch(fetchDesserts()).unwrap();
+        dispatch(addDesserts(products.desserts));
         scrollToRef(myRef);
         // eslint-disable-next-line
     }, []);
@@ -31,7 +32,6 @@ const Desserts = memo(() => {
     const myRef = useRef();
 
     const item = (arr) => {
-        console.log(arr)
         if (arr.length === 0) {
             return <CSSTransition key={'notFound'} timeout={300} classNames="fade">
                         <h5 className="notFound">К сожалению, товар не найден</h5>

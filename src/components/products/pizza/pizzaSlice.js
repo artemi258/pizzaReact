@@ -21,6 +21,9 @@ const pizza = createSlice({
     reducers: {
         changeAnimation: state => {
             state.animation = true;
+        },
+        addPizza: (state, action) => {
+            state.pizza = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -36,6 +39,6 @@ const pizza = createSlice({
 
 const { reducer, actions } = pizza;
 
-export const {changeAnimation} = actions;
+export const {changeAnimation, addPizza} = actions;
 
 export default reducer;
