@@ -2,11 +2,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useMemo, useRef, memo } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-import { fetchDesserts } from "./dessertsSlice";
+// import { fetchDesserts } from "./dessertsSlice";
 import DessertsItem from "./dessertsItem/DessertsItem";
 import Search from "../../search/Search";
 import PopupProduct from "../../popups/popupProduct/PopupProduct";
 import { searchDesserts } from "../../search/searchSlice";
+import { addDesserts } from "./dessertsSlice";
+import products from '../../../JSON/product.json';
 
 import './desserts.scss';
 import '../../../style/style.scss';
@@ -16,9 +18,9 @@ const Desserts = memo(() => {
     const {resultDesserts} = useSelector(state => state.search);
     const {activeProduct} = useSelector(state => state.popupProduct);
     const dispatch = useDispatch();
-
     useEffect(() => {
-        dispatch(fetchDesserts()).unwrap();
+        // dispatch(fetchDesserts()).unwrap();
+        dispatch(addDesserts(products.desserts));
         scrollToRef(myRef);
         // eslint-disable-next-line
     }, []);

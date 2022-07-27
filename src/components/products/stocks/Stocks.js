@@ -1,10 +1,11 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay} from "swiper";
 import { fetchStocks } from "./stocksSlice";
 
 import StocksItem from './stocksItem/StocksItem';
+import products from '../../../JSON/product.json';
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -17,7 +18,8 @@ import '../../../style/style.scss';
 const Stocks = () => {
 
     const dispatch = useDispatch();
-    const {stocks} = useSelector(state => state.stocks);
+    // const {stocks} = useSelector(state => state.stocks);
+    const [stocks] = useState(products.stocks);
 
     useEffect(() => {
         dispatch(fetchStocks()).unwrap();

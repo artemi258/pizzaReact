@@ -2,10 +2,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useMemo, useRef, memo } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-import { fetchSauces } from "./saucesSlice";
+// import { fetchSauces } from "./saucesSlice";
 import SaucesItem from "./saucesItem/SaucesItem";
 import Search from "../../search/Search";
 import { searchSauces } from "../../search/searchSlice";
+import { addSauces } from "./saucesSlice";
+import products from '../../../JSON/product.json';
+
 
 import './sauces.scss';
 import '../../../style/style.scss';
@@ -15,9 +18,9 @@ const Sauces = memo(() => {
     const {resultSauces} = useSelector(state => state.search);
     const dispatch = useDispatch();
 
-
     useEffect(() => {
-        dispatch(fetchSauces()).unwrap();
+        // dispatch(fetchSauces()).unwrap();
+        dispatch(addSauces(products.sauces));
         scrollToRef(myRef);
         // eslint-disable-next-line
     }, []);
@@ -29,6 +32,7 @@ const Sauces = memo(() => {
     const myRef = useRef();
     
     const item = (arr) => {
+
         if (arr.length === 0) {
             return <CSSTransition key={'notFound'} timeout={300} classNames="fade">
                         <h5 className="notFound">К сожалению, товар не найден</h5>
@@ -45,7 +49,6 @@ const Sauces = memo(() => {
     const renderSauces = useMemo(() => {
        return item(resultSauces);
     }, [resultSauces]);
-
     return (
         <div ref={myRef} className="sauces container">
             <Search data={sauces} search={searchSauces} filters={false}/>
