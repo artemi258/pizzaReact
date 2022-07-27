@@ -63,7 +63,7 @@ const Order = () => {
       // reset();
       const postData = await JSON.stringify(newData);
      
-      request(`${product}/Orders`, 'POST', postData)
+      request(`${product.Orders}`, 'POST', postData)
       .then(data => navigate('../success'))
     };
 
