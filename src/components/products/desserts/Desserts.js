@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, memo } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
 import { fetchDesserts } from "./dessertsSlice";
@@ -11,7 +11,7 @@ import { searchDesserts } from "../../search/searchSlice";
 import './desserts.scss';
 import '../../../style/style.scss';
 
-const Desserts = () => {
+const Desserts = memo(() => {
     const {desserts} = useSelector(state => state.desserts);
     const {resultDesserts} = useSelector(state => state.search);
     const {activeProduct} = useSelector(state => state.popupProduct);
@@ -63,6 +63,6 @@ const Desserts = () => {
             </div>
         </div>
     )
-};
+});
 
 export default Desserts;

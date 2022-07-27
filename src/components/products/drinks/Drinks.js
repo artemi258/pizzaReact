@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, memo } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
 import { fetchDrinks } from "./drinksSlice";
@@ -12,7 +12,7 @@ import { filteringDrinks } from "../../popups/popupFilters/popupFiltersSlice";
 import './drinks.scss';
 import '../../../style/style.scss';
 
-const Drinks = () => {
+const Drinks = memo(() => {
     const {drinks} = useSelector(state => state.drinks);
     const {resultDrinks} = useSelector(state => state.search)
     const {filters, resultFilteringDrinks} = useSelector(state => state.filters)
@@ -71,6 +71,6 @@ const Drinks = () => {
             </div>
         </div>
     )
-};
+});
 
 export default Drinks

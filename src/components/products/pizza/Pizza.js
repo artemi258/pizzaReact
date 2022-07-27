@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, memo } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { fetchPizza } from "./pizzaSlice";
@@ -14,7 +14,7 @@ import { filteringPizza } from "../../popups/popupFilters/popupFiltersSlice";
 import "./pizza.scss";
 import "../../../style/style.scss";
 
-const Pizza = () => {
+const Pizza = memo(() => {
   const { pizza } = useSelector((state) => state.pizza);
   const { resultPizza } = useSelector((state) => state.search);
   const { activeProduct } = useSelector((state) => state.popupProduct);
@@ -99,6 +99,6 @@ const Pizza = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Pizza;

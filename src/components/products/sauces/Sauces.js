@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, memo } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
 import { fetchSauces } from "./saucesSlice";
@@ -10,7 +10,7 @@ import { searchSauces } from "../../search/searchSlice";
 import './sauces.scss';
 import '../../../style/style.scss';
 
-const Sauces = () => {
+const Sauces = memo(() => {
     const {sauces} = useSelector(state => state.sauces);
     const {resultSauces} = useSelector(state => state.search);
     const dispatch = useDispatch();
@@ -57,6 +57,6 @@ const Sauces = () => {
             </div>
         </div>
     )
-};
+});
 
 export default Sauces;
