@@ -25,7 +25,7 @@ const Pizza = memo(() => {
   );
   const dispatch = useDispatch();
   const animation = useSelector((state) => state.pizza.animation);
-
+console.log(products)
   useEffect(() => {
     // dispatch(fetchPizza()).unwrap();
     dispatch(addPizza(products.pizza));
