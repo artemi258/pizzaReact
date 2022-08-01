@@ -20,16 +20,16 @@ const Footer = () => {
                 </div>
                 <ul className="footer__info">
                     <span>Куда пицца</span>
-                    <li><a href="#">О компании</a></li>
-                    <li><a href="#">Пользовательское соглашение</a></li>
-                    <li><a href="#">Условия гарантии</a></li>
+                    <li><a href="#q">О компании</a></li>
+                    <li><a href="#q">Пользовательское соглашение</a></li>
+                    <li><a href="#q">Условия гарантии</a></li>
                 </ul>
                 <ul className="footer__help">
                     <span>Помощь</span>
-                    <li><a href="#">Ресторан</a></li>
-                    <li><a href="#">Контакты</a></li>
-                    <li><a href="#">Поддержка</a></li>
-                    <li><a href="#">Отследить заказ</a></li>
+                    <li><a href="#q">Ресторан</a></li>
+                    <li><a href="#q">Контакты</a></li>
+                    <li><a href="#q">Поддержка</a></li>
+                    <li><a href="#q">Отследить заказ</a></li>
                 </ul>
                 <div className="footer__contacts">
                             <span>Контакты</span>

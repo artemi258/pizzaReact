@@ -1,6 +1,5 @@
 import { Route, Routes, useLocation} from "react-router-dom";
 import { Suspense, lazy } from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import AppHeader from "../appHeader/AppHeader";
 import NavMenu from "../navMenu/NavMenu";

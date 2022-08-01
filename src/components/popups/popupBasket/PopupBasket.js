@@ -81,7 +81,7 @@ const PopupBasket = () => {
   const totalAmount = () => {
     let num = 0;
     products.forEach(elem => {
-      num += elem.price * (elem.quantity === '' ? 1 : elem.quantity);
+      num += elem.price * elem.quantity;
     })
     dispatch(
       addTotalPrice(num)
