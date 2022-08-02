@@ -42,7 +42,7 @@ const Order = () => {
     const {
       register,
       handleSubmit,
-      reset,
+      // reset,
       formState: { errors }
     } = useForm({mode: 'onChange'});
 
@@ -60,7 +60,7 @@ const Order = () => {
       const postData = await JSON.stringify(newData);
      
       request('http://localhost:3001/orders', 'POST', postData)
-      .then(data => navigate('../success'))
+      .then(() => navigate('../success'))
     };
 
     useEffect(() => {
@@ -68,8 +68,8 @@ const Order = () => {
       dispatch(fetchSnacks()).unwrap();
       dispatch(fetchSauces()).unwrap();
       window.scrollTo(0, 101)
+      // eslint-disable-next-line
     }, []);
-console.log('render')
     const onChange = (e) => {
       let i = 0;
 

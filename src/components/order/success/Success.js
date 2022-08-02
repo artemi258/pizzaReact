@@ -24,7 +24,7 @@ const Success = () => {
                 <h6>Спасибо за заказ!</h6>
                 <p className="success__descr">Примерное время доставки 45 минут. Статус отследить можно нажав на кнопку ниже</p>
             </div>
-                <buttom className="button button__products">Отследить заказ</buttom>
+                <button className="button button__products">Отследить заказ</button>
             </div>
         </div>     
 }
