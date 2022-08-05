@@ -9,13 +9,9 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 
 import { addProduct, deleteProduct, changePopupBasketActivation } from "../popups/popupBasket/popupBasketSlice";
-// import { fetchDesserts } from "../products/desserts/dessertsSlice";
-// import { fetchSnacks } from "../products/snacks/snacksSlice";
-// import { fetchSauces } from "../products/sauces/saucesSlice";
 import { addDesserts } from "../products/desserts/dessertsSlice";
 import { addSauces } from "../products/sauces/saucesSlice";
 import { addSnacks } from "../products/snacks/snacksSlice";
-import { useHttp } from "../../hooks/http.hook";
 import product from '../../JSON/product.json';
 
 import './order.scss';
@@ -34,7 +30,6 @@ const Order = () => {
     const [activeDelivery, setActiveDelivery] = useState('Доставка');
     const [phone, setPhone] = useState("");
     const navigate = useNavigate();
-    const {request} = useHttp();
     let supplement = useMemo(() => {
       if (snacks === [] || desserts === []) {
         return [];
@@ -60,23 +55,16 @@ const Order = () => {
       }
       setPhone('');
       setCheckedChange(true);
-      // reset();
-      const postData = await JSON.stringify(newData);
-     
-      request(`${product.Orders}`, 'POST', postData)
-      .then(data => navigate('../success'))
+      reset();     
+      navigate('../success')
     };
 
     useEffect(() => {
-      // dispatch(fetchDesserts()).unwrap();
-      // dispatch(fetchSnacks()).unwrap();
-      // dispatch(fetchSauces()).unwrap();
       dispatch(addDesserts(product.desserts));
       dispatch(addSnacks(product.snacks));
       dispatch(addSauces(product.sauces));
       window.scrollTo(0, 101)
     }, []);
-console.log('render')
     const onChange = (e) => {
       let i = 0;
 

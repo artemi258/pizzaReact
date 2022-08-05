@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useMemo, useRef, memo } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-// import { fetchSauces } from "./saucesSlice";
 import SaucesItem from "./saucesItem/SaucesItem";
 import Search from "../../search/Search";
 import { searchSauces } from "../../search/searchSlice";
@@ -19,7 +18,6 @@ const Sauces = memo(() => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // dispatch(fetchSauces()).unwrap();
         dispatch(addSauces(products.sauces));
         scrollToRef(myRef);
         // eslint-disable-next-line

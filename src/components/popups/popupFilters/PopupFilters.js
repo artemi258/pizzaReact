@@ -4,7 +4,6 @@ import classNames from "classnames";
 import { CSSTransition } from "react-transition-group";
 
 import {
-  fetchFilters,
   changeFiltersVisibility,
   countFilters,
 } from "./popupFiltersSlice";
@@ -38,10 +37,6 @@ const Filters = ({ filters, data, action }) => {
     setTriggerFiltersReset(true);
     dispatch(action(data));
   };
-
-  useEffect(() => {
-    dispatch(fetchFilters()).unwrap();
-  }, []);
 
   useEffect(() => {
     onFilteringData(activeFilters, data);

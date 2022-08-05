@@ -1,8 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useMemo, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay} from "swiper";
-import { fetchStocks } from "./stocksSlice";
 
 import StocksItem from './stocksItem/StocksItem';
 import products from '../../../JSON/product.json';
@@ -17,14 +15,7 @@ import '../../../style/style.scss';
 
 const Stocks = () => {
 
-    const dispatch = useDispatch();
-    // const {stocks} = useSelector(state => state.stocks);
     const [stocks] = useState(products.stocks);
-
-    useEffect(() => {
-        dispatch(fetchStocks()).unwrap();
-        // eslint-disable-next-line
-    }, []);
 
     const stock = (arr) => {
                return arr.map(({id, img, description}) => {

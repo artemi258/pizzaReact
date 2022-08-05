@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useMemo, useRef, memo } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-// import { fetchSnacks } from "./snacksSlice";
 import Search from "../../search/Search";
 import { searchSnacks } from "../../search/searchSlice";
 import SnacksItem from "./snacksItem/SnacksItem";
@@ -20,7 +19,6 @@ const Snacks = memo(() => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // dispatch(fetchSnacks()).unwrap();
         dispatch(addSnacks(products.snacks));
 
         scrollToRef(myRef);

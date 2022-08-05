@@ -10,7 +10,6 @@ import SkeletonStocks from "../skeleton/skeletonStocks";
 import PopupBasket from "../popups/popupBasket/PopupBasket";
 import AppProducts from "./AppProducts";
 import AppOrder from "./AppOrder";
-// import Success from "../order/success/Success";
 
 import './app.scss';
 import '../../style/style.scss';
@@ -31,7 +30,6 @@ const Success = lazy(() => import("../order/success/Success"));
              <div className="app">
                 <AppHeader/>
                 <PopupBasket/>
-                {/* <Success/> */}
                 <main>
                 {/\/order/gi.test(pathname) ? null : <Suspense fallback={<SkeletonStocks/>}><Stocks/></Suspense>}
                 {/\/order/gi.test(pathname) ? null : <NavMenu/>}

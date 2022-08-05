@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useMemo, memo, useRef } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-// import { fetchPizza } from "./pizzaSlice";
 import PizzaItem from "./pizzaItem/PizzaItem";
 import Search from "../../search/Search";
 import Filters from "../../popups/popupFilters/PopupFilters";
@@ -25,9 +24,7 @@ const Pizza = memo(() => {
   );
   const dispatch = useDispatch();
   const animation = useSelector((state) => state.pizza.animation);
-console.log(products)
   useEffect(() => {
-    // dispatch(fetchPizza()).unwrap();
     dispatch(addPizza(products.pizza));
     if (animation) {
       scrollToRef(myRef);
