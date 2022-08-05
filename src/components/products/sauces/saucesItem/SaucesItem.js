@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct, changePopupBasketActivation } from "../../../popups/popupBasket/popupBasketSlice";
-import { useMemo } from 'react';
 import '../sauces.scss';
 import '../../../../style/style.scss';
 
@@ -8,7 +7,6 @@ const SaucesItem = ({ img, title, liters, price, product }) => {
     
     const dispatch = useDispatch();
     const {products} = useSelector(state => state.popupBasket);
-    console.log(products)
 
     const button = products.find(item => item.id === title) ? <button onClick={() => dispatch(changePopupBasketActivation(true))} className="button button__products button__addedBasket">Добавлено</button> : <button onClick={() => dispatch(addProduct(
         [{...product, quantity: 1}]

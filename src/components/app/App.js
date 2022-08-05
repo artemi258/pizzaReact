@@ -35,14 +35,14 @@ const Success = lazy(() => import("../order/success/Success"));
                 {/\/order/gi.test(pathname) ? null : <NavMenu/>}
                         <Suspense fallback={<Skeleton/>}>
                             <Routes>
-                                <Route path="/" element={<AppProducts/>}>
+                                <Route path="/pizzaWeb" element={<AppProducts/>}>
                                     <Route index element={<Pizza/>}/>
                                     <Route path="drinks" element={<Drinks/>}/>
                                     <Route path="snacks" element={<Snacks/>}/>
                                     <Route path="desserts" element={<Desserts/>}/>
                                     <Route path="sauces" element={<Sauces/>}/>
                                 </Route>
-                                <Route path="/order" element={<AppOrder/>}>
+                                <Route path="/pizzaWeb/order" element={<AppOrder/>}>
                                     <Route index element={<Order/>}/>
                                     <Route path="success" element={<Success/>}/>
                                 </Route>

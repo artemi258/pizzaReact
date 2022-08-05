@@ -16,37 +16,31 @@ import '../../style/variables.scss';
         return (
             <nav className='navMenu container'>
                 <div className='navMenu__menu'>
-                    {/* <li className="navMenu__list">
-                        <NavLink to={'/'} style={active}>
-                            <div className="navMenu__img"><img src={fire} alt="fire" /></div>
-                            <span>Акции</span>
-                        </NavLink>
-                    </li> */}
-                    <NavLink className={active} to={'/'}>
+                    <NavLink className={active} to={'/pizzaWeb'}>
                         <div>
                             <div className="navMenu__img"><img src={pizza} alt="pizza" /></div>
                             <span>Пицца</span>
                         </div>
                     </NavLink>
-                    <NavLink className={active} to={'/drinks'}>
+                    <NavLink className={active} to={'/pizzaWeb/drinks'}>
                         <div>
                             <div className="navMenu__img"><img src={drink} alt="drink" /></div>
                             <span>Напитки</span>
                         </div>
                     </NavLink>
-                    <NavLink className={active} to={'/snacks'}>
+                    <NavLink className={active} to={'/pizzaWeb/snacks'}>
                         <div>
                             <div className="navMenu__img"><img src={snacks} alt="snacks" /></div>
                             <span>Закуски</span>
                         </div>
                     </NavLink>
-                    <NavLink className={active} to={'/desserts'}>
+                    <NavLink className={active} to={'/pizzaWeb/desserts'}>
                         <div>
                             <div className="navMenu__img"><img src={dessert} alt="desserts" /></div>
                             <span>Десерты</span>
                         </div>
                     </NavLink>
-                    <NavLink className={active} to={'/sauces'}>
+                    <NavLink className={active} to={'/pizzaWeb/sauces'}>
                         <div>
                             <div className="navMenu__img"><img src={sauce} alt="sauces" /></div>
                             <span>Соусы</span>

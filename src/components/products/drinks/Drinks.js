@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useMemo, memo, useRef } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
-// import { fetchDrinks } from "./drinksSlice";
 import DrinksItem from "./drinksItem/DrinksItem";
 import Search from "../../search/Search";
 import Filters from "../../popups/popupFilters/PopupFilters";
@@ -21,7 +20,6 @@ const Drinks = memo(() => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // dispatch(fetchDrinks()).unwrap();
         dispatch(addDrinks(products.drinks));
         scrollToRef(myRef);
         // eslint-disable-next-line
@@ -31,11 +29,8 @@ const Drinks = memo(() => {
 
         window.scrollBy(0, ref.current.getBoundingClientRect().top - 20)
     }
-
     const myRef = useRef();
 
-
-    
     const item = (arr) => {
         if (arr.length === 0) {
             return <CSSTransition key={'notFound'} timeout={300} classNames="fade">
