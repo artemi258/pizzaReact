@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, memo, useRef } from "react";
+import { useEffect, useMemo, memo, useRef, useState } from "react";
 import { CSSTransition, TransitionGroup} from "react-transition-group";
 
 import DrinksItem from "./drinksItem/DrinksItem";
 import Search from "../../search/Search";
 import Filters from "../../popups/popupFilters/PopupFilters";
+import Skeleton from "../../skeleton/Skeleton";
 import { searchDrinks } from "../../search/searchSlice";
 import { filteringDrinks } from "../../popups/popupFilters/popupFiltersSlice";
 import { addDrinks } from "./drinksSlice";
@@ -14,6 +15,7 @@ import './drinks.scss';
 import '../../../style/style.scss';
 
 const Drinks = memo(() => {
+    const [checkingFirstRender, setCheckingFirstRender] = useState(true)
     const {drinks} = useSelector(state => state.drinks);
     const {resultDrinks} = useSelector(state => state.search)
     const {filters, resultFilteringDrinks} = useSelector(state => state.filters)
@@ -32,17 +34,11 @@ const Drinks = memo(() => {
     const myRef = useRef();
 
     const item = (arr) => {
-        if (arr.length === 0) {
-            return <CSSTransition key={'notFound'} timeout={300} classNames="fade">
-                        <h5 className="notFound">К сожалению, товар не найден</h5>
-                    </CSSTransition>
-        } else {
-            return arr.map(({id, img, title, liters, price}, i , arr) => {
-                return <CSSTransition key={id} timeout={300} classNames="fade">
-                           <DrinksItem key={id} img={img} title={title} liters={liters} price={price} product={arr[i]}/>
-                       </CSSTransition>
-            });
-        }
+                return arr.map(({id, img, title, liters, price}, i , arr) => {
+                    return <CSSTransition key={id} timeout={300} classNames="fade">
+                               <DrinksItem key={id} img={img} title={title} liters={liters} price={price} product={arr[i]}/>
+                           </CSSTransition>
+                });
      };
 
     const renderDrinks = useMemo(() => {
@@ -56,7 +52,7 @@ const Drinks = memo(() => {
         })
         return res[0];
 }
-
+console.log(checkingFirstRender);
     return (
         <div ref={myRef} className="drinks container">
             <Filters filters={drinksFilters()} data={resultDrinks} action={filteringDrinks}/>
@@ -65,9 +61,8 @@ const Drinks = memo(() => {
                     <TransitionGroup component={null}>
                         {renderDrinks}
                     </TransitionGroup>
-
             </div>
-        </div>
+    </div>
     )
 });
 

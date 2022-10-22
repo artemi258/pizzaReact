@@ -26,6 +26,7 @@ const Success = lazy(() => import("../order/success/Success"));
     const App = () => {
 
         const {pathname} = useLocation();
+
         return (
              <div className="app">
                 <AppHeader/>

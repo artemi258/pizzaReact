@@ -16,7 +16,7 @@ const Search = ({data, search, filters}) => {
     const {countFilters} = useSelector(state => state.filters)
 
     useEffect(() => {
-        content(value);
+        content(false);
     }, [data]);
 
     const content = (value) => {

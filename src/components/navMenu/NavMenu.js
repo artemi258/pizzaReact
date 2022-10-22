@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 
-// import fire from './icon/Fire.png';
 import pizza from './icon/Pizza.png';
 import drink from './icon/Drink.png';
 import snacks from './icon/Snacks.png';
@@ -16,7 +15,7 @@ import '../../style/variables.scss';
         return (
             <nav className='navMenu container'>
                 <div className='navMenu__menu'>
-                    <NavLink className={active} to={'/pizzaWeb'}>
+                    <NavLink className={active} to={'/pizzaWeb/'} end>
                         <div>
                             <div className="navMenu__img"><img src={pizza} alt="pizza" /></div>
                             <span>Пицца</span>

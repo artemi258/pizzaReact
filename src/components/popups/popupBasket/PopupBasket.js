@@ -53,7 +53,7 @@ const PopupBasket = () => {
     dispatch(addProduct(resul));
   };
 
-  const onChangeInputPlus = (e, title, arr) => {
+  const onChangeInputPlus = (title, arr) => {
     const item = arr.filter(elem => elem.title === title);
     const check = item.some(elem => elem.quantity >= 9);
     if (check) {
@@ -62,7 +62,7 @@ const PopupBasket = () => {
      const resul = item.map(elem => ({...elem, quantity: elem.quantity + 1}))  //
     dispatch(addProduct(resul));
   };
-  const onChangeInputMinus = (e, title, arr) => {
+  const onChangeInputMinus = (title, arr) => {
     const item = arr.filter(elem => elem.title === title);
     const check = item.some(elem => elem.quantity <= 1);
     if (check) {
@@ -153,7 +153,7 @@ const PopupBasket = () => {
                       <div className="popupBasket__quantity">
                         <div className="popupBasket__count">
                           <div
-                            onClick={(e) => onChangeInputMinus(e, id, arr)}
+                            onClick={() => onChangeInputMinus(id, arr)}
                             className="popupBasket__count-minus"
                           >
                             <div>&minus;</div>
@@ -168,7 +168,7 @@ const PopupBasket = () => {
                             className="popupBasket__count-input"
                           />
                           <div
-                            onClick={(e) => onChangeInputPlus(e, id, arr)}
+                            onClick={() => onChangeInputPlus(id, arr)}
                             className="popupBasket__count-plus"
                           >
                             <div>&#43;</div>
@@ -190,7 +190,7 @@ const PopupBasket = () => {
               <div className="popupBasket__bottom-amount">
                 Итого: {totalPrice} &#8381;
               </div>
-              <NavLink onClick={onCloseBasket} to={'order'} className="button button__products">
+              <NavLink onClick={onCloseBasket} to={'/pizzaWeb/order'} className="button button__products">
                 Оформить заказ
               </NavLink>
             </div>

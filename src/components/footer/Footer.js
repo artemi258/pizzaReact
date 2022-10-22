@@ -39,7 +39,7 @@ const Footer = () => {
                             </div>
                             <div className="footer__contacts-item">
                                 <div className="footer__contacts-icon"><img src={nav} alt="nav" /></div>
-                                <address>Москва, ул. Юных Ленинцев, д.99</address>
+                                <address>Североуральск, ул. Ленина, д.22</address>
                             </div>
                             <div className="footer__contacts-item">
                                 <div className="footer__contacts-icon"><img src={facebook} alt="facebook" /></div>

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo, memo, useRef } from "react";
+import { useEffect, useMemo, memo, useRef, useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import PizzaItem from "./pizzaItem/PizzaItem";
@@ -16,6 +16,7 @@ import "./pizza.scss";
 import "../../../style/style.scss";
 
 const Pizza = memo(() => {
+  const [checkingFirstRender, setCheckingFirstRender] = useState(true)
   const { pizza } = useSelector((state) => state.pizza);
   const { resultPizza } = useSelector((state) => state.search);
   const { activeProduct } = useSelector((state) => state.popupProduct);
@@ -42,11 +43,11 @@ const Pizza = memo(() => {
 
   const item = (arr) => {
     if (arr.length === 0) {
-      return (
-        <CSSTransition key={"notFound"} timeout={300} classNames="fade">
-          <h5 className="notFound">К сожалению, товар не найден</h5>
-        </CSSTransition>
-      );
+        return (
+          <CSSTransition key={"notFound"} timeout={300} classNames="fade">
+            <h5 className="notFound">К сожалению, товар не найден</h5>
+          </CSSTransition>
+        );
     } else {
       return arr.map(({ id, img, title, ingredients, price }) => {
         return (
