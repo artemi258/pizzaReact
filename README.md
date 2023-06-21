@@ -12,3 +12,6 @@ https://artemi258.github.io/pizzaWeb/.
 
 ## Стэк
 - React, Redux, Redux toolkit, SCSS, JavaScript, react-router-dom v6, swiper-для реализации красивых слайдеров , react-hook-form.
+- 
+## Статус проекта
+- Завершен.
