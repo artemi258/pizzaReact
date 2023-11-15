@@ -10,13 +10,13 @@ import { changeAnimation } from "./pizzaSlice";
 import { searchPizza } from "../../search/searchSlice";
 import { filteringPizza } from "../../popups/popupFilters/popupFiltersSlice";
 import { addPizza } from "./pizzaSlice";
-import products from '../../../JSON/product.json';
+import products from "../../../JSON/product.json";
 
 import "./pizza.scss";
 import "../../../style/style.scss";
 
 const Pizza = memo(() => {
-  const [checkingFirstRender, setCheckingFirstRender] = useState(true)
+  const [checkingFirstRender, setCheckingFirstRender] = useState(true);
   const { pizza } = useSelector((state) => state.pizza);
   const { resultPizza } = useSelector((state) => state.search);
   const { activeProduct } = useSelector((state) => state.popupProduct);
@@ -33,7 +33,7 @@ const Pizza = memo(() => {
     dispatch(changeAnimation(true));
 
     // eslint-disable-next-line
-  }, []);
+  }, [products.pizza]);
 
   const scrollToRef = (ref) => {
     window.scrollBy(0, ref.current.getBoundingClientRect().top - 20);
@@ -43,11 +43,11 @@ const Pizza = memo(() => {
 
   const item = (arr) => {
     if (arr.length === 0) {
-        return (
-          <CSSTransition key={"notFound"} timeout={300} classNames="fade">
-            <h5 className="notFound">К сожалению, товар не найден</h5>
-          </CSSTransition>
-        );
+      return (
+        <CSSTransition key={"notFound"} timeout={300} classNames="fade">
+          <h5 className="notFound">К сожалению, товар не найден</h5>
+        </CSSTransition>
+      );
     } else {
       return arr.map(({ id, img, title, ingredients, price }) => {
         return (

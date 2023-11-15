@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation} from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 import AppHeader from "../appHeader/AppHeader";
@@ -11,8 +11,8 @@ import PopupBasket from "../popups/popupBasket/PopupBasket";
 import AppProducts from "./AppProducts";
 import AppOrder from "./AppOrder";
 
-import './app.scss';
-import '../../style/style.scss';
+import "./app.scss";
+import "../../style/style.scss";
 
 const Pizza = lazy(() => import("../products/pizza/Pizza"));
 const Drinks = lazy(() => import("../products/drinks/Drinks"));
@@ -23,37 +23,40 @@ const Stocks = lazy(() => import("../products/stocks/Stocks"));
 const Order = lazy(() => import("../order/Order"));
 const Success = lazy(() => import("../order/success/Success"));
 
-    const App = () => {
+const App = () => {
+  const { pathname } = useLocation();
 
-        const {pathname} = useLocation();
-
-        return (
-             <div className="app">
-                <AppHeader/>
-                <PopupBasket/>
-                <main>
-                {/\/order/gi.test(pathname) ? null : <Suspense fallback={<SkeletonStocks/>}><Stocks/></Suspense>}
-                {/\/order/gi.test(pathname) ? null : <NavMenu/>}
-                        <Suspense fallback={<Skeleton/>}>
-                            <Routes>
-                                <Route path="/pizzaWeb" element={<AppProducts/>}>
-                                    <Route index element={<Pizza/>}/>
-                                    <Route path="drinks" element={<Drinks/>}/>
-                                    <Route path="snacks" element={<Snacks/>}/>
-                                    <Route path="desserts" element={<Desserts/>}/>
-                                    <Route path="sauces" element={<Sauces/>}/>
-                                </Route>
-                                <Route path="/pizzaWeb/order" element={<AppOrder/>}>
-                                    <Route index element={<Order/>}/>
-                                    <Route path="success" element={<Success/>}/>
-                                </Route>
-                            </Routes>
-                        </Suspense>
-                </main>
-                <Promo/>
-                <Footer/>
-            </div>
-        )
-    }
+  return (
+    <div className="app">
+      <AppHeader />
+      <PopupBasket />
+      <main>
+        {/\/order/gi.test(pathname) ? null : (
+          <Suspense fallback={<SkeletonStocks />}>
+            <Stocks />
+          </Suspense>
+        )}
+        {/\/order/gi.test(pathname) ? null : <NavMenu />}
+        <Suspense fallback={<Skeleton />}>
+          <Routes>
+            <Route path="/" element={<AppProducts />}>
+              <Route index element={<Pizza />} />
+              <Route path="drinks" element={<Drinks />} />
+              <Route path="snacks" element={<Snacks />} />
+              <Route path="desserts" element={<Desserts />} />
+              <Route path="sauces" element={<Sauces />} />
+            </Route>
+            <Route path="/pizzaWeb/order" element={<AppOrder />}>
+              <Route index element={<Order />} />
+              <Route path="success" element={<Success />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </main>
+      <Promo />
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
