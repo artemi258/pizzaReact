@@ -37,7 +37,7 @@ const AppHeader = () => {
         </div>
         <div className="appHeader__divinder"></div>
         <div className="appHeader__bottom">
-          <NavLink to={"/pizzaWeb/"} className="appHeader__bottom-logo">
+          <NavLink to={"/"} className="appHeader__bottom-logo">
             <div className="appHeader__bottom-img">
               <img src={pizza} alt="pizza" />
             </div>
